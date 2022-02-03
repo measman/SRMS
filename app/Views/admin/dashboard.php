@@ -1,3 +1,4 @@
+<?php $session = \Config\Services::session(); ?>
 <?= $this->extend('templates/admin_template') ?>
 <?= $this->section('content') ?>
 <div class="container-fluid">

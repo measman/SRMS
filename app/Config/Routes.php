@@ -34,6 +34,12 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('home', 'Home::home');
 $routes->match(['get', 'post'], 'login', 'Home::login_page', ["filter" => "AlreadyLoggedIn"]);
+
+$routes->group('', ['filter' => 'AdminAuthCheck'], function ($routes) {
+    // Add all routes need protected by this filter allowed only admin
+    $routes->add('create-class', 'Classes::index');
+    $routes->add('manage-classes', 'Classes::manage');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

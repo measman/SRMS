@@ -101,9 +101,9 @@
                                     <a href="#"><i class="fa fa-file-text"></i> <span>Student Classes</span> <i
                                             class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="create-class.php"><i class="fa fa-bars"></i> <span>Create
+                                        <li><a href="<?= base_url(); ?>/create-class"><i class="fa fa-bars"></i> <span>Create
                                                     Class</span></a></li>
-                                        <li><a href="manage-classes.php"><i class="fa fa fa-server"></i> <span>Manage
+                                        <li><a href="<?= base_url(); ?>/manage-classes"><i class="fa fa fa-server"></i> <span>Manage
                                                     Classes</span></a></li>
 
                                     </ul>
