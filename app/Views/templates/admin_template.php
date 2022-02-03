@@ -129,7 +129,7 @@
                                 <ul class="child-nav">
                                     <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add
                                                 Students</span></a></li>
-                                    <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage
+                                    <li><a href="<?= base_url(); ?>/manage-students"><i class="fa fa fa-server"></i> <span>Manage
                                                 Students</span></a></li>
 
                                 </ul>
@@ -245,22 +245,56 @@
                     data: $(this).serialize(),
                     dataType: "JSON",
                     beforeSend: function() {
-                        $('#submit_button').val('Wait...');
+                        $('#submit_button').text('Wait...');
                         $('#submit_button').attr('disabled', 'disabled');
                     },
                     success: function(data) {
-                        $('#submit_button').val('Add');
+                        $('#submit_button').text('Add');
                         $('#submit_button').attr('disabled', false);
                         if (data.error == 'yes') {
-                            $('#txtprojectname_error').text(data
-                                .txtprojectname_error);
-                            $('#slcprojectcordinator_error').text(data
-                                .slcprojectcordinator_error);
+                            $('#classname_error').text(data
+                                .classname_error);
+                            $('#classnamenumeric_error').text(data
+                                .classnamenumeric_error);
+                            $('#section_error').text(data
+                                .section_error);
                         } else {
-                            $('#projectModal').modal('hide');
-
                             toastr["success"](data.message);
                             $('#classTable').load(location.href + " #classTable")
+                        }
+                    }
+                });
+            });
+            $('#students_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Students/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#fullanme_error').text(data
+                                .fullanme_error);
+                            $('#rollid_error').text(data
+                                .rollid_error);
+                                $('#gender_error').text(data
+                                .gender_error);
+                            $('#rollid_error').text(data
+                                .rollid_error);
+                                $('#class_error').text(data
+                                .class_error);
+                            $('#dob_error').text(data
+                                .dob_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#studentTable').load(location.href + " #studentTable")
                         }
                     }
                 });
@@ -284,9 +318,38 @@
                         $('#classnamenumeric_error').text('');
                         $('#section_error').text('');
                         $('#action').val('Edit');
-                        $('.modal-title').text('Edit Attendence');
-                        $('#submit_button').val('Edit');
+                        $('#submit_button').text('Edit');
                         $('#hidden_id').val(class_id);
+                    }
+                });
+            });
+            $(document).on('click', '.student-edit', function() {
+                var student_id = $(this).data('id');
+                $.ajax({
+                    url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: student_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="fullanme"]').val(data.StudentName);
+                        $('[name="rollid"]').val(data.RollId);
+                        $('[name="emailid"]').val(data.StudentEmail);
+                        // $('[name="gender"]').val(data.Gender);
+                        $("input[name=gender][value=" + data.Gender + "]").prop('checked', true);
+                        $('[name="class"]').val(data.ClassId);
+                        $('[name="dob"]').val(data.DOB);
+                        $('#fullanme_error').text('');
+                        $('#rollid_error').text('');
+                        $('#emailid_error').text('');
+                        $('#gender_error').text('');
+                        $('#class_error').text('');
+                        $('#dob_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(student_id);
                     }
                 });
             });

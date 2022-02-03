@@ -90,7 +90,7 @@
                                 <div class="">
                                     <input type="hidden" name="hidden_id" id="hidden_id" />
                                     <input type="hidden" name="action" id="action" value="Add" />
-                                    <button type="submit" name="submit" class="btn btn-success btn-labeled">Submit<span
+                                    <button id="submit_button" type="submit" name="submit" class="btn btn-success btn-labeled">Submit<span
                                             class="btn-label btn-label-right"><i
                                                 class="fa fa-check"></i></span></button>
                                 </div>

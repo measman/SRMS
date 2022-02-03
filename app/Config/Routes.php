@@ -39,6 +39,7 @@ $routes->group('', ['filter' => 'AdminAuthCheck'], function ($routes) {
     // Add all routes need protected by this filter allowed only admin
     $routes->add('create-class', 'Classes::index');
     $routes->add('manage-classes', 'Classes::manage');
+    $routes->add('manage-students', 'Students::manage');
 });
 /*
  * --------------------------------------------------------------------
