@@ -236,6 +236,61 @@
         }
         // toastr["success"]("Welcome to student Result Management System!");
 
+
+        $('#classes_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Classes/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').val('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').val('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#txtprojectname_error').text(data
+                                .txtprojectname_error);
+                            $('#slcprojectcordinator_error').text(data
+                                .slcprojectcordinator_error);
+                        } else {
+                            $('#projectModal').modal('hide');
+
+                            toastr["success"](data.message);
+                            $('#classTable').load(location.href + " #classTable")
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.class-edit', function() {
+                var class_id = $(this).data('id');
+                $.ajax({
+                    url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: class_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="classname"]').val(data.ClassName);
+                        $('[name="classnamenumeric"]').val(data.ClassNameNumeric);
+                        $('[name="section"]').val(data.Section);
+                        $('#classname_error').text('');
+                        $('#classnamenumeric_error').text('');
+                        $('#section_error').text('');
+                        $('#action').val('Edit');
+                        $('.modal-title').text('Edit Attendence');
+                        $('#submit_button').val('Edit');
+                        $('#hidden_id').val(class_id);
+                    }
+                });
+            });
+
     });
     </script>
 </body>

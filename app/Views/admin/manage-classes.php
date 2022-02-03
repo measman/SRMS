@@ -29,7 +29,7 @@
 <section class="section">
     <div class="container-fluid">
 
-    <div class="row">
+        <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel">
                     <div class="panel-heading">
@@ -57,13 +57,14 @@
 
                     <div class="panel-body">
 
-                    <?php echo form_open();?>
+                        <form method="post" id="classes_form">
                             <div class="form-group has-success">
                                 <label for="success" class="control-label">Class Name</label>
                                 <div class="">
                                     <input type="text" name="classname" class="form-control" required="required"
                                         id="success">
                                     <span class="help-block">Eg- Third, Fouth,Sixth etc</span>
+                                    <span id="classname_error" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group has-success">
@@ -72,6 +73,7 @@
                                     <input type="number" name="classnamenumeric" required="required"
                                         class="form-control" id="success">
                                     <span class="help-block">Eg- 1,2,4,5 etc</span>
+                                    <span id="classnamenumeric_error" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group has-success">
@@ -80,11 +82,14 @@
                                     <input type="text" name="section" class="form-control" required="required"
                                         id="success">
                                     <span class="help-block">Eg- A,B,C etc</span>
+                                    <span id="section_error" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group has-success">
 
                                 <div class="">
+                                    <input type="hidden" name="hidden_id" id="hidden_id" />
+                                    <input type="hidden" name="action" id="action" value="Add" />
                                     <button type="submit" name="submit" class="btn btn-success btn-labeled">Submit<span
                                             class="btn-label btn-label-right"><i
                                                 class="fa fa-check"></i></span></button>
@@ -130,7 +135,7 @@
                     <?php endif;?>
                     <div class="panel-body p-20">
 
-                        <table id="example" class="display table table-striped table-bordered" cellspacing="0"
+                        <table id="classTable" class="display table table-striped table-bordered" cellspacing="0"
                             width="100%">
                             <thead>
                                 <tr>
@@ -153,7 +158,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                            <?php
+                                <?php
                             if (isset($content)) :
                                 $i = 1;
                                 foreach ($content as $cnt) :
@@ -165,8 +170,8 @@
                                     <td><?php echo htmlentities($cnt['Section']);?></td>
                                     <td><?php echo htmlentities($cnt['CreationDate']);?></td>
                                     <td>
-                                        <a href="edit-class.php?classid=<?php echo htmlentities($cnt['id']);?>"><i
-                                                class="fa fa-edit" title="Edit Record"></i> </a>
+                                        <button class="btn btn-info class-edit" data-id="<?php echo htmlentities($cnt['id']);?>"><i
+                                                class="fa fa-edit" title="Edit Record"></i> </button>
 
                                     </td>
                                 </tr>
