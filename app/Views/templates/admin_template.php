@@ -101,8 +101,7 @@
                                     <a href="#"><i class="fa fa-file-text"></i> <span>Student Classes</span> <i
                                             class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="<?= base_url(); ?>/create-class"><i class="fa fa-bars"></i> <span>Create
-                                                    Class</span></a></li>
+                                        
                                         <li><a href="<?= base_url(); ?>/manage-classes"><i class="fa fa fa-server"></i> <span>Manage
                                                     Classes</span></a></li>
 
@@ -112,13 +111,11 @@
                                     <a href="#"><i class="fa fa-file-text"></i> <span>Subjects</span> <i
                                             class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        <li><a href="create-subject.php"><i class="fa fa-bars"></i> <span>Create
-                                                    Subject</span></a></li>
-                                        <li><a href="manage-subjects.php"><i class="fa fa fa-server"></i> <span>Manage
+                                        
+                                        <li><a href="<?= base_url(); ?>/manage-subjects"><i class="fa fa fa-server"></i> <span>Manage
                                                     Subjects</span></a></li>
-                                        <li><a href="add-subjectcombination.php"><i class="fa fa-newspaper-o"></i>
-                                                <span>Add Subject Combination </span></a></li>
-                                        <a href="manage-subjectcombination.php"><i class="fa fa-newspaper-o"></i>
+                                        
+                                        <a href="<?= base_url(); ?>/manage-subjectcombination"><i class="fa fa-newspaper-o"></i>
                                             <span>Manage Subject Combination </span></a>
                                 </li>
                             </ul>
@@ -127,8 +124,7 @@
                                 <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i
                                         class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
-                                    <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add
-                                                Students</span></a></li>
+                                    
                                     <li><a href="<?= base_url(); ?>/manage-students"><i class="fa fa fa-server"></i> <span>Manage
                                                 Students</span></a></li>
 
@@ -299,7 +295,58 @@
                     }
                 });
             });
-
+            $('#subject_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Subject/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#subjectname_error').text(data
+                                .subjectname_error);
+                            $('#subjectcode_error').text(data
+                                .subjectcode_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#subjectTable').load(location.href + " #subjectTable")
+                        }
+                    }
+                });
+            });
+            $('#subjectcombination_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/SubjectCombination/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#class_error').text(data
+                                .class_error);
+                            $('#subject_error').text(data
+                                .subject_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#subjectcombinationTable').load(location.href + " #subjectcombinationTable")
+                        }
+                    }
+                });
+            });
             $(document).on('click', '.class-edit', function() {
                 var class_id = $(this).data('id');
                 $.ajax({
@@ -337,7 +384,6 @@
                         $('[name="fullanme"]').val(data.StudentName);
                         $('[name="rollid"]').val(data.RollId);
                         $('[name="emailid"]').val(data.StudentEmail);
-                        // $('[name="gender"]').val(data.Gender);
                         $("input[name=gender][value=" + data.Gender + "]").prop('checked', true);
                         $('[name="class"]').val(data.ClassId);
                         $('[name="dob"]').val(data.DOB);
@@ -350,6 +396,48 @@
                         $('#action').val('Edit');
                         $('#submit_button').text('Edit');
                         $('#hidden_id').val(student_id);
+                    }
+                });
+            });
+            $(document).on('click', '.subject-edit', function() {
+                var sub_id = $(this).data('id');
+                $.ajax({
+                    url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: sub_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="subjectname"]').val(data.SubjectName);
+                        $('[name="subjectcode"]').val(data.SubjectCode);
+                        $('#subjectname_error').text('');
+                        $('#subjectcode_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(sub_id);
+                    }
+                });
+            });
+            $(document).on('click', '.subjectcombination-edit', function() {
+                var sub_id = $(this).data('id');
+                $.ajax({
+                    url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: sub_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="class"]').val(data.ClassId);
+                        $('[name="subject"]').val(data.SubjectId);
+                        $('#class_error').text('');
+                        $('#subject_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(sub_id);
                     }
                 });
             });
