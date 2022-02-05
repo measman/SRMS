@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 use \App\Libraries\Hash;
 use \App\Models\UserModel;
+use \App\Models\StudentsModel;
+use \App\Models\SubjectModel;
+use \App\Models\ClassesModel;
+use \App\Models\ResultModel;
 
 class Home extends BaseController
 {
@@ -12,6 +16,10 @@ class Home extends BaseController
     {
         
         $this->usermodel = new UserModel();
+        $this->studentsmodel = new StudentsModel();
+        $this->subjectmodel = new SubjectModel();
+        $this->classesmodel = new ClassesModel();
+        $this->resultmodel = new ResultModel();
     }
     public function index()
     {
@@ -20,7 +28,11 @@ class Home extends BaseController
             if (!session()->get('userdata')['logged_in']) {
                 return redirect()->route('login');
             } else {                  
-                return view('admin/dashboard');                 
+                $data['students'] = $this->studentsmodel->findAll();
+                $data['subjects'] = $this->subjectmodel->findAll();
+                $data['classes'] = $this->classesmodel->findAll();
+                $data['results'] = $this->resultmodel->findAll();
+                return view('admin/dashboard',$data);                 
             }
         } else {
             return redirect()->route('home');

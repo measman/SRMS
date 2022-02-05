@@ -24,7 +24,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="navbar-header no-padding">
-                        <a class="navbar-brand" href="dashboard.php">
+                        <a class="navbar-brand" href="<?= base_url(); ?>">
                             SRMS | Admin
                         </a>
                         <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
@@ -90,7 +90,7 @@
                                     <span class="">Main Category</span>
                                 </li>
                                 <li>
-                                    <a href="dashboard.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
+                                    <a href="<?= base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
 
                                 </li>
 
