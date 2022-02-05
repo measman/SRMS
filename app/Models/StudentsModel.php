@@ -25,4 +25,17 @@ class StudentsModel extends Model
             return false;
         }
     }
+
+    public function getStudentsbyClass($class){
+        $builder = $this->db->table('tblstudents');
+        $builder->select('StudentName,StudentId,Status');
+        $builder->where('ClassId', $class);
+        $builder->orderBy('StudentName');
+        $result = $builder->get();
+        if (count($result->getResultArray()) > 0) {
+            return $result->getResultArray();
+        } else {
+            return array();
+        }
+    }
 }

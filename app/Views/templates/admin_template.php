@@ -56,7 +56,8 @@
                         <ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 
 
-                            <li><a href="<?php base_url() ?>/home/logout" class="color-danger text-center"><i class="fa fa-sign-out"></i>
+                            <li><a href="<?php base_url() ?>/home/logout" class="color-danger text-center"><i
+                                        class="fa fa-sign-out"></i>
                                     Logout</a></li>
 
 
@@ -90,7 +91,8 @@
                                     <span class="">Main Category</span>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
+                                    <a href="<?= base_url(); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                                    </a>
 
                                 </li>
 
@@ -101,8 +103,9 @@
                                     <a href="#"><i class="fa fa-file-text"></i> <span>Student Classes</span> <i
                                             class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        
-                                        <li><a href="<?= base_url(); ?>/manage-classes"><i class="fa fa fa-server"></i> <span>Manage
+
+                                        <li><a href="<?= base_url(); ?>/manage-classes"><i class="fa fa fa-server"></i>
+                                                <span>Manage
                                                     Classes</span></a></li>
 
                                     </ul>
@@ -111,11 +114,13 @@
                                     <a href="#"><i class="fa fa-file-text"></i> <span>Subjects</span> <i
                                             class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
-                                        
-                                        <li><a href="<?= base_url(); ?>/manage-subjects"><i class="fa fa fa-server"></i> <span>Manage
+
+                                        <li><a href="<?= base_url(); ?>/manage-subjects"><i class="fa fa fa-server"></i>
+                                                <span>Manage
                                                     Subjects</span></a></li>
-                                        
-                                        <a href="<?= base_url(); ?>/manage-subjectcombination"><i class="fa fa-newspaper-o"></i>
+
+                                        <a href="<?= base_url(); ?>/manage-subjectcombination"><i
+                                                class="fa fa-newspaper-o"></i>
                                             <span>Manage Subject Combination </span></a>
                                 </li>
                             </ul>
@@ -124,8 +129,9 @@
                                 <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i
                                         class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
-                                    
-                                    <li><a href="<?= base_url(); ?>/manage-students"><i class="fa fa fa-server"></i> <span>Manage
+
+                                    <li><a href="<?= base_url(); ?>/manage-students"><i class="fa fa fa-server"></i>
+                                            <span>Manage
                                                 Students</span></a></li>
 
                                 </ul>
@@ -134,9 +140,9 @@
                                 <a href="#"><i class="fa fa-info-circle"></i> <span>Result</span> <i
                                         class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
-                                    <li><a href="add-result.php"><i class="fa fa-bars"></i> <span>Add Result</span></a>
-                                    </li>
-                                    <li><a href="manage-results.php"><i class="fa fa fa-server"></i> <span>Manage
+
+                                    <li><a href="<?= base_url(); ?>/manage-results"><i class="fa fa fa-server"></i>
+                                            <span>Manage
                                                 Result</span></a></li>
 
                                 </ul>
@@ -164,7 +170,7 @@
 
 
                 <div class="main-page">
-                <?= $this->renderSection('content'); ?>
+                    <?= $this->renderSection('content'); ?>
 
                 </div>
                 <!-- /.main-page -->
@@ -193,7 +199,8 @@
     <script src="<?= base_url(); ?>/js/amcharts/amcharts.js"></script>
     <script src="<?= base_url(); ?>/js/amcharts/serial.js"></script>
     <script src="<?= base_url(); ?>/js/amcharts/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="<?= base_url(); ?>/js/amcharts/plugins/export/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="<?= base_url(); ?>/js/amcharts/plugins/export/export.css" type="text/css"
+        media="all" />
     <script src="<?= base_url(); ?>/js/amcharts/themes/light.js"></script>
     <script src="<?= base_url(); ?>/js/toastr/toastr.min.js"></script>
     <script src="<?= base_url(); ?>/js/icheck/icheck.min.js"></script>
@@ -234,213 +241,295 @@
 
 
         $('#classes_form').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "<?php echo base_url('/Classes/action'); ?>",
-                    method: "POST",
-                    data: $(this).serialize(),
-                    dataType: "JSON",
-                    beforeSend: function() {
-                        $('#submit_button').text('Wait...');
-                        $('#submit_button').attr('disabled', 'disabled');
-                    },
-                    success: function(data) {
-                        $('#submit_button').text('Add');
-                        $('#submit_button').attr('disabled', false);
-                        if (data.error == 'yes') {
-                            $('#classname_error').text(data
-                                .classname_error);
-                            $('#classnamenumeric_error').text(data
-                                .classnamenumeric_error);
-                            $('#section_error').text(data
-                                .section_error);
-                        } else {
-                            toastr["success"](data.message);
-                            $('#classTable').load(location.href + " #classTable")
-                        }
+            event.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url('/Classes/action'); ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('#submit_button').text('Wait...');
+                    $('#submit_button').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    $('#submit_button').text('Add');
+                    $('#submit_button').attr('disabled', false);
+                    if (data.error == 'yes') {
+                        $('#classname_error').text(data
+                            .classname_error);
+                        $('#classnamenumeric_error').text(data
+                            .classnamenumeric_error);
+                        $('#section_error').text(data
+                            .section_error);
+                    } else {
+                        toastr["success"](data.message);
+                        $('#classTable').load(location.href + " #classTable")
                     }
-                });
+                }
             });
-            $('#students_form').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "<?php echo base_url('/Students/action'); ?>",
-                    method: "POST",
-                    data: $(this).serialize(),
-                    dataType: "JSON",
-                    beforeSend: function() {
-                        $('#submit_button').text('Wait...');
-                        $('#submit_button').attr('disabled', 'disabled');
-                    },
-                    success: function(data) {
-                        $('#submit_button').text('Add');
-                        $('#submit_button').attr('disabled', false);
-                        if (data.error == 'yes') {
-                            $('#fullanme_error').text(data
-                                .fullanme_error);
-                            $('#rollid_error').text(data
-                                .rollid_error);
-                                $('#gender_error').text(data
-                                .gender_error);
-                            $('#rollid_error').text(data
-                                .rollid_error);
-                                $('#class_error').text(data
-                                .class_error);
-                            $('#dob_error').text(data
-                                .dob_error);
-                        } else {
-                            toastr["success"](data.message);
-                            $('#studentTable').load(location.href + " #studentTable")
-                        }
+        });
+        $('#students_form').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url('/Students/action'); ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('#submit_button').text('Wait...');
+                    $('#submit_button').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    $('#submit_button').text('Add');
+                    $('#submit_button').attr('disabled', false);
+                    if (data.error == 'yes') {
+                        $('#fullanme_error').text(data
+                            .fullanme_error);
+                        $('#rollid_error').text(data
+                            .rollid_error);
+                        $('#gender_error').text(data
+                            .gender_error);
+                        $('#rollid_error').text(data
+                            .rollid_error);
+                        $('#class_error').text(data
+                            .class_error);
+                        $('#dob_error').text(data
+                            .dob_error);
+                    } else {
+                        toastr["success"](data.message);
+                        $('#studentTable').load(location.href + " #studentTable")
                     }
-                });
+                }
             });
-            $('#subject_form').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "<?php echo base_url('/Subject/action'); ?>",
-                    method: "POST",
-                    data: $(this).serialize(),
-                    dataType: "JSON",
-                    beforeSend: function() {
-                        $('#submit_button').text('Wait...');
-                        $('#submit_button').attr('disabled', 'disabled');
-                    },
-                    success: function(data) {
-                        $('#submit_button').text('Add');
-                        $('#submit_button').attr('disabled', false);
-                        if (data.error == 'yes') {
-                            $('#subjectname_error').text(data
-                                .subjectname_error);
-                            $('#subjectcode_error').text(data
-                                .subjectcode_error);
-                        } else {
-                            toastr["success"](data.message);
-                            $('#subjectTable').load(location.href + " #subjectTable")
-                        }
+        });
+        $('#subject_form').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url('/Subject/action'); ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('#submit_button').text('Wait...');
+                    $('#submit_button').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    $('#submit_button').text('Add');
+                    $('#submit_button').attr('disabled', false);
+                    if (data.error == 'yes') {
+                        $('#subjectname_error').text(data
+                            .subjectname_error);
+                        $('#subjectcode_error').text(data
+                            .subjectcode_error);
+                    } else {
+                        toastr["success"](data.message);
+                        $('#subjectTable').load(location.href + " #subjectTable")
                     }
-                });
+                }
             });
-            $('#subjectcombination_form').on('submit', function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "<?php echo base_url('/SubjectCombination/action'); ?>",
-                    method: "POST",
-                    data: $(this).serialize(),
-                    dataType: "JSON",
-                    beforeSend: function() {
-                        $('#submit_button').text('Wait...');
-                        $('#submit_button').attr('disabled', 'disabled');
-                    },
-                    success: function(data) {
-                        $('#submit_button').text('Add');
-                        $('#submit_button').attr('disabled', false);
-                        if (data.error == 'yes') {
-                            $('#class_error').text(data
-                                .class_error);
-                            $('#subject_error').text(data
-                                .subject_error);
-                        } else {
-                            toastr["success"](data.message);
-                            $('#subjectcombinationTable').load(location.href + " #subjectcombinationTable")
-                        }
+        });
+        $('#subjectcombination_form').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url('/SubjectCombination/action'); ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('#submit_button').text('Wait...');
+                    $('#submit_button').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    $('#submit_button').text('Add');
+                    $('#submit_button').attr('disabled', false);
+                    if (data.error == 'yes') {
+                        $('#class_error').text(data
+                            .class_error);
+                        $('#subject_error').text(data
+                            .subject_error);
+                    } else {
+                        toastr["success"](data.message);
+                        $('#subjectcombinationTable').load(location.href +
+                            " #subjectcombinationTable")
                     }
-                });
+                }
             });
-            $(document).on('click', '.class-edit', function() {
-                var class_id = $(this).data('id');
-                $.ajax({
-                    url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
-                    method: "POST",
-                    data: {
-                        id: class_id
-                    },
-                    dataType: "JSON",
-                    success: function(data) {
+        });
+        $(document).on('click', '.class-edit', function() {
+            var class_id = $(this).data('id');
+            $.ajax({
+                url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
+                method: "POST",
+                data: {
+                    id: class_id
+                },
+                dataType: "JSON",
+                success: function(data) {
 
-                        $('[name="classname"]').val(data.ClassName);
-                        $('[name="classnamenumeric"]').val(data.ClassNameNumeric);
-                        $('[name="section"]').val(data.Section);
-                        $('#classname_error').text('');
-                        $('#classnamenumeric_error').text('');
-                        $('#section_error').text('');
-                        $('#action').val('Edit');
-                        $('#submit_button').text('Edit');
-                        $('#hidden_id').val(class_id);
-                    }
-                });
+                    $('[name="classname"]').val(data.ClassName);
+                    $('[name="classnamenumeric"]').val(data.ClassNameNumeric);
+                    $('[name="section"]').val(data.Section);
+                    $('#classname_error').text('');
+                    $('#classnamenumeric_error').text('');
+                    $('#section_error').text('');
+                    $('#action').val('Edit');
+                    $('#submit_button').text('Edit');
+                    $('#hidden_id').val(class_id);
+                }
             });
-            $(document).on('click', '.student-edit', function() {
-                var student_id = $(this).data('id');
-                $.ajax({
-                    url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
-                    method: "POST",
-                    data: {
-                        id: student_id
-                    },
-                    dataType: "JSON",
-                    success: function(data) {
+        });
+        $(document).on('click', '.student-edit', function() {
+            var student_id = $(this).data('id');
+            $.ajax({
+                url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
+                method: "POST",
+                data: {
+                    id: student_id
+                },
+                dataType: "JSON",
+                success: function(data) {
 
-                        $('[name="fullanme"]').val(data.StudentName);
-                        $('[name="rollid"]').val(data.RollId);
-                        $('[name="emailid"]').val(data.StudentEmail);
-                        $("input[name=gender][value=" + data.Gender + "]").prop('checked', true);
-                        $('[name="class"]').val(data.ClassId);
-                        $('[name="dob"]').val(data.DOB);
-                        $('#fullanme_error').text('');
-                        $('#rollid_error').text('');
-                        $('#emailid_error').text('');
-                        $('#gender_error').text('');
-                        $('#class_error').text('');
-                        $('#dob_error').text('');
-                        $('#action').val('Edit');
-                        $('#submit_button').text('Edit');
-                        $('#hidden_id').val(student_id);
-                    }
-                });
+                    $('[name="fullanme"]').val(data.StudentName);
+                    $('[name="rollid"]').val(data.RollId);
+                    $('[name="emailid"]').val(data.StudentEmail);
+                    $("input[name=gender][value=" + data.Gender + "]").prop('checked',
+                        true);
+                    $('[name="class"]').val(data.ClassId);
+                    $('[name="dob"]').val(data.DOB);
+                    $('#fullanme_error').text('');
+                    $('#rollid_error').text('');
+                    $('#emailid_error').text('');
+                    $('#gender_error').text('');
+                    $('#class_error').text('');
+                    $('#dob_error').text('');
+                    $('#action').val('Edit');
+                    $('#submit_button').text('Edit');
+                    $('#hidden_id').val(student_id);
+                }
             });
-            $(document).on('click', '.subject-edit', function() {
-                var sub_id = $(this).data('id');
-                $.ajax({
-                    url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
-                    method: "POST",
-                    data: {
-                        id: sub_id
-                    },
-                    dataType: "JSON",
-                    success: function(data) {
+        });
+        $(document).on('click', '.subject-edit', function() {
+            var sub_id = $(this).data('id');
+            $.ajax({
+                url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
+                method: "POST",
+                data: {
+                    id: sub_id
+                },
+                dataType: "JSON",
+                success: function(data) {
 
-                        $('[name="subjectname"]').val(data.SubjectName);
-                        $('[name="subjectcode"]').val(data.SubjectCode);
-                        $('#subjectname_error').text('');
-                        $('#subjectcode_error').text('');
-                        $('#action').val('Edit');
-                        $('#submit_button').text('Edit');
-                        $('#hidden_id').val(sub_id);
-                    }
-                });
+                    $('[name="subjectname"]').val(data.SubjectName);
+                    $('[name="subjectcode"]').val(data.SubjectCode);
+                    $('#subjectname_error').text('');
+                    $('#subjectcode_error').text('');
+                    $('#action').val('Edit');
+                    $('#submit_button').text('Edit');
+                    $('#hidden_id').val(sub_id);
+                }
             });
-            $(document).on('click', '.subjectcombination-edit', function() {
-                var sub_id = $(this).data('id');
-                $.ajax({
-                    url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
-                    method: "POST",
-                    data: {
-                        id: sub_id
-                    },
-                    dataType: "JSON",
-                    success: function(data) {
+        });
+        $(document).on('click', '.subjectcombination-edit', function() {
+            var sub_id = $(this).data('id');
+            $.ajax({
+                url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
+                method: "POST",
+                data: {
+                    id: sub_id
+                },
+                dataType: "JSON",
+                success: function(data) {
 
-                        $('[name="class"]').val(data.ClassId);
-                        $('[name="subject"]').val(data.SubjectId);
-                        $('#class_error').text('');
-                        $('#subject_error').text('');
-                        $('#action').val('Edit');
-                        $('#submit_button').text('Edit');
-                        $('#hidden_id').val(sub_id);
-                    }
-                });
+                    $('[name="class"]').val(data.ClassId);
+                    $('[name="subject"]').val(data.SubjectId);
+                    $('#class_error').text('');
+                    $('#subject_error').text('');
+                    $('#action').val('Edit');
+                    $('#submit_button').text('Edit');
+                    $('#hidden_id').val(sub_id);
+                }
             });
+        });
+
+        $("#slcresultClass").change(function() {
+            var classid = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('/Students/get_students_by_class'); ?>",
+                data: {
+                    id: classid
+                },
+                success: function(data) {
+                    var jsn = JSON.parse(data);
+                    // $("#studentid").html(data);
+                    //    console.log(jsn);
+                    if (jsn.length != 0) {
+                        $("#studentid").html('');
+                        $("#studentid").append('<option>Select Student</option>');
+                        $.each(jsn, function(key, data) {
+                            
+                            $("#studentid").append('<option value="' + data
+                                .StudentId + '">' + data.StudentName +
+                                '</option>');
+                            console.log(data);
+                        });
+
+                    }else{
+                        $("#studentid").html('');
+                        $("#subject").html('');
+                    }
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('/SubjectCombination/get_subjectcombination_by_class'); ?>",
+                data: {
+                    id: classid
+                },
+                success: function(data) {
+                    // $("#subject").html(data);
+                    var jsn = JSON.parse(data);
+                    // $("#studentid").html(data);
+                       console.log(jsn);
+                    if (jsn.length != 0) {
+                        $("#subject").html('');
+                        $.each(jsn, function(key, data) {
+
+                            $("#subject").append('<p>'+data.SubjectName+'<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter marks out of 100" autocomplete="off"></p>');
+                            console.log(data);
+                        });
+
+                    }
+                }
+            });
+        });
+        $('#result_form').on('submit', function(event) {
+            event.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url('/Result/action'); ?>",
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: "JSON",
+                beforeSend: function() {
+                    $('#submit_button').text('Wait...');
+                    $('#submit_button').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    $('#submit_button').text('Add');
+                    $('#submit_button').attr('disabled', false);
+                    if (data.error == 'yes') {
+                        $('#classid_error').text(data
+                            .classid_error);
+                        $('#studentid_error').text(data
+                            .studentid_error);
+                    } else {
+                        toastr["success"](data.message);
+                        $('#resultTable').load(location.href +
+                            " #resultTable")
+                    }
+                }
+            });
+        });
 
     });
     </script>

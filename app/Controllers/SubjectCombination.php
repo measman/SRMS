@@ -97,5 +97,13 @@ class SubjectCombination extends BaseController
             echo json_encode(['message' => 'Deleted Successfully']);
         }
     }
+
+    function get_subjectcombination_by_class()
+    {
+        if ($this->request->getVar('id')) {
+            $subject_data = $this->subjectcombinationmodel->getSubjectCombinationsbyClass($this->request->getVar('id'));
+            echo json_encode($subject_data);
+        }
+    }
     
 }   

@@ -22,7 +22,20 @@ class SubjectCombinationModel extends Model
             if (count($result->getResultArray()) > 0) {
                 return $result->getResultArray();
             } else {
-                return false;
+                return array();
             }
         }
+
+    public function getSubjectCombinationsbyClass($classid){
+        $builder = $this->db->table('tblsubjectcombination tsc'); 
+        $builder->select('ts.id,ts.SubjectName');
+        $builder->join('tblsubjects ts', 'ts.id=tsc.SubjectId');
+        $builder->where('tsc.ClassId',$classid);
+        $result = $builder->get();
+        if (count($result->getResultArray()) > 0) {
+            return $result->getResultArray();
+        } else {
+            return array();
+        }
+    }
 }

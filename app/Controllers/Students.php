@@ -115,5 +115,13 @@ class Students extends BaseController
             echo json_encode(['message' => 'Deleted Successfully']);
         }
     }
+
+    function get_students_by_class()
+    {
+        if ($this->request->getVar('id')) {
+            $student_data = $this->studentsmodel->getStudentsbyClass($this->request->getVar('id'));
+            echo json_encode($student_data);
+        }
+    }
     
 }   
