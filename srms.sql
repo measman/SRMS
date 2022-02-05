@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2022 at 06:22 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Generation Time: Feb 05, 2022 at 01:22 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
-(1, 'admin', 'f925916e2754e5e03f75dd58a5733251', '2022-01-01 10:30:57');
+(1, 'admin', '$2y$10$SSZd5DHgul2C/doAS9SEW.h9VSVHfoZPMAhA58BKwj9bfJI4v2Uz2', '2022-01-01 10:30:57');
 
 -- --------------------------------------------------------
 
@@ -61,14 +61,19 @@ CREATE TABLE `tblclasses` (
 --
 
 INSERT INTO `tblclasses` (`id`, `ClassName`, `ClassNameNumeric`, `Section`, `CreationDate`, `UpdationDate`) VALUES
-(1, 'First', 1, 'C', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
+(1, 'First', 1, 'A', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
 (2, 'Second', 2, 'A', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
-(4, 'Fourth', 4, 'C', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
+(4, 'Fourth', 4, 'A', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
 (5, 'Sixth', 6, 'A', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
 (6, 'Sixth', 6, 'B', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
 (7, 'Seventh', 7, 'B', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
 (8, 'Eight', 8, 'A', '2022-01-01 10:30:57', '2022-01-01 10:30:57'),
-(9, 'Tenth', 10, 'A', '2022-01-01 15:17:32', NULL);
+(9, 'Tenth', 10, 'A', '2022-01-01 15:17:32', NULL),
+(10, 'Ninth', NULL, 'A', '2022-02-02 17:14:02', NULL),
+(11, 'Ninth', NULL, 'A', '2022-02-02 17:14:56', NULL),
+(12, 'Ninth', 9, 'B', '2022-02-02 17:15:39', NULL),
+(13, 'Eleventh', 11, 'A', '2022-02-03 15:03:15', NULL),
+(14, 'Eleventh', 11, 'A', '2022-02-03 15:07:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,10 @@ INSERT INTO `tblresult` (`id`, `StudentId`, `ClassId`, `SubjectId`, `marks`, `Po
 (18, 6, 9, 8, 80, '2022-01-01 15:20:18', NULL),
 (19, 6, 9, 8, 70, '2022-01-01 15:20:18', NULL),
 (20, 6, 9, 2, 90, '2022-01-01 15:20:18', NULL),
-(21, 6, 9, 1, 60, '2022-01-01 15:20:18', NULL);
+(21, 6, 9, 1, 60, '2022-01-01 15:20:18', NULL),
+(22, 7, 5, 2, 45, '2022-01-11 16:43:28', NULL),
+(23, 7, 5, 1, 53, '2022-01-11 16:43:28', NULL),
+(24, 7, 5, 6, 64, '2022-01-11 16:43:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -158,11 +166,15 @@ CREATE TABLE `tblstudents` (
 
 INSERT INTO `tblstudents` (`StudentId`, `StudentName`, `RollId`, `StudentEmail`, `Gender`, `DOB`, `ClassId`, `RegDate`, `UpdationDate`, `Status`) VALUES
 (1, 'Sarita', '46456', 'info@phpgurukul.com', 'Female', '1995-03-03', 1, '2022-01-01 10:30:57', NULL, 1),
-(2, 'Anuj kumar', '10861', 'anuj@gmail.co', 'Male', '1995-02-02', 4, '2022-01-01 10:30:57', NULL, 0),
-(3, 'amit kumar', '2626', 'amit@gmail.com', 'Male', '2014-08-06', 6, '2022-01-01 10:30:57', NULL, 1),
+(2, 'Anuj kumar', '10861', 'anuj@gmail.co', 'Male', '1995-02-02', 4, '2022-01-01 10:30:57', NULL, 1),
+(3, 'amit kumar', '2626', 'amit@gmail.com', 'Male', '2014-08-06', 6, '2022-01-01 10:30:57', NULL, 0),
 (4, 'rahul kumar', '990', 'rahul01@gmail.com', 'Male', '2001-02-03', 7, '2022-01-01 10:30:57', NULL, 1),
 (5, 'sanjeev singh', '122', 'sanjeev01@gmail.com', 'Male', '2002-02-03', 8, '2022-01-01 10:30:57', NULL, 1),
-(6, 'Shiv Gupta', '12345', 'shiv34534@gmail.com', 'Male', '2007-01-12', 9, '2022-01-01 15:19:40', NULL, 1);
+(6, 'Shiv Gupta', '12345', 'shiv34534@gmail.com', 'Male', '2007-01-12', 9, '2022-01-01 15:19:40', NULL, 1),
+(7, 'Anita Maharjan', '12345', 'test@test.com', 'Female', '2015-02-11', 5, '2022-01-11 16:41:32', NULL, 1),
+(8, 'Sabina Maharjan', '6542', 'test@test.commmmmm', 'Female', '2022-02-06', 2, '2022-02-03 17:08:00', NULL, 1),
+(9, 'Sabina Maharjan', '3872', 'test@test', 'Female', '2022-02-09', 1, '2022-02-03 17:09:21', NULL, 1),
+(10, 'Lale Nath', '6465', 'test@adsf.com', 'Male', '2021-09-15', 7, '2022-02-03 17:14:57', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -184,7 +196,7 @@ CREATE TABLE `tblsubjectcombination` (
 --
 
 INSERT INTO `tblsubjectcombination` (`id`, `ClassId`, `SubjectId`, `status`, `CreationDate`, `Updationdate`) VALUES
-(3, 2, 5, 1, '2022-01-01 10:30:57', NULL),
+(3, 2, 2, 1, '2022-01-01 10:30:57', '2022-02-04 16:57:55'),
 (4, 1, 2, 1, '2022-01-01 10:30:57', NULL),
 (5, 1, 4, 1, '2022-01-01 10:30:57', NULL),
 (6, 1, 5, 1, '2022-01-01 10:30:57', NULL),
@@ -200,16 +212,21 @@ INSERT INTO `tblsubjectcombination` (`id`, `ClassId`, `SubjectId`, `status`, `Cr
 (19, 7, 7, 1, '2022-01-01 10:30:57', NULL),
 (20, 7, 2, 1, '2022-01-01 10:30:57', NULL),
 (21, 7, 6, 1, '2022-01-01 10:30:57', NULL),
-(22, 7, 5, 0, '2022-01-01 10:30:57', NULL),
+(22, 7, 5, 1, '2022-01-01 10:30:57', '2022-01-11 18:07:24'),
 (23, 8, 1, 1, '2022-01-01 10:30:57', NULL),
 (24, 8, 2, 1, '2022-01-01 10:30:57', NULL),
 (25, 8, 4, 1, '2022-01-01 10:30:57', NULL),
 (26, 8, 6, 1, '2022-01-01 10:30:57', NULL),
 (27, 8, 5, 0, '2022-01-01 10:30:57', NULL),
 (28, 9, 1, 1, '2022-01-01 15:18:40', NULL),
-(29, 9, 2, 1, '2022-01-01 15:18:43', NULL),
+(29, 9, 2, 0, '2022-01-01 15:18:43', '2022-01-11 18:07:35'),
 (30, 9, 8, 1, '2022-01-01 15:18:48', NULL),
-(31, 9, 8, 1, '2022-01-01 15:18:54', NULL);
+(31, 9, 8, 1, '2022-01-01 15:18:54', NULL),
+(32, 5, 1, 1, '2022-01-11 16:42:50', NULL),
+(33, 5, 2, 1, '2022-01-11 16:42:59', NULL),
+(34, 5, 6, 1, '2022-01-11 16:43:07', NULL),
+(35, 13, 1, NULL, '2022-02-04 16:49:58', NULL),
+(36, 4, 2, NULL, '2022-02-04 16:57:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -230,13 +247,15 @@ CREATE TABLE `tblsubjects` (
 --
 
 INSERT INTO `tblsubjects` (`id`, `SubjectName`, `SubjectCode`, `Creationdate`, `UpdationDate`) VALUES
-(1, 'Maths', 'MTH01', '2022-01-01 10:30:57', NULL),
-(2, 'English', 'ENG11', '2022-01-01 10:30:57', NULL),
-(4, 'Science', 'SC1', '2022-01-01 10:30:57', NULL),
+(1, 'Maths', 'MTH01', '2022-01-01 10:30:57', '2022-01-18 12:56:07'),
+(2, 'English', 'ENG11', '2022-01-01 10:30:57', '2022-01-17 15:47:42'),
+(4, 'Science', 'SC1', '2022-01-01 10:30:57', '2022-01-17 15:43:48'),
 (5, 'Music', 'MS', '2022-01-01 10:30:57', NULL),
 (6, 'Social Studies', 'SS08', '2022-01-01 10:30:57', NULL),
 (7, 'Physics', 'PH03', '2022-01-01 10:30:57', NULL),
-(8, 'Chemistry', 'CH65', '2022-01-01 10:30:57', NULL);
+(8, 'Chemistry', 'CH65', '2022-01-01 10:30:57', NULL),
+(11, 'Scince', 'Sce01', '2022-02-04 16:04:53', NULL),
+(12, 'Scince', 'Sce02', '2022-02-04 16:09:32', NULL);
 
 --
 -- Indexes for dumped tables
@@ -298,7 +317,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `tblclasses`
 --
 ALTER TABLE `tblclasses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tblnotice`
@@ -310,25 +329,25 @@ ALTER TABLE `tblnotice`
 -- AUTO_INCREMENT for table `tblresult`
 --
 ALTER TABLE `tblresult`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tblstudents`
 --
 ALTER TABLE `tblstudents`
-  MODIFY `StudentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `StudentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tblsubjectcombination`
 --
 ALTER TABLE `tblsubjectcombination`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `tblsubjects`
 --
 ALTER TABLE `tblsubjects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
