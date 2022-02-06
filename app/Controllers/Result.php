@@ -66,10 +66,10 @@ class Result extends BaseController
                             'SubjectId' => $sid[$i],
                             'marks' => $mark[$i]
                         );
-                        // if ($this->request->getVar('action') == 'Edit') {
-                        //     $id = $this->request->getVar('hidden_id');
-                        //     $insert_data['StudentId'] = $id;
-                        // }
+                        if ($this->request->getVar('action') == 'Edit') {
+                            $id = $this->request->getVar('id');
+                            $insert_data['id'] = $id[$i];
+                        }
 
                         if ($this->resultmodel->save($insert_data)) {
                             $message = 'New Result Added Succesfully.';
@@ -98,7 +98,7 @@ class Result extends BaseController
     function fetch_single_data()
     {
         if ($this->request->getVar('id')) {
-            $class_data = $this->studentsmodel->where('StudentId', $this->request->getVar('id'))->first();
+            $class_data = $this->resultmodel->where('StudentId', $this->request->getVar('id'))->findAll();
             echo json_encode($class_data);
         }
     }
