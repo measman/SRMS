@@ -28,84 +28,91 @@
 
 <section class="section">
     <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <h5>Create Student Class</h5>
+        <p>
+            <input type="checkbox" class="btn-check" id="btn-check-outlined" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
+                Create Student Class
+            </input>
+            <label class="btn btn-outline-primary" for="btn-check-outlined"></label>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <h5>Create Student Class</h5>
+                            </div>
                         </div>
-                    </div>
-                    <?php if($session->getTempdata('success')): ?>
-                    <div class="col-md-12">
-                        <div class="alert alert-success alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4><i class="icon fa fa-check"></i> Success!</h4>
-                            <?php echo $session->getTempdata('success'); ?>
+                        <?php if($session->getTempdata('success')): ?>
+                        <div class="col-md-12">
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                <?php echo $session->getTempdata('success'); ?>
+                            </div>
                         </div>
-                    </div>
-                    <?php elseif($session->getTempdata('error')):?>
-                    <div class="col-md-12">
-                        <div class="alert alert-danger alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4><i class="icon fa fa-check"></i> Failed!</h4>
-                            <?php echo $session->getTempdata('error'); ?>
+                        <?php elseif($session->getTempdata('error')):?>
+                        <div class="col-md-12">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Failed!</h4>
+                                <?php echo $session->getTempdata('error'); ?>
+                            </div>
                         </div>
-                    </div>
-                    <?php endif;?>
+                        <?php endif;?>
 
-                    <div class="panel-body">
+                        <div class="panel-body">
 
-                        <form method="post" id="classes_form">
-                            <div class="form-group has-success">
-                                <label for="success" class="control-label">Class Name</label>
-                                <div class="">
-                                    <input type="text" name="classname" class="form-control" required="required"
-                                        id="success">
-                                    <span class="help-block">Eg- Third, Fouth,Sixth etc</span>
-                                    <span id="classname_error" class="text-danger"></span>
+                            <form method="post" id="classes_form">
+                                <div class="form-group has-success">
+                                    <label for="success" class="control-label">Class Name</label>
+                                    <div class="">
+                                        <input type="text" name="classname" class="form-control" required="required"
+                                            id="success">
+                                        <span class="help-block">Eg- Third, Fouth,Sixth etc</span>
+                                        <span id="classname_error" class="text-danger"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-success">
-                                <label for="success" class="control-label">Class Name in Numeric</label>
-                                <div class="">
-                                    <input type="number" name="classnamenumeric" required="required"
-                                        class="form-control" id="success">
-                                    <span class="help-block">Eg- 1,2,4,5 etc</span>
-                                    <span id="classnamenumeric_error" class="text-danger"></span>
+                                <div class="form-group has-success">
+                                    <label for="success" class="control-label">Class Name in Numeric</label>
+                                    <div class="">
+                                        <input type="number" name="classnamenumeric" required="required"
+                                            class="form-control" id="success">
+                                        <span class="help-block">Eg- 1,2,4,5 etc</span>
+                                        <span id="classnamenumeric_error" class="text-danger"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-success">
-                                <label for="success" class="control-label">Section</label>
-                                <div class="">
-                                    <input type="text" name="section" class="form-control" required="required"
-                                        id="success">
-                                    <span class="help-block">Eg- A,B,C etc</span>
-                                    <span id="section_error" class="text-danger"></span>
+                                <div class="form-group has-success">
+                                    <label for="success" class="control-label">Section</label>
+                                    <div class="">
+                                        <input type="text" name="section" class="form-control" required="required"
+                                            id="success">
+                                        <span class="help-block">Eg- A,B,C etc</span>
+                                        <span id="section_error" class="text-danger"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group has-success">
+                                <div class="form-group has-success">
 
-                                <div class="">
-                                    <input type="hidden" name="hidden_id" id="hidden_id" />
-                                    <input type="hidden" name="action" id="action" value="Add" />
-                                    <button id="submit_button" type="submit" name="submit" class="btn btn-success btn-labeled">Submit<span
-                                            class="btn-label btn-label-right"><i
-                                                class="fa fa-check"></i></span></button>
+                                    <div class="">
+                                        <input type="hidden" name="hidden_id" id="hidden_id" />
+                                        <input type="hidden" name="action" id="action" value="Add" />
+                                        <button id="submit_button" type="submit" name="submit" class="btn btn-success btn-labeled">Submit<span
+                                                class="btn-label btn-label-right"><i
+                                                    class="fa fa-check"></i></span></button>
+                                    </div>
+
                                 </div>
 
-                            </div>
-
-                        </form>
+                            </form>
 
 
+                        </div>
                     </div>
                 </div>
+                <!-- /.col-md-8 col-md-offset-2 -->
             </div>
-            <!-- /.col-md-8 col-md-offset-2 -->
+            <!-- /.row -->
         </div>
-        <!-- /.row -->
 
         <div class="row">
             <div class="col-md-12">
