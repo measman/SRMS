@@ -525,6 +525,27 @@
             var classid = $(this).val();
             getStudentSubjectList(classid);
         });
+        $("#studentid").change(function() {
+            var studentid = $(this).val();
+            var classid = $("#slcresultClass").val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('/Result/checkStudentsResult'); ?>",
+                data: {
+                    classid: classid,
+                    studentid: studentid
+                },
+                success: function(data) {
+                    var jsn = JSON.parse(data);
+                       console.log(jsn.status);
+                    if (jsn.status == 'data') {
+                        $("#subject").html('<span style="color:red"> Result Already Declare .</span>');
+                        $('#submit_button').prop('disabled',true);                                               
+                    }
+                   
+                }
+            });
+        });
         $('#result_form').on('submit', function(event) {
             event.preventDefault();
             $.ajax({

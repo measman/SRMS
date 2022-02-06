@@ -111,5 +111,20 @@ class Result extends BaseController
             echo json_encode(['message' => 'Deleted Successfully']);
         }
     }
+
+    function checkStudentsResult(){
+        if ($this->request->getVar('studentid')) {
+            $studentid = $this->request->getVar('studentid');
+            $classid = $this->request->getVar('classid');
+            $student_result_data = $this->resultmodel->getResults($classid,$studentid);
+            if(sizeof($student_result_data) == 0){
+                echo json_encode(['status' => 'nodata']);
+            }else{
+                echo json_encode(['status' => 'data']);
+            }
+            
+        }
+
+    }
     
 }   
