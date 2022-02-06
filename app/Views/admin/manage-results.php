@@ -95,7 +95,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
-                                    <input type="hidden" name="hidden_id" id="hidden_id" />
+                                    <div id="hidden_id"></div>
                                     <input type="hidden" name="action" id="action" value="Add" />
                                     <button id="submit_button" type="submit" name="submit"
                                         class="btn btn-primary">Add</button>
@@ -168,7 +168,7 @@
                                                 }
                                                                 ?></td>
                                     <td>
-                                        <button class="btn btn-info student-edit"
+                                        <button class="btn btn-info result-edit"
                                             data-id="<?php echo htmlentities($cnt['StudentId']);?>"><i
                                                 class="fa fa-edit" title="Edit Record"></i> </button>
 

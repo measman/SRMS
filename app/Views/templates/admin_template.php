@@ -451,8 +451,8 @@
             });
         });
 
-        $("#slcresultClass").change(function() {
-            var classid = $(this).val();
+        function getStudentSubjectList(classid,dt = []){
+            var ddt = dt;
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url('/Students/get_students_by_class'); ?>",
@@ -462,16 +462,23 @@
                 success: function(data) {
                     var jsn = JSON.parse(data);
                     // $("#studentid").html(data);
-                    //    console.log(jsn);
+                      
                     if (jsn.length != 0) {
                         $("#studentid").html('');
                         $("#studentid").append('<option>Select Student</option>');
+                        
                         $.each(jsn, function(key, data) {
-                            
+                            // console.log(data.StudentId);
+                            if(ddt.length > 0 && ddt[0].StudentId==data.StudentId){
+                                $("#studentid").append('<option value="' + data
+                                .StudentId + '" selected>' + data.StudentName +
+                                '</option>');
+                            }else{                            
                             $("#studentid").append('<option value="' + data
                                 .StudentId + '">' + data.StudentName +
                                 '</option>');
-                            console.log(data);
+                            }
+                            // console.log(data);
                         });
 
                     }else{
@@ -490,16 +497,52 @@
                     // $("#subject").html(data);
                     var jsn = JSON.parse(data);
                     // $("#studentid").html(data);
-                       console.log(jsn);
-                    if (jsn.length != 0) {
+                    //    console.log(jsn);
+                    if (jsn.length > 0) {
                         $("#subject").html('');
+                        console.log(jsn.length);
+                            console.log(ddt.length);
                         $.each(jsn, function(key, data) {
-
-                            $("#subject").append('<p>'+data.SubjectName+'<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter marks out of 100" autocomplete="off"></p>');
-                            console.log(data);
+                            
+                            if(jsn.length > 0 && ddt.length > 0  ){
+                                $("#subject").append('<p>'+data.SubjectName+'<input type="text"  name="marks[]" value="'+ddt[key].marks+'" class="form-control" required="" placeholder="Enter marks out of 100" autocomplete="off"></p>');
+                            console.log(key+'=>'+data.SubjectName);
+                            }
+                            else{
+                                $("#subject").append('<p>'+data.SubjectName+'<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter marks out of 100" autocomplete="off"></p>');
+                            
+                            }
+                            // console.log(data);
                         });
 
                     }
+                   
+                }
+            });
+        }
+
+        $("#slcresultClass").change(function() {
+            var classid = $(this).val();
+            getStudentSubjectList(classid);
+        });
+        $("#studentid").change(function() {
+            var studentid = $(this).val();
+            var classid = $("#slcresultClass").val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url('/Result/checkStudentsResult'); ?>",
+                data: {
+                    classid: classid,
+                    studentid: studentid
+                },
+                success: function(data) {
+                    var jsn = JSON.parse(data);
+                       console.log(jsn.status);
+                    if (jsn.status == 'data') {
+                        $("#subject").html('<span style="color:red"> Result Already Declare .</span>');
+                        $('#submit_button').prop('disabled',true);                                               
+                    }
+                   
                 }
             });
         });
@@ -527,6 +570,31 @@
                         $('#resultTable').load(location.href +
                             " #resultTable")
                     }
+                }
+            });
+        });
+        $(document).on('click', '.result-edit', function() {
+            var res_id = $(this).data('id');
+            $.ajax({
+                url: "<?php echo base_url('/Result/fetch_single_data'); ?>",
+                method: "POST",
+                data: {
+                    id: res_id
+                },
+                dataType: "JSON",
+                success: function(data) {
+                    console.log(data);
+                    var classid = data[0].ClassId;
+                    var stdid = data[0].StudentId;
+                    $('[name="classid"]').val(classid);
+                    getStudentSubjectList(classid,data);
+                    $('#action').val('Edit');
+                    $('#submit_button').text('Edit');
+                    $('#hidden_id').html('');
+                    $.each(data,function(k,d){
+                        $('#hidden_id').append('<input type="hidden" name="id[]" value="'+d.id+'"/>');
+                    });
+                    
                 }
             });
         });
