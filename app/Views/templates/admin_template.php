@@ -539,8 +539,11 @@
                     var jsn = JSON.parse(data);
                        console.log(jsn.status);
                     if (jsn.status == 'data') {
-                        $("#subject").html('<span style="color:red"> Result Already Declare .</span>');
+                        $("#reslt").html('<span style="color:red"> Result Already Declare .</span>');
                         $('#submit_button').prop('disabled',true);                                               
+                    }else{
+                        $("#reslt").html('');
+                        $('#submit_button').prop('disabled',false);  
                     }
                    
                 }
