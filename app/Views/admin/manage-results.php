@@ -90,6 +90,12 @@
                                         </select>
                                     </div>
                                 </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div id="reslt">
+                                    </div>
+                                </div>
+                            </div>
 
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Subjects</label>
