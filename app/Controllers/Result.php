@@ -126,5 +126,16 @@ class Result extends BaseController
         }
 
     }
+
+    function getResultbyRoll(){
+        $rollid = $this->request->getVar('rollid');
+            $classid = $this->request->getVar('class');
+        
+            $data['std'] = $this->resultmodel->getStudentforResult($rollid,$classid); 
+            $data['results'] = $this->resultmodel->getResultByRollId($rollid,$classid);           
+            
+        
+        return view('view-result',$data);
+    }
     
 }   

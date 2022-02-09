@@ -45,6 +45,10 @@ class Home extends BaseController
     public function home(){
         return view('home');
     }
+    public function find_result(){
+        $data['classes'] = $this->classesmodel->findAll();
+        return view('find-result', $data);
+    }
 
     function check()
     {
