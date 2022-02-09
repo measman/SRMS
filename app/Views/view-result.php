@@ -36,31 +36,28 @@
                         <!-- /.row -->
                     </div>
                     <!-- /.container-fluid -->
-
                     <section class="section" id="exampl">
                         <div class="container-fluid">
-
                             <div class="row">
-
-
-
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="panel">
                                         <div class="panel-heading">
                                             <div class="panel-title">
-                                                <h3 align="center">ABC Secondary School/Campus <br>
+                                                <h3 align="center">ABC Secondary School/Campus </br>
                                                     ............................................... </h3>
+                                                    <h3 align="center">GRADE-SHEET</h3>
                                                 <hr />
                                                 <?php
-if (isset($std)):
-    $i = 1;
-    foreach ($std as $s):
-    ?>
-			                                                <p><b>THE GRADE(S) SECURED BY:</b>
-			                                                    <?php echo htmlentities($s['StudentName']); ?></p>
-			                                                <p><b>DATE OF BIRTH :</b> <?php echo htmlentities($s['RollId']); ?>
-			                                                <p><b>REGISTRATION NO:</b>
-			                                                    <?php echo htmlentities($s['ClassName']); ?>(<?php echo htmlentities($s['Section']); ?>)
+                                    if (isset($std)):
+                                        $i = 1;
+                                        foreach ($std as $s):
+                                        ?>
+			                                                <p><b>THE GRADE(S) SECURED BY:</b><?php echo htmlentities($s['StudentName']); ?></p>
+<p><b>DATE OF BIRTH :</b></p>
+<p><b>REGISTRATION NO:</b> <?php echo htmlentities($s['RollId']); ?>
+<b>SYMBOL NO:</b> <?php echo htmlentities($s['StudentId']); ?><b></b> 
+<b>GRADE :</b> <?php echo htmlentities($s['ClassName']); ?></p>
+		<?php echo htmlentities($s['ClassName']); ?>(<?php echo htmlentities($s['Section']); ?>)
 			                                                    <?php
     $i++;
 endforeach;
@@ -68,42 +65,35 @@ endforeach;
 ?>
                                             </div>
                                             <div class="panel-body p-20">
-
-
-
-
                                                 <table class="table table-hover table-bordered" border="1" width="100%">
                                                     <thead>
                                                         <tr style="text-align: center">
-                                                            <th style="text-align: center">#</th>
-                                                            <th style="text-align: center"> Subject</th>
-                                                            <th style="text-align: center">Marks</th>
+                                                            <th style="text-align: center">Subject Code</th>
+                                                            <th style="text-align: center"> SUBJECTS</th>
+                                                            <th style="text-align: center">CREDIT HOUR (CH)</th>
+                                                            <th style="text-align: center">GRADE POINT (GP)</th>
+                                                            <th style="text-align: center">GRADE</th>
+                                                            <th style="text-align: center">FINAL GRADE</th>
+                                                            <th style="text-align: center">REMARKS</th>
                                                         </tr>
                                                     </thead>
-
-
-
-
                                                     <tbody>
                                                         <?php
-// Code for result
-
-if (isset($results)):
-    $i = 1;
-    $totlcount = 0;
-    foreach ($results as $result):
-
-    ?>
-
-			                                                        <tr>
-			                                                            <th scope="row" style="text-align: center">
-			                                                                <?php echo htmlentities($i); ?></th>
-			                                                            <td style="text-align: center">
-			                                                                <?php echo htmlentities($result['SubjectName']); ?></td>
-			                                                            <td style="text-align: center">
-			                                                                <?php echo htmlentities($totalmarks = $result['marks']); ?>
-			                                                            </td>
-			                                                        </tr>
+                                                            // Code for result
+                                                            if (isset($results)):
+                                                                $i = 1;
+                                                                $totlcount = 0;
+                                                                foreach ($results as $result):
+                                                        ?>
+                                                        <tr>
+                                                            <th scope="row" style="text-align: center">
+                                                                <?php echo htmlentities($result['SubjectId']); ?></th>
+                                                            <td style="text-align: center">
+                                                                <?php echo htmlentities($result['SubjectName']); ?></td>
+                                                            <td style="text-align: center">
+                                                                <?php echo htmlentities($totalmarks = $result['marks']); ?>
+                                                            </td>
+                                                        </tr>
 			                                                        <?php
     $totlcount += $totalmarks;
     $i++;
