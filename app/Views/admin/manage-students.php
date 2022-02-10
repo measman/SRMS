@@ -29,8 +29,8 @@
 <section class="section">
     <div class="container-fluid">
         <p>
-            <button class="btn-check" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
-                Create Student Class
+            <button class="btn btn-primary" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
+                Create Student
             </button>
             <label class="btn btn-outline-primary" for="btn-check-outlined"></label>
         </p>
@@ -41,7 +41,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <div class="panel-title">
-                                <h5>Create Student Class</h5>
+                                <h5>Create Student</h5>
                             </div>
                         </div>
                         <?php if($session->getTempdata('success')): ?>
@@ -76,7 +76,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="default" class="col-sm-2 control-label">Rool Id</label>
+                                    <label for="default" class="col-sm-2 control-label">Symbol No</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="rollid" class="form-control" id="rollid" maxlength="5"
                                             required="required" autocomplete="off">
@@ -98,8 +98,8 @@
                                     <label for="default" class="col-sm-2 control-label">Gender</label>
                                     <div class="col-sm-10">
                                         <input type="radio" name="gender" value="Male" required="required" checked="">Male
-                                        <input type="radio" name="gender" value="Female" required="required">Female <input
-                                            type="radio" name="gender" value="Other" required="required">Other
+                                        <input type="radio" name="gender" value="Female" required="required">Female 
+                                        <input type="radio" name="gender" value="Other" required="required">Other
                                             <span id="gender_error" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -197,13 +197,8 @@
                                     <td><?php echo htmlentities($cnt['ClassName']);?>(<?php echo htmlentities($cnt['Section']);?>)
                                     </td>
                                     <td><?php echo htmlentities($cnt['RegDate']);?></td>
-                                    <td><?php if($cnt['Status']==1){
-                                                echo htmlentities('Active');
-                                                }
-                                                else{
-                                                echo htmlentities('Blocked'); 
-                                                }
-                                                                ?></td>
+                                    <td><input type="checkbox" <?=($cnt['Status']==1)?'checked':''?> class="status-student" data-id="<?=$cnt['StudentId']?>" title="Change Status" />
+                                                                </td>
                                     <td>
                                         <button class="btn btn-info student-edit"
                                             data-id="<?php echo htmlentities($cnt['StudentId']);?>"><i

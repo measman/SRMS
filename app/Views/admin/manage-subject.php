@@ -29,7 +29,7 @@
 <section class="section">
     <div class="container-fluid">
         <p>
-            <button class="btn-check" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
+            <button class="btn btn-primary" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
                 Create Subjects
             </button>
             <label class="btn btn-outline-primary" for="btn-check-outlined"></label>

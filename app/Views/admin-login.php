@@ -81,6 +81,7 @@
                                         <!-- /.panel -->
                                         <p class="text-muted text-center"><small>Student Result Management
                                                 System</small></p>
+                                                <a href="<?= base_url(); ?>">Back to Home</a>
                                     </div>
                                     <!-- /.col-md-11 -->
                                 </div>
