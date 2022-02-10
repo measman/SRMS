@@ -53,10 +53,10 @@
                                         foreach ($std as $s):
                                         ?>
 			                                                <p><b>THE GRADE(S) SECURED BY:</b><?php echo htmlentities($s['StudentName']); ?></p>
-<p><b>DATE OF BIRTH :</b></p>
-<p><b>REGISTRATION NO:</b> <?php echo htmlentities($s['RollId']); ?>
-<b>SYMBOL NO:</b> <?php echo htmlentities($s['StudentId']); ?><b></b> 
-<b>GRADE :</b> <?php echo htmlentities($s['ClassName']); ?></p>
+                                                            <p><b>DATE OF BIRTH :</b></p>
+                                                            <p><b>REGISTRATION NO:</b> <?php echo htmlentities($s['RollId']); ?>
+                                                            <b>SYMBOL NO:</b> <?php echo htmlentities($s['StudentId']); ?><b></b> 
+                                                            <b>GRADE :</b> <?php echo htmlentities($s['ClassName']); ?></p>
 		<?php echo htmlentities($s['ClassName']); ?>(<?php echo htmlentities($s['Section']); ?>)
 			                                                    <?php
     $i++;
@@ -69,7 +69,7 @@ endforeach;
                                                     <thead>
                                                         <tr style="text-align: center">
                                                             <th style="text-align: center">Subject Code</th>
-                                                            <th style="text-align: center"> SUBJECTS</th>
+                                                            <th style="text-align: center">SUBJECTS</th>
                                                             <th style="text-align: center">CREDIT HOUR (CH)</th>
                                                             <th style="text-align: center">GRADE POINT (GP)</th>
                                                             <th style="text-align: center">GRADE</th>
@@ -93,62 +93,77 @@ endforeach;
                                                             <td style="text-align: center">
                                                                 <?php echo htmlentities($totalmarks = $result['marks']); ?>
                                                             </td>
-                                                        </tr>
-			                                                        <?php
-    $totlcount += $totalmarks;
-    $i++;
-endforeach;
-
-?>
-                                                        <tr>
-                                                            <th scope="row" colspan="2" style="text-align: center">Total
-                                                                Marks</th>
                                                             <td style="text-align: center">
-                                                                <b><?php echo htmlentities($totlcount); ?></b> out of
-                                                                <b><?php echo htmlentities($outof = ($i - 1) * 100); ?></b>
+                                                                <?php echo htmlentities($totalmarks = $result['marks']); ?>
+                                                            </td>
+                                                            <td style="text-align: center">
+                                                                <?php echo htmlentities($result['marks']); ?>
+                                                            </td>
+                                                            <td style="text-align: center">
+                                                                <?php echo htmlentities($result['marks']); ?>
+                                                            </td>
+                                                            <td style="text-align: center">
+                                                                <?php echo htmlentities($result['marks']); ?>
+                                                            </td>
+                                                        </tr>
+			                                            <?php
+                                                            $totlcount += $totalmarks;
+                                                            $i++;
+                                                        endforeach;
+                                                        ?>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th></th>
+                                                            <th scope="row" colspan="3" style="text-align: center">GRADE POINT AVERAGE (GPA)</th>
+                                                            <td style="text-align: center">
+                                                                <!-- <b><?php echo htmlentities($totlcount); ?></b> out of -->
+                                                                <!-- <b><?php echo htmlentities($outof = ($i - 1) * 100); ?></b> -->
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row" colspan="2" style="text-align: center">
-                                                                Percentage</th>
-                                                            <td style="text-align: center">
-                                                                <b><?php echo htmlentities($totlcount * (100) / $outof); ?>
-                                                                    %</b></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row" colspan="2" style="text-align: center">Grade
+                                                            <th scope="row" colspan="7" style="text-align: left">
+                                                                EXTRA SUBJECTS
                                                             </th>
-                                                            <td style="text-align: center">
-                                                                <b><?php echo htmlentities(getGrade($totlcount * (100) / $outof)); ?></b>
-                                                            </td>
                                                         </tr>
+                                                        <!-- <?php ?> for extra subjects-->
                                                         <tr>
 
+                                                        </tr>
+                                                        <tr>
                                                             <td colspan="3" align="center"><i class="fa fa-print fa-2x"
                                                                     aria-hidden="true" style="cursor:pointer"
-                                                                    OnClick="CallPrint(this.value)"></i></td>
+                                                                    OnClick="CallPrint(this.value)"></i>
+                                                            </td>
                                                         </tr>
+                                                <?php else: ?>
+                                                <div class="alert alert-warning left-icon-alert" role="alert">
+                                                    <strong>Notice!</strong> Your result not declared yet
+                                                    <?php endif;?>
+                                                </div>
 
-                                                        <?php else: ?>
-                                                        <div class="alert alert-warning left-icon-alert" role="alert">
-                                                            <strong>Notice!</strong> Your result not declared yet
-                                                            <?php endif;?>
-                                                        </div>
-
-                                                        <?php else: ?>
-                                                        <div class="alert alert-danger left-icon-alert" role="alert">
-                                                            <strong>Oh snap!</strong>
-                                                            <?php
+                                                <?php else: ?>
+                                                <div class="alert alert-danger left-icon-alert" role="alert">
+                                                    <strong>Oh snap!</strong>
+                                                    <?php
 echo htmlentities("Invalid Roll Id");
 endif;
 ?>
-                                                        </div>
+                                                </div>
 
 
 
                                                     </tbody>
                                                 </table>
-
+                                                <p><strong>PREPARED BY:.........</strong></p>
+                                                <p><strong>CHECKED BY:.....</strong></p>
+                                                <p><strong>DATE OF ISSUE: ...................</strong> <strong align="right">HEAD TEACHER/CAMPUS CHIEF </strong></p>
+                                                <hr style="border-color:black;">
+                                                <p><strong>NOTE: ONE CREDIT HOUR EQUALS TO 32 WORKING HOURS. </strong></p>
+                                                <p><strong>INTERNAL (IN): THIS COVERS THE PARTICIPATION, PRACTICAL PROJECT WORKS, COMMUNITY WORKS,</strong><strong>INTERNSHIP, PRESENTATIONS TERMINAL EXAMINATIONS.</strong></p>
+                                                <p><strong>THEORY (TH) : THIS COVERS WRITTEN EXTERNAL EXAMINATION</strong></p>
+                                                <p><strong>ABS= ABSENT </strong><strong> </strong><strong>W=WITHHELD</strong></p>
+                                                <p><strong>................................................SECONDARY SCHOOL/CAMPUS</strong></p>
+                                                
 
 
                                             </div>
