@@ -123,5 +123,13 @@ class Students extends BaseController
             echo json_encode($student_data);
         }
     }
+
+    function set_students_status()
+    {
+        if ($this->request->getVar('id')) {
+            $student_data = $this->studentsmodel->where('StudentId',$this->request->getVar('id'))->set('Status',$this->request->getVar('status'))->update();
+            echo json_encode(['message' => 'Status Changed Successfully']);
+        }
+    }
     
 }   

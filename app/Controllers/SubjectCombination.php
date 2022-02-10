@@ -105,5 +105,13 @@ class SubjectCombination extends BaseController
             echo json_encode($subject_data);
         }
     }
+
+    function set_subjectcombination_status()
+    {
+        if ($this->request->getVar('id')) {
+            $student_data = $this->subjectcombinationmodel->where('id',$this->request->getVar('id'))->set('status',$this->request->getVar('status'))->update();
+            echo json_encode(['message' => 'Status Changed Successfully']);
+        }
+    }
     
 }   

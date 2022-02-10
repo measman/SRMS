@@ -212,7 +212,39 @@
     <script src="<?= base_url(); ?>/js/task-list.js"></script>
     <script>
     $(function() {
-
+        
+        $("input.status-student").change(function() {
+            var std_id = $(this).data('id');
+            var stus = ($(this).is(':checked'))?1:0;
+            // getStudentSubjectList(classid);
+            $.ajax({
+                url: "<?php echo base_url('/Students/set_students_status'); ?>",
+                method: "POST",
+                data: {id:std_id,status:stus},
+                dataType: "JSON",                
+                success: function(data) {                    
+                        toastr["success"](data.message);                    
+                }
+            });           
+            
+        });
+        $("input.status-sbjcmb").change(function() {
+            var sbjcmb_id = $(this).data('id');
+            var stus = ($(this).is(':checked'))?1:0;
+            // getStudentSubjectList(classid);
+            $.ajax({
+                url: "<?php echo base_url('/SubjectCombination/set_subjectcombination_status'); ?>",
+                method: "POST",
+                data: {id:sbjcmb_id,status:stus},
+                dataType: "JSON",                
+                success: function(data) {                    
+                        toastr["success"](data.message);                    
+                }
+            });           
+            
+        });
+               
+            
         // Counter for dashboard stats
         $('.counter').counterUp({
             delay: 10,
@@ -263,7 +295,7 @@
                             .section_error);
                     } else {
                         toastr["success"](data.message);
-                        $('#classTable').load(location.href + " #classTable")
+                        $('#classTable').load(location.href + " #classTable");
                     }
                 }
             });
@@ -297,7 +329,7 @@
                             .dob_error);
                     } else {
                         toastr["success"](data.message);
-                        $('#studentTable').load(location.href + " #studentTable")
+                        $('#studentTable').load(location.href + " #studentTable");
                     }
                 }
             });
@@ -323,7 +355,7 @@
                             .subjectcode_error);
                     } else {
                         toastr["success"](data.message);
-                        $('#subjectTable').load(location.href + " #subjectTable")
+                        $('#subjectTable').load(location.href + " #subjectTable");
                     }
                 }
             });
@@ -350,7 +382,7 @@
                     } else {
                         toastr["success"](data.message);
                         $('#subjectcombinationTable').load(location.href +
-                            " #subjectcombinationTable")
+                            " #subjectcombinationTable");
                     }
                 }
             });
@@ -601,6 +633,9 @@
                 }
             });
         });
+
+        
+       
 
     });
     </script>

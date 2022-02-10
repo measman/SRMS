@@ -29,7 +29,7 @@
 <section class="section">
     <div class="container-fluid">
          <p>
-            <button class="btn-check" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
+            <button class="btn btn-primary" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
                 Create Subject Combination
             </button>
             <label class="btn btn-outline-primary" for="btn-check-outlined"></label>
@@ -160,13 +160,8 @@
                                     <td><?php echo htmlentities($i);?></td>
                                     <td><?php echo htmlentities($cnt['ClassName']);?>&nbsp; Section-<?php echo htmlentities($cnt['Section']);?></td>
                                     <td><?php echo htmlentities($cnt['SubjectName']);?></td>
-                                    <td><?php if($cnt['status']==1){
-                                                echo htmlentities('Active');
-                                                }
-                                                else{
-                                                echo htmlentities('Inactive'); 
-                                                }
-                                                                ?></td>
+                                    <td><input type="checkbox" <?=($cnt['status']==1)?'checked':''?> class="status-sbjcmb" data-id="<?=$cnt['id']?>" title="Change Status" />
+                                                                </td>
                                     <td>
                                         <button class="btn btn-info subjectcombination-edit"
                                             data-id="<?php echo htmlentities($cnt['id']);?>"><i class="fa fa-edit"
