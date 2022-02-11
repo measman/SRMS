@@ -81,7 +81,6 @@ endforeach;
                                                             $totlcount = 0;
                                                             foreach ($results as $result) :
                                                         ?>
-<<<<<<< HEAD
                                                         <tr>
                                                             <th scope="row" class="text-center">
                                                                 <?php echo htmlentities($result['SubjectCode']); ?></th>
@@ -137,61 +136,6 @@ endforeach;
                                                     <strong>Notice!</strong> Your result not declared yet
                                                     <?php endif;?>
                                                 </div>
-=======
-                                                                <tr>
-                                                                    <th scope="row" style="text-align: center">
-                                                                        <?php echo htmlentities($result['SubjectId']); ?></th>
-                                                                    <td style="text-align: center">
-                                                                        <?php echo htmlentities($result['SubjectName']); ?></td>
-                                                                    <td style="text-align: center">
-                                                                        <?php echo htmlentities($totalmarks = $result['marks']); ?>
-                                                                    </td>
-                                                                    <td style="text-align: center">
-                                                                        <?php echo htmlentities($totalmarks = $result['marks']); ?>
-                                                                    </td>
-                                                                    <td style="text-align: center">
-                                                                        <?php echo htmlentities($result['marks']); ?>
-                                                                    </td>
-                                                                    <td style="text-align: center">
-                                                                        <?php echo htmlentities($result['marks']); ?>
-                                                                    </td>
-                                                                    <td style="text-align: center">
-                                                                        <?php echo htmlentities($result['marks']); ?>
-                                                                    </td>
-                                                                </tr>
-                                                            <?php
-                                                                $totlcount += $totalmarks;
-                                                                $i++;
-                                                            endforeach;
-                                                            ?>
-                                                            <tr>
-                                                                <th></th>
-                                                                <th></th>
-                                                                <th scope="row" colspan="3" style="text-align: center">GRADE POINT AVERAGE (GPA)</th>
-                                                                <td style="text-align: center">
-                                                                    <!-- <b><?php echo htmlentities($totlcount); ?></b> out of -->
-                                                                    <!-- <b><?php echo htmlentities($outof = ($i - 1) * 100); ?></b> -->
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row" colspan="7" style="text-align: left">
-                                                                    EXTRA SUBJECTS
-                                                                </th>
-                                                            </tr>
-                                                            <!-- <?php ?> for extra subjects-->
-                                                            <tr>
-
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="3" align="center"><i class="fa fa-print fa-2x" aria-hidden="true" style="cursor:pointer" OnClick="CallPrint(this.value)"></i>
-                                                                </td>
-                                                            </tr>
-                                                        <?php else : ?>
-                                                            <div class="alert alert-warning left-icon-alert" role="alert">
-                                                                <strong>Notice!</strong> Your result not declared yet
-                                                            <?php endif; ?>
-                                                            </div>
->>>>>>> a124537374147e686e637220e662c6f2113c475e
 
                                                         <?php else : ?>
                                                             <div class="alert alert-danger left-icon-alert" role="alert">
