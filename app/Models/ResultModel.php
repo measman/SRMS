@@ -43,7 +43,7 @@ class ResultModel extends Model
     public function getResultByRollId($rollid,$classid){
         //select t.StudentName,t.RollId,t.ClassId,t.marks,SubjectId,tblsubjects.SubjectName from (select sts.StudentName,sts.RollId,sts.ClassId,tr.marks,SubjectId from tblstudents as sts join  tblresult as tr on tr.StudentId=sts.StudentId) as t join tblsubjects on tblsubjects.id=t.SubjectId where (t.RollId=:rollid and t.ClassId=:classid)
         $builder = $this->db->table('(select sts.StudentName,sts.RollId,sts.ClassId,tr.marks,SubjectId from tblstudents as sts join  tblresult as tr on tr.StudentId=sts.StudentId) as t');
-        $builder->select('t.StudentName,t.RollId,t.ClassId,t.marks,t.SubjectId,tblsubjects.SubjectName');
+        $builder->select('t.StudentName,t.RollId,t.ClassId,t.marks,t.SubjectId,tblsubjects.SubjectCode,tblsubjects.SubjectName,tblsubjects.fm_th,tblsubjects.total_cr_hr');
         $builder->join('tblsubjects','tblsubjects.id=t.SubjectId');
         $builder->where('t.RollId',$rollid);
         $builder->where('t.ClassId',$classid);
@@ -57,7 +57,7 @@ class ResultModel extends Model
 
     public function getStudentforResult($rollid,$classid){
         $builder = $this->db->table('tblstudents');
-        $builder->select('tblstudents.StudentName,tblstudents.RollId,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section');
+        $builder->select('tblstudents.StudentName,tblstudents.RollId,,tblstudents.DOB,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section');
         $builder->join('tblclasses','tblclasses.id=tblstudents.ClassId');
         $builder->where('tblstudents.RollId',$rollid);
         $builder->where('tblstudents.ClassId',$classid);

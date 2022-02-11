@@ -28,7 +28,7 @@
                     <div class="container-fluid">
                         <div class="row page-title-div">
                             <div class="col-md-12">
-                                <h2 class="title" align="center">Result Management System</h2>
+                                <h2 class="title text-center">Result Management System</h2>
                             </div>
                         </div>
                         <!-- /.row -->
@@ -43,9 +43,9 @@
                                     <div class="panel">
                                         <div class="panel-heading">
                                             <div class="panel-title">
-                                                <h3 align="center">ABC Secondary School/Campus </br>
+                                                <h3 class="text-center">ABC Secondary School/Campus </br>
                                                     ............................................... </h3>
-                                                    <h3 align="center">GRADE-SHEET</h3>
+                                                    <h3 class="text-center">GRADE-SHEET</h3>
                                                 <hr />
                                                 <?php
                                     if (isset($std)):
@@ -53,7 +53,7 @@
                                         foreach ($std as $s):
                                         ?>
 			                                                <p><b>THE GRADE(S) SECURED BY:</b><?php echo htmlentities($s['StudentName']); ?></p>
-                                                            <p><b>DATE OF BIRTH :</b></p>
+                                                            <p><b>DATE OF BIRTH :</b><?php echo htmlentities($s['DOB']); ?></p>
                                                             <p><b>REGISTRATION NO:</b> <?php echo htmlentities($s['RollId']); ?>
                                                             <b>SYMBOL NO:</b> <?php echo htmlentities($s['StudentId']); ?><b></b> 
                                                             <b>GRADE :</b> <?php echo htmlentities($s['ClassName']); ?></p>
@@ -67,14 +67,14 @@ endforeach;
                                             <div class="panel-body p-20">
                                                 <table class="table table-hover table-bordered" border="1" width="100%">
                                                     <thead>
-                                                        <tr style="text-align: center">
-                                                            <th style="text-align: center">Subject Code</th>
-                                                            <th style="text-align: center">SUBJECTS</th>
-                                                            <th style="text-align: center">CREDIT HOUR (CH)</th>
-                                                            <th style="text-align: center">GRADE POINT (GP)</th>
-                                                            <th style="text-align: center">GRADE</th>
-                                                            <th style="text-align: center">FINAL GRADE</th>
-                                                            <th style="text-align: center">REMARKS</th>
+                                                        <tr class="text-center">
+                                                            <th class="text-center">Subject Code</th>
+                                                            <th class="text-center">SUBJECTS</th>
+                                                            <th class="text-center">CREDIT HOUR (CH)</th>
+                                                            <th class="text-center">GRADE POINT (GP)</th>
+                                                            <th class="text-center">GRADE</th>
+                                                            <th class="text-center">FINAL GRADE</th>
+                                                            <th class="text-center">REMARKS</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -86,23 +86,23 @@ endforeach;
                                                                 foreach ($results as $result):
                                                         ?>
                                                         <tr>
-                                                            <th scope="row" style="text-align: center">
-                                                                <?php echo htmlentities($result['SubjectId']); ?></th>
-                                                            <td style="text-align: center">
+                                                            <th scope="row" class="text-center">
+                                                                <?php echo htmlentities($result['SubjectCode']); ?></th>
+                                                            <td class="text-center">
                                                                 <?php echo htmlentities($result['SubjectName']); ?></td>
-                                                            <td style="text-align: center">
+                                                            <td class="text-center">
+                                                                <?php echo htmlentities($totalmarks = $result['total_cr_hr']); ?>
+                                                            </td>
+                                                            <td class="text-center">
                                                                 <?php echo htmlentities($totalmarks = $result['marks']); ?>
                                                             </td>
-                                                            <td style="text-align: center">
-                                                                <?php echo htmlentities($totalmarks = $result['marks']); ?>
-                                                            </td>
-                                                            <td style="text-align: center">
+                                                            <td class="text-center">
                                                                 <?php echo htmlentities($result['marks']); ?>
                                                             </td>
-                                                            <td style="text-align: center">
+                                                            <td class="text-center">
                                                                 <?php echo htmlentities($result['marks']); ?>
                                                             </td>
-                                                            <td style="text-align: center">
+                                                            <td class="text-center">
                                                                 <?php echo htmlentities($result['marks']); ?>
                                                             </td>
                                                         </tr>
@@ -114,14 +114,14 @@ endforeach;
                                                         <tr>
                                                             <th></th>
                                                             <th></th>
-                                                            <th scope="row" colspan="3" style="text-align: center">GRADE POINT AVERAGE (GPA)</th>
-                                                            <td style="text-align: center">
+                                                            <th scope="row" colspan="3" class="text-center">GRADE POINT AVERAGE (GPA)</th>
+                                                            <td class="text-center">
                                                                 <!-- <b><?php echo htmlentities($totlcount); ?></b> out of -->
                                                                 <!-- <b><?php echo htmlentities($outof = ($i - 1) * 100); ?></b> -->
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <th scope="row" colspan="7" style="text-align: left">
+                                                            <th scope="row" colspan="7" class="text-left">
                                                                 EXTRA SUBJECTS
                                                             </th>
                                                         </tr>
@@ -130,7 +130,7 @@ endforeach;
 
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="3" align="center"><i class="fa fa-print fa-2x"
+                                                            <td colspan="3" class="text-center"><i class="fa fa-print fa-2x"
                                                                     aria-hidden="true" style="cursor:pointer"
                                                                     OnClick="CallPrint(this.value)"></i>
                                                             </td>
@@ -156,7 +156,7 @@ endif;
                                                 </table>
                                                 <p><strong>PREPARED BY:.........</strong></p>
                                                 <p><strong>CHECKED BY:.....</strong></p>
-                                                <p><strong>DATE OF ISSUE: ...................</strong> <strong align="right">HEAD TEACHER/CAMPUS CHIEF </strong></p>
+                                                <p><strong>DATE OF ISSUE: ...................</strong> <strong class="text-right">HEAD TEACHER/CAMPUS CHIEF </strong></p>
                                                 <hr style="border-color:black;">
                                                 <p><strong>NOTE: ONE CREDIT HOUR EQUALS TO 32 WORKING HOURS. </strong></p>
                                                 <p><strong>INTERNAL (IN): THIS COVERS THE PARTICIPATION, PRACTICAL PROJECT WORKS, COMMUNITY WORKS,</strong><strong>INTERNSHIP, PRESENTATIONS TERMINAL EXAMINATIONS.</strong></p>
