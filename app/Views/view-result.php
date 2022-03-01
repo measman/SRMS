@@ -39,6 +39,7 @@
                                     <div class="panel">
                                         <div class="panel-heading">
                                             <div class="panel-title">
+                                                <div class="border border-primary rounded"><img src="<?= base_url(); ?>/images/logo.png" alt="logo" class="rounded"></div>
                                                 <h3 class="text-center">ABC Secondary School/Campus </br>
                                                     ............................................... </h3>
                                                     <h3 class="text-center">GRADE-SHEET</h3>
