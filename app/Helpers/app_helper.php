@@ -30,3 +30,9 @@ if (!function_exists("getGrade")) {
         }
     }
   }
+
+  if (!function_exists("getGPA")) {
+    function getGPA($ch,$gp,$tch){
+        return ($ch*$gp)/$tch;        
+    }
+  }

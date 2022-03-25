@@ -72,10 +72,6 @@
                                                         </div>
                                                     </div>
                                                 </form>
-
-
-
-
                                             </div>
                                         </div>
                                         <!-- /.panel -->

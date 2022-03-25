@@ -24,9 +24,14 @@
                 <div class="main-page">
                     <div class="container-fluid">
                         <div class="row page-title-div">
-                            <div class="col-md-12">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                
                                 <h2 class="title text-center">Result Management System</h2>
+                                
                             </div>
+                            <div class="col-md-3"><i class="fa fa-print fa-2x" aria-hidden="true" style="cursor:pointer" OnClick="CallPrint(this.value)"></i></div>
+                            
                         </div>
                         <!-- /.row -->
                         <!-- /.row -->
@@ -39,23 +44,26 @@
                                     <div class="panel">
                                         <div class="panel-heading">
                                             <div class="panel-title">
-                                                <div class="border border-primary rounded"><img src="<?= base_url(); ?>/images/logo.png" alt="logo" class="rounded"></div>
-                                                <h3 class="text-center">ABC Secondary School/Campus </br>
-                                                    ............................................... </h3>
-                                                    <h3 class="text-center">GRADE-SHEET</h3>
+                                                <div class="row">
+                                                <div class="col-md-3 border border-primary rounded"><img src="<?= base_url(); ?>/images/logo.png" alt="logo" ></div>
+                                                <div class="col-md-6"><h3 class="text-center">ABC Secondary School/Campus </br> ................................................................... </h3>
+                                                    <h3 class="text-center">GRADE-SHEET</h3></div>
+                                                    </div>
+                                                    <div class="col-md-3"></div>
                                                 <hr />
                                                 <?php
                                     if (isset($std)):
                                         $i = 1;
                                         foreach ($std as $s):
                                         ?>
-			                                                <p><b>THE GRADE(S) SECURED BY:</b><?php echo htmlentities($s['StudentName']); ?></p>
-                                                            <p><b>DATE OF BIRTH :</b><?php echo htmlentities($s['DOB']); ?></p>
-                                                            <p><b>REGISTRATION NO:</b> <?php echo htmlentities($s['RollId']); ?>
-                                                            <b>SYMBOL NO:</b> <?php echo htmlentities($s['StudentId']); ?><b></b> 
-                                                            <b>GRADE :</b> <?php echo htmlentities($s['ClassName']); ?></p>
-		<?php echo htmlentities($s['ClassName']); ?>(<?php echo htmlentities($s['Section']); ?>)
-			                                                    <?php
+			                                                <p><b>THE GRADE(S) SECURED BY:</b><span style="padding: 0 20%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['StudentName']); ?></span></p>
+                                                            <p><b>DATE OF BIRTH :</b> <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?> </span> B.S (<span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?></span> A.D.)</p>
+                                                            <p><b>REGISTRATION NO:</b><span style="padding: 0 10%; border-bottom: 2px dotted #000;" > <?php echo htmlentities($s['RollId']); ?></span>
+                                                            <b>SYMBOL NO:</b> <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['StudentId']); ?></span> 
+                                                            <b>GRADE :</b> <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['ClassName']); ?></span></p>
+			                                                    <b>IN THE ANNUAL EXAMINATION CONDUCTED IN ……………………..……..……………. B.S. (……………..….………… A.D.)
+ARE GIVEN BELOW</b>
+                                                                <?php
     $i++;
 endforeach;
 
@@ -77,7 +85,7 @@ endforeach;
                                                     <tbody>
                                                         <?php
                                                         // Code for result
-                                                        if (isset($results)) :
+                                                        if (isset($results) && sizeof($results)>0) :
                                                             $i = 1;
                                                             $totlcount = 0;
                                                             foreach ($results as $result) :
@@ -88,23 +96,23 @@ endforeach;
                                                             <td class="text-center">
                                                                 <?php echo htmlentities($result['SubjectName']); ?></td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities($totalmarks = $result['total_cr_hr']); ?>
+                                                                <?php echo htmlentities($result['total_cr_hr']); ?>
                                                             </td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities($totalmarks = $result['marks']); ?>
+                                                                <?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?>
                                                             </td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities($result['marks']); ?>
+                                                                <?php echo htmlentities(getGrade($result['marks']));?>
                                                             </td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities($result['marks']); ?>
+                                                                <?php echo htmlentities(getGrade($result['marks']));?>
                                                             </td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities($result['marks']); ?>
+                                                                
                                                             </td>
                                                         </tr>
 			                                            <?php
-                                                            $totlcount += $totalmarks;
+                                                            $totlcount += ($result['marks'] * $result['total_cr_hr']);
                                                             $i++;
                                                         endforeach;
                                                         ?>
@@ -113,8 +121,9 @@ endforeach;
                                                             <th></th>
                                                             <th scope="row" colspan="3" class="text-center">GRADE POINT AVERAGE (GPA)</th>
                                                             <td class="text-center">
-                                                                <!-- <b><?php echo htmlentities($totlcount); ?></b> out of -->
-                                                                <!-- <b><?php echo htmlentities($outof = ($i - 1) * 100); ?></b> -->
+                                                                  
+                                                                <?php $outof = ($i - 1) * 100; ?> 
+                                                                <b><?php echo htmlentities(round($totlcount/$outof,2)); ?></b> 
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -127,9 +136,7 @@ endforeach;
 
                                                         </tr>
                                                         <tr>
-                                                            <td colspan="3" class="text-center"><i class="fa fa-print fa-2x"
-                                                                    aria-hidden="true" style="cursor:pointer"
-                                                                    OnClick="CallPrint(this.value)"></i>
+                                                            <td colspan="3" class="text-center">
                                                             </td>
                                                         </tr>
                                                 <?php else: ?>
@@ -151,15 +158,15 @@ endforeach;
 
                                                     </tbody>
                                                 </table>
-                                                <p><strong>PREPARED BY:.........</strong></p>
-                                                <p><strong>CHECKED BY:.....</strong></p>
-                                                <p><strong>DATE OF ISSUE: ...................</strong> <strong class="text-right">HEAD TEACHER/CAMPUS CHIEF </strong></p>
+                                                <p><strong>PREPARED BY :.........</strong></p>
+                                                <p><strong>CHECKED BY :.....</strong></p>
+                                                <p><strong>DATE OF ISSUE : ...................</strong> <strong class="text-right">HEAD TEACHER/CAMPUS CHIEF </strong></p>
                                                 <hr style="border-color:black;">
-                                                <p><strong>NOTE: ONE CREDIT HOUR EQUALS TO 32 WORKING HOURS. </strong></p>
+                                                <p><strong>NOTE : ONE CREDIT HOUR EQUALS TO 32 WORKING HOURS. </strong></p>
                                                 <p><strong>INTERNAL (IN): THIS COVERS THE PARTICIPATION, PRACTICAL PROJECT WORKS, COMMUNITY WORKS,</strong><strong>INTERNSHIP, PRESENTATIONS TERMINAL EXAMINATIONS.</strong></p>
                                                 <p><strong>THEORY (TH) : THIS COVERS WRITTEN EXTERNAL EXAMINATION</strong></p>
-                                                <p><strong>ABS= ABSENT </strong><strong> </strong><strong>W=WITHHELD</strong></p>
-                                                <p><strong>................................................SECONDARY SCHOOL/CAMPUS</strong></p>
+                                                <p><strong>ABS = ABSENT </strong><strong> </strong><strong>W = WITHHELD</strong></p>
+                                                <p><strong>..................................................................SECONDARY SCHOOL/CAMPUS</strong></p>
                                             </div>
                                         </div>
                                         <!-- /.panel -->
