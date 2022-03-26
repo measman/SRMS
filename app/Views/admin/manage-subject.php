@@ -82,6 +82,22 @@
                                         <span id="subjectcode_error" class="text-danger"></span>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Full Marks for Theory</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="fmth" class="form-control" id="fmth"
+                                             required="required" autocomplete="off">
+                                        <span id="fmth_error" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Total Credit Hour</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="tch" class="form-control" id="tch"
+                                             required="required" autocomplete="off">
+                                        <span id="tch_error" class="text-danger"></span>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
@@ -121,6 +137,8 @@
                                     <th>#</th>
                                     <th>Subject Name</th>
                                     <th>Subject Code</th>
+                                    <th>Thery Full Marks</th>
+                                    <th>Total Credit Hour</th>
                                     <th>Creation Date</th>
                                     <th>Updation Date</th>
                                     <th>Action</th>
@@ -131,6 +149,8 @@
                                     <th>#</th>
                                     <th>Subject Name</th>
                                     <th>Subject Code</th>
+                                    <th>Thery Full Marks</th>
+                                    <th>Total Credit Hour</th>
                                     <th>Creation Date</th>
                                     <th>Updation Date</th>
                                     <th>Action</th>
@@ -146,6 +166,8 @@
                                     <td><?php echo htmlentities($i);?></td>
                                     <td><?php echo htmlentities($cnt['SubjectName']);?></td>
                                     <td><?php echo htmlentities($cnt['SubjectCode']);?></td>
+                                    <td><?php echo htmlentities($cnt['fm_th']);?></td>
+                                    <td><?php echo htmlentities($cnt['total_cr_hr']);?></td>
                                     <td><?php echo htmlentities($cnt['Creationdate']);?>
                                     </td>
                                     <td><?php echo htmlentities($cnt['UpdationDate']);?></td>

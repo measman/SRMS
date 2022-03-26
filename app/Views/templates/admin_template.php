@@ -353,6 +353,10 @@
                             .subjectname_error);
                         $('#subjectcode_error').text(data
                             .subjectcode_error);
+                        $('#fmth_error').text(data
+                            .fmth_error);
+                        $('#tch_error').text(data
+                            .tch_error);
                     } else {
                         toastr["success"](data.message);
                         $('#subjectTable').load(location.href + " #subjectTable");

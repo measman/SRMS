@@ -102,10 +102,10 @@ endforeach;
                                                                 <?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?>
                                                             </td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities(getGrade($result['marks']));?>
+                                                                <?php echo getGrade($result['marks']);?>
                                                             </td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities(getGrade($result['marks']));?>
+                                                                <?php echo getGrade($result['marks']);?>
                                                             </td>
                                                             <td class="text-center">
                                                                 
@@ -158,9 +158,12 @@ endforeach;
 
                                                     </tbody>
                                                 </table>
-                                                <p><strong>PREPARED BY :.........</strong></p>
-                                                <p><strong>CHECKED BY :.....</strong></p>
-                                                <p><strong>DATE OF ISSUE : ...................</strong> <strong class="text-right">HEAD TEACHER/CAMPUS CHIEF </strong></p>
+                                                <p><strong>PREPARED BY :................................</strong></p>
+                                                <p><strong>CHECKED BY :.................................</strong></p>
+                                                <p class="text-right" style="margin-bottom:0px;">...........................................................................</p>
+                                                <p class="text-right"> <strong>HEAD TEACHER/CAMPUS CHIEF </strong></p>
+                                                
+                                                <p><strong>DATE OF ISSUE : ...................</strong></p>
                                                 <hr style="border-color:black;">
                                                 <p><strong>NOTE : ONE CREDIT HOUR EQUALS TO 32 WORKING HOURS. </strong></p>
                                                 <p><strong>INTERNAL (IN): THIS COVERS THE PARTICIPATION, PRACTICAL PROJECT WORKS, COMMUNITY WORKS,</strong><strong>INTERNSHIP, PRESENTATIONS TERMINAL EXAMINATIONS.</strong></p>

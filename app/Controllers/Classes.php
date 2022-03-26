@@ -33,8 +33,8 @@ class Classes extends BaseController
         if ($this->request->getVar('action')) {
             $rules = [
                 'classname' => 'required',
-                'classnamenumeric' => 'required',
-                'section' => 'required'                
+                'classnamenumeric' => 'required'
+                //'section' => 'required'                
             ];
             if ($this->validate($rules)) {
                 $success = 'yes';

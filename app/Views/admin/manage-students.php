@@ -88,7 +88,7 @@
                                     <label for="default" class="col-sm-2 control-label">Email id</label>
                                     <div class="col-sm-10">
                                         <input type="email" name="emailid" class="form-control" id="email"
-                                            required="required" autocomplete="off">
+                                            autocomplete="off">
                                     </div>
                                 </div>
 

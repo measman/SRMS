@@ -85,7 +85,7 @@
                                 <div class="form-group has-success">
                                     <label for="success" class="control-label">Section</label>
                                     <div class="">
-                                        <input type="text" name="section" class="form-control" required="required"
+                                        <input type="text" name="section" class="form-control" 
                                             id="success">
                                         <span class="help-block">Eg- A,B,C etc</span>
                                         <span id="section_error" class="text-danger"></span>
