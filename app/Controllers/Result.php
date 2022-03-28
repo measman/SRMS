@@ -6,6 +6,7 @@ use \App\Models\StudentsModel;
 use \App\Models\ClassesModel;
 use \App\Models\ResultModel;
 use \App\Models\SubjectCombinationModel;
+use \App\Libraries\RPDF;
 
 class Result extends BaseController
 {
@@ -15,25 +16,25 @@ class Result extends BaseController
     public $subjectcombinationmodel;
     public $session;
     public function __construct()
-    {        
+    {
         $this->session = session();
         $this->studentsmodel = new StudentsModel();
         $this->classesmodel = new ClassesModel();
         $this->resultmodel = new ResultModel();
         $this->subjectcombinationmodel = new SubjectCombinationModel();
     }
-    
+
     public function manage()
-    {        
+    {
         $data['content'] = $this->resultmodel->getAllResults();
         $data['classes'] = $this->classesmodel->findAll();
         return view('admin/manage-results', $data);
     }
 
-    
+
     function action()
     {
-        
+
         $classid_error = '';
         $studentid_error = '';
         $error = 'no';
@@ -42,9 +43,9 @@ class Result extends BaseController
         if ($this->request->getVar('action')) {
             $rules = [
                 //'StudentName', 'RollId', 'StudentEmail', 'Gender', 'DOB', 'ClassId', 'RegDate','Status'
-                
+
                 'classid' => 'required',
-                'studentid' => 'required'               
+                'studentid' => 'required'
             ];
             if ($this->validate($rules)) {
                 $success = 'yes';
@@ -53,13 +54,12 @@ class Result extends BaseController
                     $classid = $this->request->getVar('classid');
                     $studentid = $this->request->getVar('studentid');
                     $mark = $this->request->getVar('marks');
-                    $sid=array();
+                    $sid = array();
                     $subject_data = $this->subjectcombinationmodel->getSubjectCombinationsbyClass($classid);
-                    foreach($subject_data as $sd)
-                        {
-                        array_push($sid,$sd['id']);
-                        } 
-                    for($i=0;$i<count($mark);$i++){
+                    foreach ($subject_data as $sd) {
+                        array_push($sid, $sd['id']);
+                    }
+                    for ($i = 0; $i < count($mark); $i++) {
                         $insert_data = array(
                             'ClassId' => $classid,
                             'StudentId' => $studentid,
@@ -81,12 +81,12 @@ class Result extends BaseController
             } else {
                 $error = 'yes';
                 $classid_error = display_error($this->validator, 'classid');
-                $studentid_error = display_error($this->validator, 'studentid');                
+                $studentid_error = display_error($this->validator, 'studentid');
             }
 
             $output = array(
                 'classid_error' => $classid_error,
-                'studentid_error' => $studentid_error,              
+                'studentid_error' => $studentid_error,
                 'error' => $error,
                 'success' => $success,
                 'message' => $message
@@ -112,30 +112,84 @@ class Result extends BaseController
         }
     }
 
-    function checkStudentsResult(){
+    function checkStudentsResult()
+    {
         if ($this->request->getVar('studentid')) {
             $studentid = $this->request->getVar('studentid');
             $classid = $this->request->getVar('classid');
-            $student_result_data = $this->resultmodel->getResults($classid,$studentid);
-            if(sizeof($student_result_data) == 0){
+            $student_result_data = $this->resultmodel->getResults($classid, $studentid);
+            if (sizeof($student_result_data) == 0) {
                 echo json_encode(['status' => 'nodata']);
-            }else{
+            } else {
                 echo json_encode(['status' => 'data']);
             }
-            
         }
-
     }
 
-    function getResultbyRoll(){
+    // function getResultbyRoll()
+    // {
+    //     $rollid = $this->request->getVar('rollid');
+    //     $classid = $this->request->getVar('class');
+
+    //     $data['std'] = $this->resultmodel->getStudentforResult($rollid, $classid);
+    //     $data['results'] = $this->resultmodel->getResultByRollId($rollid, $classid);
+
+
+    //     return view('view-result', $data);
+    // }
+
+    function printResult()
+    {
         $rollid = $this->request->getVar('rollid');
-            $classid = $this->request->getVar('class');
-        
-            $data['std'] = $this->resultmodel->getStudentforResult($rollid,$classid); 
-            $data['results'] = $this->resultmodel->getResultByRollId($rollid,$classid);           
-            
-        
-        return view('view-result',$data);
+        $classid = $this->request->getVar('class');
+
+        $data['std'] = $this->resultmodel->getStudentforResult($rollid, $classid);
+        $data['results'] = $this->resultmodel->getResultByRollId($rollid, $classid);
+
+        $html = view('pdf_result', $data);
+        // create new PDF document
+        $pdf = new RPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Nicola Asuni');
+        $pdf->SetTitle('CHAMUNDA SECONDARY SCHOOL');
+        $pdf->SetSubject('TCPDF Tutorial');
+
+        // set default header data
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'CHAMUNDA SECONDARY SCHOOL' . '', 'CHAMUNDA, DIAKLEKH');
+
+        // set header and footer fonts
+        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        // set font
+        $pdf->SetFont('dejavusans', '', 10);
+        $pdf->AddPage();
+        $pdf->SetXY(15, 50);
+        $pdf->writeHTML($html, true, false, true, false, '');
+        $linestyle = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 2, 'phase' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(78, 56, 195, 56, $linestyle);
+        $pdf->Line(52, 63, 125, 63, $linestyle);
+        $pdf->Line(128, 63, 195, 63, $linestyle);
+        $pdf->Line(55, 69, 102, 69, $linestyle);
+        $pdf->Line(130, 69, 162, 69, $linestyle);
+        $pdf->Line(180, 69, 195, 69, $linestyle);
+        $pdf->lastPage();
+        $this->response->setContentType('application/pdf');
+        $pdf->Output('result.pdf', 'I');
     }
-    
-}   
+}
