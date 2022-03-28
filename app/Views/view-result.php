@@ -45,32 +45,34 @@
                                         <div class="panel-heading">
                                             <div class="panel-title">
                                                 <div class="row">
-                                                <div class="col-md-3 border border-primary rounded"><img src="<?= base_url(); ?>/images/logo.png" alt="logo" ></div>
-                                                <div class="col-md-6"><h3 class="text-center">ABC Secondary School/Campus </br> ................................................................... </h3>
-                                                    <h3 class="text-center">GRADE-SHEET</h3></div>
-                                                    </div>
-                                                    <div class="col-md-3"></div>
+                                                    <div class="col-sm-2 border border-primary rounded"><img src="<?= base_url(); ?>/images/logo.png" alt="logo" ></div>
+                                                    <div class="col-sm-8"><h3 class="text-center">CHAMUNDA SECONDARY SCHOOL </br> CHAMUNDA, DAILEKH </h3> <br> <h3 class="text-center">GRADE-SHEET</h3></div>
+                                                    <div class="col-sm-2"></div>
+                                                </div>
                                                 <hr />
-                                                <?php
-                                    if (isset($std)):
-                                        $i = 1;
-                                        foreach ($std as $s):
-                                        ?>
-			                                                <p><b>THE GRADE(S) SECURED BY:</b><span style="padding: 0 20%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['StudentName']); ?></span></p>
-                                                            <p><b>DATE OF BIRTH :</b> <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?> </span> B.S (<span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?></span> A.D.)</p>
-                                                            <p><b>REGISTRATION NO:</b><span style="padding: 0 10%; border-bottom: 2px dotted #000;" > <?php echo htmlentities($s['RollId']); ?></span>
-                                                            <b>SYMBOL NO:</b> <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['StudentId']); ?></span> 
-                                                            <b>GRADE :</b> <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['ClassName']); ?></span></p>
-			                                                    <b>IN THE ANNUAL EXAMINATION CONDUCTED IN ……………………..……..……………. B.S. (……………..….………… A.D.)
-ARE GIVEN BELOW</b>
-                                                                <?php
-    $i++;
-endforeach;
-
-?>
                                             </div>
+                                            <div>
+                                        
+                                                <?php
+                                                    if (isset($std)):
+                                                        $i = 1;
+                                                        foreach ($std as $s):
+                                                ?>
+                                                <p>THE GRADE(S) SECURED BY:<span style="padding: 0 20%; border-bottom: 2px dotted #000; font-size:18px; font-family:'Courier New', Courier, monospace;" ><?php echo htmlentities(strtoupper($s['StudentName'])); ?></span></p>
+                                                <p>DATE OF BIRTH : <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?> </span> B.S (<span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?></span> A.D.)</p>
+                                                <p>REGISTRATION NO:<span style="padding: 0 10%; border-bottom: 2px dotted #000;" > <?php echo htmlentities($s['RollId']); ?></span>
+                                                SYMBOL NO: <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['StudentId']); ?></span> 
+                                                GRADE : <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['ClassName']); ?></span></p>
+                                                <p>IN THE ANNUAL EXAMINATION CONDUCTED IN ……………………..……..……………. B.S. (……………..….………… A.D.) ARE GIVEN BELOW</p>
+                                                    <?php
+                                                        $i++;
+                                                    endforeach;
+
+                                                    ?>
+                                            </div>
+                                        </div>
                                             <div class="panel-body p-20">
-                                                <table class="table table-hover table-bordered" border="1" width="100%">
+                                                <table class="table table-hover table-bordered" width="100%">
                                                     <thead>
                                                         <tr class="text-center">
                                                             <th class="text-center">Subject Code</th>
@@ -214,7 +216,7 @@ endforeach;
 
         function CallPrint(strid) {
             var prtContent = document.getElementById("exampl");
-            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+            var WinPrint = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
             WinPrint.document.write(prtContent.innerHTML);
             WinPrint.document.close();
             WinPrint.focus();

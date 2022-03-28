@@ -137,7 +137,7 @@
                                     <th>#</th>
                                     <th>Subject Name</th>
                                     <th>Subject Code</th>
-                                    <th>Thery Full Marks</th>
+                                    <th>Theory Full Marks</th>
                                     <th>Total Credit Hour</th>
                                     <th>Creation Date</th>
                                     <th>Updation Date</th>
@@ -149,7 +149,7 @@
                                     <th>#</th>
                                     <th>Subject Name</th>
                                     <th>Subject Code</th>
-                                    <th>Thery Full Marks</th>
+                                    <th>Theory Full Marks</th>
                                     <th>Total Credit Hour</th>
                                     <th>Creation Date</th>
                                     <th>Updation Date</th>
