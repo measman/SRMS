@@ -98,7 +98,7 @@
                                                             <td class="text-center">
                                                                 <?php echo htmlentities($result['SubjectName']); ?></td>
                                                             <td class="text-center">
-                                                                <?php echo htmlentities($result['total_cr_hr']); ?>
+                                                                <?php echo htmlentities(round($result['total_cr_hr'],2)); ?>
                                                             </td>
                                                             <td class="text-center">
                                                                 <?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?>

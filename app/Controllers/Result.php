@@ -126,17 +126,17 @@ class Result extends BaseController
         }
     }
 
-    // function getResultbyRoll()
-    // {
-    //     $rollid = $this->request->getVar('rollid');
-    //     $classid = $this->request->getVar('class');
+    function getResultbyRoll()
+    {
+        $rollid = $this->request->getVar('rollid');
+        $classid = $this->request->getVar('class');
 
-    //     $data['std'] = $this->resultmodel->getStudentforResult($rollid, $classid);
-    //     $data['results'] = $this->resultmodel->getResultByRollId($rollid, $classid);
+        $data['std'] = $this->resultmodel->getStudentforResult($rollid, $classid);
+        $data['results'] = $this->resultmodel->getResultByRollId($rollid, $classid);
 
 
-    //     return view('view-result', $data);
-    // }
+        return view('view-result', $data);
+    }
 
     function printResult()
     {
@@ -146,15 +146,15 @@ class Result extends BaseController
         $data['std'] = $this->resultmodel->getStudentforResult($rollid, $classid);
         $data['results'] = $this->resultmodel->getResultByRollId($rollid, $classid);
 
-        $html = view('pdf_result', $data);
+        $html = view('pdf-result', $data);
         // create new PDF document
         $pdf = new RPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('Nicola Asuni');
+        $pdf->SetAuthor('Suman Tandukar');
         $pdf->SetTitle('CHAMUNDA SECONDARY SCHOOL');
-        $pdf->SetSubject('TCPDF Tutorial');
+        $pdf->SetSubject('Grade XI Result');
 
         // set default header data
         $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'CHAMUNDA SECONDARY SCHOOL' . '', 'CHAMUNDA, DIAKLEKH');

@@ -457,8 +457,12 @@
 
                     $('[name="subjectname"]').val(data.SubjectName);
                     $('[name="subjectcode"]').val(data.SubjectCode);
+                    $('[name="fmth"]').val(data.fm_th);
+                    $('[name="tch"]').val(data.total_cr_hr);
                     $('#subjectname_error').text('');
                     $('#subjectcode_error').text('');
+                    $('#fmth_error').text('');
+                    $('#tch_error').text('');
                     $('#action').val('Edit');
                     $('#submit_button').text('Edit');
                     $('#hidden_id').val(sub_id);
