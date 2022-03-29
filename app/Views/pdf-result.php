@@ -77,7 +77,16 @@
         ?>
         <tr>
             <td align="center"><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="center" colspan="5"><?php echo htmlentities($result['SubjectName']); ?></td>
+            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?>(TH)</td>
+            <td align="center"><?php echo htmlentities(number_format($result['total_cr_hr'], 2, '.', '')); ?></td>
+            <td align="center"><?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?></td>
+            <td align="center"><?php echo getGrade($result['marks']); ?></td>
+            <td align="center"><?php echo getGrade($result['marks']); ?></td>
+            <td align="center" colspan="2"></td>
+        </tr>
+        <tr>
+            <td align="center"><?php echo htmlentities($result['SubjectCode']); ?></td>
+            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?>(IN)</td>
             <td align="center"><?php echo htmlentities(number_format($result['total_cr_hr'], 2, '.', '')); ?></td>
             <td align="center"><?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?></td>
             <td align="center"><?php echo getGrade($result['marks']); ?></td>
@@ -116,6 +125,44 @@
                 <td align="center" colspan="2"></td>
             </tr>
         
+    </table>
+    <table cellspacing="3" cellpadding="2"> 
+        <tr><td colspan="12"></td></tr>
+    <tr>
+            <td colspan="2">PREPARED BY :</td>
+            <td colspan="2">.......................</td>
+            <td colspan="8"></td>
+        </tr>
+        
+        <tr>
+            <td colspan="2">CHECKED BY :</td>
+            <td colspan="2">.......................</td>
+            <td colspan="8"></td>
+        </tr>
+        <tr>
+            <td colspan="3">DATE OF ISSUE :</td>
+            <td colspan="2">2078-02-12</td>
+            <td colspan="2"></td>
+            <td colspan="5">HEAD TEACHER/CAMPUS CHIEF</td>
+        </tr>
+    </table>
+    <table cellspacing="3" cellpadding="2">
+        <tr>
+            <td colspan="12">NOTE : ONE CREDIT HOUR EQUALS TO 32 WORKING HOURS.</td>
+        </tr>
+        <tr>
+            <td colspan="2">INTERNAL (IN):</td>
+            <td colspan="10">THIS COVERS THE PARTICIPATION, PRACTICAL PROJECT WORKS, COMMUNITY WORKS, INTERNSHIP, PRESENTATIONS TERMINAL EXAMINATIONS.</td>
+        </tr>
+        <tr>
+            <td colspan="2">THEORY (TH) :</td>
+            <td colspan="10">THIS COVERS WRITTEN EXTERNAL EXAMINATION</td>
+        </tr>
+        <tr>
+            <td colspan="4">ABS = ABSENT</td>
+            <td colspan="4"></td>
+            <td colspan="4">W = WITHHELD</td>
+        </tr>
     </table>
 </body>
 

@@ -188,6 +188,8 @@ class Result extends BaseController
         $pdf->Line(55, 69, 102, 69, $linestyle);
         $pdf->Line(130, 69, 162, 69, $linestyle);
         $pdf->Line(180, 69, 195, 69, $linestyle);
+        $pdf->Line(108, 76, 195, 76, $linestyle);
+        $pdf->Line(115, 174, 190, 174, $linestyle);
         $pdf->lastPage();
         $this->response->setContentType('application/pdf');
         $pdf->Output('result.pdf', 'I');
