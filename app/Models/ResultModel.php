@@ -11,7 +11,7 @@ class ResultModel extends Model
 
     protected $primaryKey = 'id';
  
-    protected $allowedFields = ['StudentId', 'ClassId', 'SubjectId', 'marks', 'PostingDate', 'UpdationDate'];
+    protected $allowedFields = ['StudentId', 'ClassId', 'SubjectId', 'marks', 'in_marks', 'PostingDate', 'UpdationDate'];
 
     // SELECT  distinct tblstudents.StudentName,tblstudents.RollId,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section from tblresult join tblstudents on tblstudents.StudentId=tblresult.StudentId  join tblclasses on tblclasses.id=tblresult.ClassId
     public function getAllResults(){
@@ -42,8 +42,8 @@ class ResultModel extends Model
     }
     public function getResultByRollId($rollid,$classid){
         //select t.StudentName,t.RollId,t.ClassId,t.marks,SubjectId,tblsubjects.SubjectName from (select sts.StudentName,sts.RollId,sts.ClassId,tr.marks,SubjectId from tblstudents as sts join  tblresult as tr on tr.StudentId=sts.StudentId) as t join tblsubjects on tblsubjects.id=t.SubjectId where (t.RollId=:rollid and t.ClassId=:classid)
-        $builder = $this->db->table('(select sts.StudentName,sts.RollId,sts.ClassId,tr.marks,SubjectId from tblstudents as sts join  tblresult as tr on tr.StudentId=sts.StudentId) as t');
-        $builder->select('t.StudentName,t.RollId,t.ClassId,t.marks,t.SubjectId,tblsubjects.SubjectCode,tblsubjects.SubjectName,tblsubjects.fm_th,tblsubjects.total_cr_hr');
+        $builder = $this->db->table('(select sts.StudentName,sts.RollId,sts.ClassId,tr.marks,tr.in_marks,SubjectId from tblstudents as sts join  tblresult as tr on tr.StudentId=sts.StudentId) as t');
+        $builder->select('t.StudentName,t.RollId,t.ClassId,t.marks,t.in_marks,t.SubjectId,tblsubjects.SubjectCode,tblsubjects.SubjectName,tblsubjects.fm_th,tblsubjects.total_cr_hr');
         $builder->join('tblsubjects','tblsubjects.id=t.SubjectId');
         $builder->where('t.RollId',$rollid);
         $builder->where('t.ClassId',$classid);

@@ -36,3 +36,9 @@ if (!function_exists("getGrade")) {
         return ($ch*$gp)/$tch;        
     }
   }
+
+  if (!function_exists("actualCreditHour")) {
+    function actualCreditHour($fm,$tch){
+        return ($fm*$tch)/100;        
+    }
+  }

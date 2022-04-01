@@ -100,7 +100,7 @@
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Subjects</label>
                                     <div class="col-sm-10">
-                                        <div id="subject">
+                                        <div class="row" id="subject">
                                         </div>
                                     </div>
                                 </div>

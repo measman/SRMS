@@ -54,6 +54,7 @@ class Result extends BaseController
                     $classid = $this->request->getVar('classid');
                     $studentid = $this->request->getVar('studentid');
                     $mark = $this->request->getVar('marks');
+                    $inmark = $this->request->getVar('inmarks');
                     $sid = array();
                     $subject_data = $this->subjectcombinationmodel->getSubjectCombinationsbyClass($classid);
                     foreach ($subject_data as $sd) {
@@ -64,7 +65,8 @@ class Result extends BaseController
                             'ClassId' => $classid,
                             'StudentId' => $studentid,
                             'SubjectId' => $sid[$i],
-                            'marks' => $mark[$i]
+                            'marks' => $mark[$i],
+                            'in_marks' => $inmark[$i]
                         );
                         if ($this->request->getVar('action') == 'Edit') {
                             $id = $this->request->getVar('id');

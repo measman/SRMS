@@ -18,7 +18,7 @@
             <td colspan="4">THE GRADE(S) SECURED BY</td>
 
             <td colspan="8" align="center" style="font-family: 'Courier New', Courier, monospace; font-size:13px;">
-                <?php echo htmlentities($s['StudentName']); ?></td>
+                <?php echo htmlentities(strtoupper($s['StudentName'])); ?></td>
         </tr>
         <tr>
             <td colspan="3">DATE OF BIRTH </td>
@@ -36,7 +36,7 @@
             <td colspan="2" style="font-family: 'Courier New', Courier, monospace; font-size:13px;">
             <?php echo htmlentities($s['RollId']); ?></td>
             <td colspan="1">GRADE</td>
-            <td align="center"><?php echo htmlentities($s['ClassName']); ?></td>
+            <td align="center" style="font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(strtoupper($s['ClassName'])); ?></td>
         </tr>
         <tr>
             <td colspan="6">IN THE ANNUAL EXAMINATION CONDUCTED IN</td>
@@ -77,20 +77,21 @@
         ?>
         <tr>
             <td align="center"><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?>(TH)</td>
-            <td align="center"><?php echo htmlentities(number_format($result['total_cr_hr'], 2, '.', '')); ?></td>
-            <td align="center"><?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?></td>
+            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (TH)</td>
+            <?php $actualTHCreditHour = actualCreditHour($result['fm_th'],$result['total_cr_hr']);?>
+            <td align="center"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
+            <td align="center"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
             <td align="center"><?php echo getGrade($result['marks']); ?></td>
-            <td align="center"><?php echo getGrade($result['marks']); ?></td>
+            <td align="center" rowspan="2"><?php echo getGrade($result['marks']+$result['in_marks']); ?></td>
             <td align="center" colspan="2"></td>
         </tr>
         <tr>
             <td align="center"><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?>(IN)</td>
-            <td align="center"><?php echo htmlentities(number_format($result['total_cr_hr'], 2, '.', '')); ?></td>
-            <td align="center"><?php echo htmlentities(round(getGPA($result['marks'],$result['total_cr_hr'],$result['fm_th']),2)); ?></td>
-            <td align="center"><?php echo getGrade($result['marks']); ?></td>
-            <td align="center"><?php echo getGrade($result['marks']); ?></td>
+            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
+            <?php $actualINCreditHour = actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
+            <td align="center"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
+            <td align="center"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
+            <td align="center"><?php echo getGrade($result['in_marks']); ?></td>
             <td align="center" colspan="2"></td>
         </tr>
         <?php

@@ -545,11 +545,13 @@
                         $.each(jsn, function(key, data) {
                             
                             if(jsn.length > 0 && ddt.length > 0  ){
-                                $("#subject").append('<p>'+data.SubjectName+'<input type="text"  name="marks[]" value="'+ddt[key].marks+'" class="form-control" required="" placeholder="Enter marks out of 100" autocomplete="off"></p>');
+                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (TH)<input type="text"  name="marks[]" value="'+ddt[key].marks+'" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (IN)<input type="text"  name="inmarks[]" value="'+ddt[key].in_marks+'" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
                             console.log(key+'=>'+data.SubjectName);
                             }
                             else{
-                                $("#subject").append('<p>'+data.SubjectName+'<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter marks out of 100" autocomplete="off"></p>');
+                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (TH)<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (IN)<input type="text"  name="inmarks[]" value="" class="form-control" required="" placeholder="Enter internal marks " autocomplete="off"></div>');
                             
                             }
                             // console.log(data);

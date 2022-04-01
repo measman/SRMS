@@ -14,7 +14,7 @@ class RPDF extends TCPDF
         $image_file = K_PATH_IMAGES . 'logo.png';
         $this->Image($image_file, 10, 5, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
         // Set font
-        $this->SetFont('helvetica', 'N', 20);
+        $this->SetFont('times', 'N', 20);
         // Title
         $this->SetXY(20, 15);
         $this->Cell(0, 15, 'CHAMUNDA SECONDARY SCHOOL', 0, false, 'C', 0, '', 0, false, 'M', 'M');
