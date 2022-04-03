@@ -58,7 +58,7 @@
                                                     ?>
     </table>
 
-    <table cellpadding="2" border="1" style="border-collapse: collapse;">
+    <table cellpadding="2" border="1" >
         <tr>
             <th align="center">SUBJECT CODE</th>
             <th align="center" colspan="5">SUBJECT</th>
@@ -76,23 +76,23 @@
             foreach ($results as $result) :
         ?>
         <tr>
-            <td align="center"><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (TH)</td>
+            <td align="center" style="border-right-style:none;" ><?php echo htmlentities($result['SubjectCode']); ?></td>
+            <td align="left" style="border-right-style:none" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (TH)</td>
             <?php $actualTHCreditHour = actualCreditHour($result['fm_th'],$result['total_cr_hr']);?>
-            <td align="center"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
-            <td align="center"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
-            <td align="center"><?php echo getGrade($result['marks']); ?></td>
-            <td align="center" rowspan="2"><?php echo getGrade($result['marks']+$result['in_marks']); ?></td>
-            <td align="center" colspan="2"></td>
+            <td align="center" style="border-right-style:none"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
+            <td align="center" style="border-right-style:none"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
+            <td align="center" style="border-right-style:none"><?php echo getGrade($result['marks']); ?></td>
+            <td align="center" rowspan="2" style="border-right-style:none"><?php echo getGrade($result['marks']+$result['in_marks']); ?></td>
+            <td align="center" colspan="2" style="border-right-style:none"></td>
         </tr>
         <tr>
-            <td align="center"><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="left" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
+            <td align="center" style="border-right-style:none"><?php echo htmlentities($result['SubjectCode']); ?></td>
+            <td align="left" style="border-right-style:none" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
             <?php $actualINCreditHour = actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
-            <td align="center"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
-            <td align="center"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
-            <td align="center"><?php echo getGrade($result['in_marks']); ?></td>
-            <td align="center" colspan="2"></td>
+            <td align="center" style="border-right-style:none"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
+            <td align="center" style="border-right-style:none"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
+            <td align="center" style="border-right-style:none"><?php echo getGrade($result['in_marks']); ?></td>
+            <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>
         <?php
                 $totlcount += ($result['marks'] * $result['total_cr_hr']);
@@ -109,21 +109,25 @@
                 </td>
                 <td colspan="2"></td>
             </tr>
+    </table>
+    <table cellpadding="2">
             <tr>
-                <th colspan="12" class="text-left">
-                    EXTRA SUBJECTS
+                <th colspan="12" class="text-left" >
+                   <h4>EXTRA SUBJECTS</h4>
                 </th>
             </tr>
-            <!-- <?php ?> for extra subjects-->
             
+            </table>
+    <table border="1">
+        <!-- <?php ?> for extra subjects-->
             <tr>
-                <td align="center"></td>
-                <td align="center" colspan="5"></td>
-                <td align="center"></td>
-                <td align="center"></td>
-                <td align="center"></td>
-                <td align="center"></td>
-                <td align="center" colspan="2"></td>
+                <td align="center">ASDF</td>
+                <td align="center" colspan="5">ASDF</td>
+                <td align="center">ADSF</td>
+                <td align="center">SADF</td>
+                <td align="center">FADS</td>
+                <td align="center">ADSF</td>
+                <td align="center" colspan="2">AFSD</td>
             </tr>
         
     </table>
@@ -144,7 +148,7 @@
             <td colspan="3">DATE OF ISSUE :</td>
             <td colspan="2">2078-02-12</td>
             <td colspan="2"></td>
-            <td colspan="5">HEAD TEACHER/CAMPUS CHIEF</td>
+            <td colspan="5" style="border-top-style:dashed;">       HEAD TEACHER/CAMPUS CHIEF</td>
         </tr>
     </table>
     <table cellspacing="3" cellpadding="2">
