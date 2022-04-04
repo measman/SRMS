@@ -144,6 +144,9 @@
                                     <li><a href="<?= base_url(); ?>/manage-results"><i class="fa fa fa-server"></i>
                                             <span>Manage
                                                 Result</span></a></li>
+                                                <li><a href="<?= base_url(); ?>/print-results"><i class="fa fa fa-server"></i>
+                                            <span>Print
+                                                Result</span></a></li>
 
                                 </ul>
                             </li>

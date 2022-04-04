@@ -43,6 +43,7 @@ $routes->group('', ['filter' => 'AdminAuthCheck'], function ($routes) {
     $routes->add('manage-subjects', 'Subject::manage');
     $routes->add('manage-subjectcombination', 'SubjectCombination::manage');
     $routes->add('manage-results', 'Result::manage');
+    $routes->add('print-results', 'Result::viewPrintResult');
 });
 /*
  * --------------------------------------------------------------------

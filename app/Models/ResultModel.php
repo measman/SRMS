@@ -57,7 +57,7 @@ class ResultModel extends Model
 
     public function getStudentforResult($rollid,$classid){
         $builder = $this->db->table('tblstudents');
-        $builder->select('tblstudents.StudentName,tblstudents.RollId,,tblstudents.DOB,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section');
+        $builder->select('tblstudents.StudentName,tblstudents.RollId,tblstudents.DOB,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section');
         $builder->join('tblclasses','tblclasses.id=tblstudents.ClassId');
         $builder->where('tblstudents.RollId',$rollid);
         $builder->where('tblstudents.ClassId',$classid);

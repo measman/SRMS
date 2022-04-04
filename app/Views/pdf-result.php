@@ -121,13 +121,13 @@
     <table border="1">
         <!-- <?php ?> for extra subjects-->
             <tr>
-                <td align="center">ASDF</td>
-                <td align="center" colspan="5">ASDF</td>
-                <td align="center">ADSF</td>
-                <td align="center">SADF</td>
-                <td align="center">FADS</td>
-                <td align="center">ADSF</td>
-                <td align="center" colspan="2">AFSD</td>
+                <td align="center"></td>
+                <td align="center" colspan="5"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center"></td>
+                <td align="center" colspan="2"></td>
             </tr>
         
     </table>

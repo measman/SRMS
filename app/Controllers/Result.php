@@ -140,6 +140,10 @@ class Result extends BaseController
         return view('view-result', $data);
     }
 
+    function viewPrintResult(){
+        return view('admin/print-results');
+    }
+
     function printResult()
     {
         $rollid = $this->request->getVar('rollid');
