@@ -59,7 +59,9 @@ class ResultModel extends Model
         $builder = $this->db->table('tblstudents');
         $builder->select('tblstudents.StudentName,tblstudents.RollId,tblstudents.DOB,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section');
         $builder->join('tblclasses','tblclasses.id=tblstudents.ClassId');
-        $builder->where('tblstudents.RollId',$rollid);
+        if($rollid!=null){
+            $builder->where('tblstudents.RollId',$rollid);
+        }
         $builder->where('tblstudents.ClassId',$classid);
         $result = $builder->get();
         if (count($result->getResultArray()) > 0) {

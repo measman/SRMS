@@ -28,13 +28,8 @@
 
 <section class="section">
     <div class="container-fluid">
-        <p>
-            <button class="btn btn-primary" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
-            Print Result
-            </button>
-            <label class="btn btn-outline-primary" for="btn-check-outlined"></label>
-        </p>
-        <div class="collapse" id="collapseExample">
+        
+        
         
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -48,7 +43,31 @@
 
                         <div class="panel-body">
 
-                            
+                        <form action="<?= base_url(); ?>/Result/printClassResult" method="post">
+                                	
+                               <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Class</label>
+                                    <select name="class" class="form-control" id="default" required="required">
+                                    <option value="">Select Class</option>
+                                    <?php 
+                                    if( isset($classes))
+                                    {
+                                    foreach($classes as $class)
+                                    {   ?>
+                                    <option value="<?php echo htmlentities($class['id']); ?>"><?php echo htmlentities($class['ClassName']); ?>&nbsp; Section-<?php echo htmlentities($class['Section']); ?></option>
+                                    <?php }} ?>
+                                    </select>
+                                </div>
+
+    
+                                <div class="form-group mt-20">
+                                    <div class="">                                      
+                                        <button type="submit" class="btn btn-success btn-labeled pull-right">Search<span class="btn-label btn-label-right"><i class="fa fa-check"></i></span></button>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                      
+                        </form>
 
 
                         </div>
@@ -57,18 +76,9 @@
                 <!-- /.col-md-8 col-md-offset-2 -->
             </div>
             <!-- /.row -->
-        </div>
+      
 
-        <div class="row">
-            <div class="col-md-12">
-
-               
-            </div>
-            <!-- /.col-md-6 -->
-
-
-        </div>
-        <!-- /.col-md-12 -->
+        
     </div>
     </div>
     <!-- /.panel -->

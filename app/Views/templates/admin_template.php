@@ -207,6 +207,8 @@
     <script src="<?= base_url(); ?>/js/amcharts/themes/light.js"></script>
     <script src="<?= base_url(); ?>/js/toastr/toastr.min.js"></script>
     <script src="<?= base_url(); ?>/js/icheck/icheck.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
     <!-- ========== THEME JS ========== -->
     <script src="<?= base_url(); ?>/js/main.js"></script>
@@ -215,6 +217,13 @@
     <script src="<?= base_url(); ?>/js/task-list.js"></script>
     <script>
     $(function() {
+
+        $("#studentTable").DataTable();
+        $("#classTable").DataTable();
+        $("#subjectTable").DataTable();
+        $("#subjectcombinationTable").DataTable();
+        $("#resultTable").DataTable();
+        
         
         $("input.status-student").change(function() {
             var std_id = $(this).data('id');

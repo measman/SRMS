@@ -141,7 +141,8 @@ class Result extends BaseController
     }
 
     function viewPrintResult(){
-        return view('admin/print-results');
+        $data['classes'] = $this->classesmodel->findAll();
+        return view('admin/print-results',$data);
     }
 
     function printResult()
@@ -152,7 +153,7 @@ class Result extends BaseController
         $data['std'] = $this->resultmodel->getStudentforResult($rollid, $classid);
         $data['results'] = $this->resultmodel->getResultByRollId($rollid, $classid);
 
-        $html = view('pdf-result', $data);
+       
         // create new PDF document
         $pdf = new RPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -184,7 +185,9 @@ class Result extends BaseController
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         // set font
         $pdf->SetFont('dejavusans', '', 10);
+
         $pdf->AddPage();
+        $html = view('pdf-result', $data);
         $pdf->SetXY(15, 50);
         $pdf->writeHTML($html, true, false, true, false, '');
         $linestyle = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 2, 'phase' => 0, 'color' => array(0, 0, 0));
@@ -196,6 +199,72 @@ class Result extends BaseController
         $pdf->Line(180, 69, 195, 69, $linestyle);
         $pdf->Line(108, 76, 195, 76, $linestyle);
         // $pdf->Line(115, 174, 190, 174, $linestyle);
+        $pdf->lastPage();
+        $this->response->setContentType('application/pdf');
+        $pdf->Output('result.pdf', 'I');
+    }
+
+    function printClassResult()
+    {
+        
+        $classid = $this->request->getVar('class');
+
+        $students= $this->resultmodel->getStudentforResult(null, $classid);
+
+        
+        // create new PDF document
+        $pdf = new RPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Suman Tandukar');
+        $pdf->SetTitle('CHAMUNDA SECONDARY SCHOOL');
+        $pdf->SetSubject('Grade XI Result');
+
+        // set default header data
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, 'CHAMUNDA SECONDARY SCHOOL' . '', 'CHAMUNDA, DIAKLEKH');
+
+        // set header and footer fonts
+        $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        // set font
+        $pdf->SetFont('dejavusans', '', 10);
+        foreach($students as $std){
+
+                $pdf->AddPage();
+                $data['std'] = [0=>$std];
+                $data['results'] = $this->resultmodel->getResultByRollId($std['RollId'], $classid);
+                if(sizeof($data['results'])<1){
+                    return "<center><h3 style=\"color:red\">!!!!!Result Not Found!!!!!</h3></center>";
+                }
+                $html = view('pdf-result', $data);
+                $pdf->SetXY(15, 50);
+                $pdf->writeHTML($html, true, false, true, false, '');
+                $linestyle = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 2, 'phase' => 0, 'color' => array(0, 0, 0));
+                $pdf->Line(78, 56, 195, 56, $linestyle);
+                $pdf->Line(52, 63, 125, 63, $linestyle);
+                $pdf->Line(128, 63, 195, 63, $linestyle);
+                $pdf->Line(55, 69, 102, 69, $linestyle);
+                $pdf->Line(130, 69, 162, 69, $linestyle);
+                $pdf->Line(180, 69, 195, 69, $linestyle);
+                $pdf->Line(108, 76, 195, 76, $linestyle);
+                // $pdf->Line(115, 174, 190, 174, $linestyle);
+                    
+        }
         $pdf->lastPage();
         $this->response->setContentType('application/pdf');
         $pdf->Output('result.pdf', 'I');
