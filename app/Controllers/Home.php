@@ -55,7 +55,7 @@ class Home extends BaseController
 
         $rules = [
             'username' => [
-                'rules' => 'required|is_not_unique[admin.UserName]',
+                'rules' => 'required|is_not_unique[user.UserName]',
                 'errors' => [
                     'required' => 'Username is required',
                     'is_not_unique' => 'This username is not registered in our company.'

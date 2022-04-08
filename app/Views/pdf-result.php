@@ -31,7 +31,7 @@
         <tr>
             <td colspan="3">REGISTRATION NO</td>
             <td colspan="3" style="font-family: 'Courier New', Courier, monospace; font-size:13px;">
-            <?php echo htmlentities($s['StudentId']); ?></td>
+            <?php echo htmlentities($s['RegNo']); ?></td>
             <td colspan="2">SYMBOL NO</td>
             <td colspan="2" style="font-family: 'Courier New', Courier, monospace; font-size:13px;">
             <?php echo htmlentities($s['RollId']); ?></td>
@@ -81,8 +81,8 @@
             <?php $actualTHCreditHour = actualCreditHour($result['fm_th'],$result['total_cr_hr']);?>
             <td align="center" style="border-right-style:none"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
             <td align="center" style="border-right-style:none"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
-            <td align="center" style="border-right-style:none"><?php echo getGrade($result['marks']); ?></td>
-            <td align="center" rowspan="2" style="border-right-style:none"><?php echo getGrade($result['marks']+$result['in_marks']); ?></td>
+            <td align="center" style="border-right-style:none"><?php echo getGrade($result['marks'],$result['fm_th']); ?></td>
+            <td align="center" rowspan="2" style="border-right-style:none"><?php echo getGrade($result['marks']+$result['in_marks'],100); ?></td>
             <td align="center" colspan="2" style="border-right-style:none"></td>
         </tr>
         <tr>
@@ -91,7 +91,7 @@
             <?php $actualINCreditHour = actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
             <td align="center" style="border-right-style:none"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
             <td align="center" style="border-right-style:none"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
-            <td align="center" style="border-right-style:none"><?php echo getGrade($result['in_marks']); ?></td>
+            <td align="center" style="border-right-style:none"><?php echo getGrade($result['in_marks'],100-$result['fm_th']); ?></td>
             <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>
         <?php

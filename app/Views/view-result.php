@@ -60,7 +60,7 @@
                                                 ?>
                                                 <p>THE GRADE(S) SECURED BY:<span style="padding: 0 20%; border-bottom: 2px dotted #000; font-size:18px; font-family:'Courier New', Courier, monospace;" ><?php echo htmlentities(strtoupper($s['StudentName'])); ?></span></p>
                                                 <p>DATE OF BIRTH : <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?> </span> B.S (<span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['DOB']); ?></span> A.D.)</p>
-                                                <p>REGISTRATION NO:<span style="padding: 0 10%; border-bottom: 2px dotted #000;" > <?php echo htmlentities($s['RollId']); ?></span>
+                                                <p>REGISTRATION NO:<span style="padding: 0 10%; border-bottom: 2px dotted #000;" > <?php echo htmlentities($s['RegNo']); ?></span>
                                                 SYMBOL NO: <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['StudentId']); ?></span> 
                                                 GRADE : <span style="padding: 0 10%; border-bottom: 2px dotted #000;" ><?php echo htmlentities($s['ClassName']); ?></span></p>
                                                 <p>IN THE ANNUAL EXAMINATION CONDUCTED IN ……………………..……..……………. B.S. (……………..….………… A.D.) ARE GIVEN BELOW</p>

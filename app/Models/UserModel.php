@@ -7,7 +7,7 @@ use \CodeIgniter\Model;
 class UserModel extends Model
 {
 
-    protected $table = 'admin';
+    protected $table = 'user';
 
     protected $primaryKey = 'id';
 

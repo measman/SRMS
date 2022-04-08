@@ -1,27 +1,34 @@
 <?php 
 
 if (!function_exists("getGrade")) {
-    function getGrade($perct){
-        switch($perct){
-            case $perct >= 90:
+    function getGrade($perct,$refmarks){
+
+        $actualPerct = ($perct*100)/$refmarks;
+        if($perct==0){
+            echo "NG";
+            return;
+        }
+
+        switch($actualPerct){
+            case $actualPerct >= 90:
                 echo "A+";
                 break;
-            case $perct >= 80:
+            case $actualPerct >= 80:
                 echo "A";
                 break;
-            case $perct >= 70:
+            case $actualPerct >= 70:
                 echo "B+";
                 break;
-            case $perct >= 60:
+            case $actualPerct >= 60:
                 echo "B";
                 break;
-            case $perct >= 50:
+            case $actualPerct >= 50:
                 echo "C+";
                 break;
-            case $perct >= 40:
+            case $actualPerct >= 40:
                 echo "C";
                 break;
-            case $perct >= 35:
+            case $actualPerct >= 35:
                 echo "D";
                 break;
             default:
