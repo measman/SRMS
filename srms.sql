@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 10:39 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Apr 08, 2022 at 06:48 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,26 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `srms`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `UserName` varchar(100) DEFAULT NULL,
-  `Password` varchar(100) DEFAULT NULL,
-  `updationDate` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
-(1, 'admin', '$2y$10$SSZd5DHgul2C/doAS9SEW.h9VSVHfoZPMAhA58BKwj9bfJI4v2Uz2', '2022-01-01 10:30:57');
 
 -- --------------------------------------------------------
 
@@ -108,6 +88,7 @@ CREATE TABLE `tblresult` (
   `ClassId` int(11) DEFAULT NULL,
   `SubjectId` int(11) DEFAULT NULL,
   `marks` int(11) DEFAULT NULL,
+  `in_marks` int(11) NOT NULL,
   `PostingDate` timestamp NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -116,30 +97,30 @@ CREATE TABLE `tblresult` (
 -- Dumping data for table `tblresult`
 --
 
-INSERT INTO `tblresult` (`id`, `StudentId`, `ClassId`, `SubjectId`, `marks`, `PostingDate`, `UpdationDate`) VALUES
-(2, 1, 1, 2, 100, '2022-01-01 10:30:57', NULL),
-(3, 1, 1, 1, 80, '2022-01-01 10:30:57', NULL),
-(4, 1, 1, 5, 78, '2022-01-01 10:30:57', NULL),
-(5, 1, 1, 4, 60, '2022-01-01 10:30:57', NULL),
-(6, 2, 4, 2, 90, '2022-01-01 10:30:57', NULL),
-(7, 2, 4, 1, 75, '2022-01-01 10:30:57', NULL),
-(8, 2, 4, 5, 56, '2022-01-01 10:30:57', NULL),
-(9, 2, 4, 4, 80, '2022-01-01 10:30:57', NULL),
-(10, 4, 7, 2, 54, '2022-01-01 10:30:57', NULL),
-(11, 4, 7, 1, 85, '2022-01-01 10:30:57', NULL),
-(12, 4, 7, 5, 55, '2022-01-01 10:30:57', NULL),
-(13, 4, 7, 7, 65, '2022-01-01 10:30:57', NULL),
-(14, 5, 8, 2, 75, '2022-01-01 10:30:57', NULL),
-(15, 5, 8, 1, 56, '2022-01-01 10:30:57', NULL),
-(16, 5, 8, 5, 52, '2022-01-01 10:30:57', NULL),
-(17, 5, 8, 4, 80, '2022-01-01 10:30:57', NULL),
-(18, 6, 9, 8, 80, '2022-01-01 15:20:18', NULL),
-(19, 6, 9, 8, 70, '2022-01-01 15:20:18', NULL),
-(20, 6, 9, 2, 90, '2022-01-01 15:20:18', NULL),
-(21, 6, 9, 1, 60, '2022-01-01 15:20:18', NULL),
-(22, 7, 5, 2, 45, '2022-01-11 16:43:28', NULL),
-(23, 7, 5, 1, 53, '2022-01-11 16:43:28', NULL),
-(24, 7, 5, 6, 64, '2022-01-11 16:43:28', NULL);
+INSERT INTO `tblresult` (`id`, `StudentId`, `ClassId`, `SubjectId`, `marks`, `in_marks`, `PostingDate`, `UpdationDate`) VALUES
+(2, 1, 1, 2, 100, 0, '2022-01-01 10:30:57', NULL),
+(3, 1, 1, 1, 80, 0, '2022-01-01 10:30:57', NULL),
+(4, 1, 1, 5, 78, 0, '2022-01-01 10:30:57', NULL),
+(5, 1, 1, 4, 60, 0, '2022-01-01 10:30:57', NULL),
+(6, 2, 4, 2, 90, 0, '2022-01-01 10:30:57', NULL),
+(7, 2, 4, 1, 75, 0, '2022-01-01 10:30:57', NULL),
+(8, 2, 4, 5, 56, 0, '2022-01-01 10:30:57', NULL),
+(9, 2, 4, 4, 80, 0, '2022-01-01 10:30:57', NULL),
+(10, 4, 7, 2, 54, 0, '2022-01-01 10:30:57', NULL),
+(11, 4, 7, 1, 85, 0, '2022-01-01 10:30:57', NULL),
+(12, 4, 7, 5, 55, 0, '2022-01-01 10:30:57', NULL),
+(13, 4, 7, 7, 65, 0, '2022-01-01 10:30:57', NULL),
+(14, 5, 8, 2, 75, 0, '2022-01-01 10:30:57', NULL),
+(15, 5, 8, 1, 56, 0, '2022-01-01 10:30:57', NULL),
+(16, 5, 8, 5, 52, 0, '2022-01-01 10:30:57', NULL),
+(17, 5, 8, 4, 80, 0, '2022-01-01 10:30:57', NULL),
+(18, 6, 9, 1, 80, 20, '2022-01-01 15:20:18', NULL),
+(19, 6, 9, 2, 70, 0, '2022-01-01 15:20:18', NULL),
+(20, 6, 9, 8, 90, 0, '2022-01-01 15:20:18', NULL),
+(21, 6, 9, 8, 60, 0, '2022-01-01 15:20:18', NULL),
+(22, 7, 5, 1, 45, 20, '2022-01-11 16:43:28', NULL),
+(23, 7, 5, 2, 53, 20, '2022-01-11 16:43:28', NULL),
+(24, 7, 5, 6, 64, 20, '2022-01-11 16:43:28', NULL);
 
 -- --------------------------------------------------------
 
@@ -151,6 +132,7 @@ CREATE TABLE `tblstudents` (
   `StudentId` int(11) NOT NULL,
   `StudentName` varchar(100) DEFAULT NULL,
   `RollId` varchar(100) DEFAULT NULL,
+  `RegNo` bigint(20) NOT NULL,
   `StudentEmail` varchar(100) DEFAULT NULL,
   `Gender` varchar(10) DEFAULT NULL,
   `DOB` varchar(100) DEFAULT NULL,
@@ -164,17 +146,17 @@ CREATE TABLE `tblstudents` (
 -- Dumping data for table `tblstudents`
 --
 
-INSERT INTO `tblstudents` (`StudentId`, `StudentName`, `RollId`, `StudentEmail`, `Gender`, `DOB`, `ClassId`, `RegDate`, `UpdationDate`, `Status`) VALUES
-(1, 'Sarita', '46456', 'info@phpgurukul.com', 'Female', '1995-03-03', 1, '2022-01-01 10:30:57', NULL, 1),
-(2, 'Anuj kumar', '10861', 'anuj@gmail.co', 'Male', '1995-02-02', 4, '2022-01-01 10:30:57', NULL, 1),
-(3, 'amit kumar', '2626', 'amit@gmail.com', 'Male', '2014-08-06', 6, '2022-01-01 10:30:57', NULL, 0),
-(4, 'rahul kumar', '990', 'rahul01@gmail.com', 'Male', '2001-02-03', 7, '2022-01-01 10:30:57', NULL, 1),
-(5, 'sanjeev singh', '122', 'sanjeev01@gmail.com', 'Male', '2002-02-03', 8, '2022-01-01 10:30:57', NULL, 1),
-(6, 'Shiv Gupta', '12345', 'shiv34534@gmail.com', 'Male', '2007-01-12', 9, '2022-01-01 15:19:40', NULL, 1),
-(7, 'Anita Maharjan', '12345', 'test@test.com', 'Female', '2015-02-11', 5, '2022-01-11 16:41:32', NULL, 1),
-(8, 'Sabina Maharjan', '6542', 'test@test.commmmmm', 'Female', '2022-02-06', 2, '2022-02-03 17:08:00', NULL, 1),
-(9, 'Sabina Maharjan', '3872', 'test@test', 'Female', '2022-02-09', 1, '2022-02-03 17:09:21', NULL, 1),
-(10, 'Lale Nath', '6465', 'test@adsf.com', 'Male', '2021-09-15', 7, '2022-02-03 17:14:57', NULL, 1);
+INSERT INTO `tblstudents` (`StudentId`, `StudentName`, `RollId`, `RegNo`, `StudentEmail`, `Gender`, `DOB`, `ClassId`, `RegDate`, `UpdationDate`, `Status`) VALUES
+(1, 'Sarita', '46456', 123456789123, 'info@phpgurukul.com', 'Female', '1995-03-03', 1, '2022-01-01 10:30:57', NULL, 1),
+(2, 'Anuj kumar', '10861', 123456789123, 'anuj@gmail.co', 'Male', '1995-02-02', 4, '2022-01-01 10:30:57', NULL, 1),
+(3, 'amit kumar', '2626', 123456789123, 'amit@gmail.com', 'Male', '2014-08-06', 6, '2022-01-01 10:30:57', NULL, 0),
+(4, 'rahul kumar', '990', 123456789123, 'rahul01@gmail.com', 'Male', '2001-02-03', 7, '2022-01-01 10:30:57', NULL, 1),
+(5, 'sanjeev singh', '122', 123456789123, 'sanjeev01@gmail.com', 'Male', '2002-02-03', 8, '2022-01-01 10:30:57', NULL, 1),
+(6, 'Shiv Gupta', '12345', 123456789123, 'shiv34534@gmail.com', 'Male', '2007-01-12', 9, '2022-01-01 15:19:40', NULL, 1),
+(7, 'Anita Maharjan', '12345', 123456789123, 'test@test.com', 'Female', '2015-02-11', 5, '2022-01-11 16:41:32', NULL, 1),
+(8, 'Sabina Maharjan', '6542', 123456789123, 'test@test.commmmmm', 'Female', '2022-02-06', 2, '2022-02-03 17:08:00', NULL, 1),
+(9, 'Sabina Maharjan', '3872', 123456789123, 'test@test', 'Female', '2022-02-09', 1, '2022-02-03 17:09:21', NULL, 1),
+(10, 'Lale Nath', '6465', 123456789123, 'test@adsf.com', 'Male', '2021-09-15', 7, '2022-02-03 17:14:57', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -365,15 +347,31 @@ INSERT INTO `tblsubjects` (`id`, `SubjectName`, `SubjectCode`, `fm_th`, `total_c
 (114, 'Miras Science', '6611', 75, 5, '2022-02-11 17:07:25', '2022-02-11 17:07:25'),
 (115, 'Horticulture (Fruit, Vegetable, Flower & Mushroom)', '2251', 0, 0, '2022-02-11 17:09:13', NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `UserName` varchar(100) DEFAULT NULL,
+  `Password` varchar(100) DEFAULT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `updationDate` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `UserName`, `Password`, `Name`, `Address`, `updationDate`) VALUES
+(1, 'admin', '$2y$10$SSZd5DHgul2C/doAS9SEW.h9VSVHfoZPMAhA58BKwj9bfJI4v2Uz2', '', '', '2022-01-01 10:30:57');
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tblclasses`
@@ -412,14 +410,14 @@ ALTER TABLE `tblsubjects`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `user`
 --
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for dumped tables
 --
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblclasses`
@@ -456,6 +454,12 @@ ALTER TABLE `tblsubjectcombination`
 --
 ALTER TABLE `tblsubjects`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
