@@ -210,7 +210,7 @@ class Result extends BaseController
         $classid = $this->request->getVar('class');
 
         $students= $this->resultmodel->getStudentforResult(null, $classid);
-
+        if(sizeof($students)>0){
         
         // create new PDF document
         $pdf = new RPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -243,15 +243,17 @@ class Result extends BaseController
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         // set font
         $pdf->SetFont('dejavusans', '', 10);
+        
         foreach($students as $std){
 
                 $pdf->AddPage();
                 $data['std'] = [0=>$std];
                 $data['results'] = $this->resultmodel->getResultByRollId($std['RollId'], $classid);
                 if(sizeof($data['results'])<1){
-                    return "<center><h3 style=\"color:red\">!!!!!Result Not Found!!!!!</h3></center>";
+                    $html =  "<center><h3 style=\"color:red\">!!!!!Result Not Found!!!!!</h3></center>";
+                }else{
+                    $html = view('pdf-result', $data);
                 }
-                $html = view('pdf-result', $data);
                 $pdf->SetXY(15, 50);
                 $pdf->writeHTML($html, true, false, true, false, '');
                 $linestyle = array('width' => 0.5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 2, 'phase' => 0, 'color' => array(0, 0, 0));
@@ -268,5 +270,9 @@ class Result extends BaseController
         $pdf->lastPage();
         $this->response->setContentType('application/pdf');
         $pdf->Output('result.pdf', 'I');
+    }else{
+        $html =  "<center><h3 style=\"color:red\">!!!!!Students Not Found in this class!!!!!</h3></center>";
+        echo $html;
+    }
     }
 }
