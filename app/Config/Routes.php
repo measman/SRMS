@@ -40,6 +40,7 @@ $routes->group('', ['filter' => 'AdminAuthCheck'], function ($routes) {
     $routes->add('create-class', 'Classes::index');
     $routes->add('manage-classes', 'Classes::manage');
     $routes->add('manage-students', 'Students::manage');
+    $routes->add('manage-studentsubject','StudentSubject::manage');
     $routes->add('manage-subjects', 'Subject::manage');
     $routes->add('manage-subjectcombination', 'SubjectCombination::manage');
     $routes->add('manage-results', 'Result::manage');
