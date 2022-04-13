@@ -656,6 +656,60 @@
             });
         });
 
+        $('#btn_submit_file_upload').click(function() {
+
+
+        // Get the selected file
+        var files = $('#upload_filename')[0].files;
+
+        if (files.length > 0) {
+            var fd = new FormData();
+            console.log(files[0]);
+            // Append data 
+            fd.append('upload_filename', files[0]);
+
+            // AJAX request 
+            $.ajax({
+                url: "<?= site_url('Students/import') ?>",
+                method: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+                    // if (response.success == 1) { // Uploaded successfully
+                    //     Toast.fire({
+                    //         icon: 'success',
+                    //         title: response.message
+                    //     });
+                        // console.log(response);
+                        //filedistTable.ajax.reload();
+                        // $('#filepreview').attr('src', response.filepath);
+                        // $('#filepreview').show();
+                        // $('#afterUpload').val(response.filename);
+
+                    // } else if (response.success == 2) { // File not uploaded
+                    //     Toast.fire({
+                    //         icon: 'error',
+                    //         title: response.message
+                    //     });
+                    // } else {
+                        // Display Error
+                        // $('#err_file').text(response.error);
+                        // $('#err_file').removeClass('d-none');
+                        // $('#err_file').addClass('d-block');
+                    // }
+                },
+                error: function(response) {
+                    console.log("error : " + JSON.stringify(response));
+                }
+            });
+        } else {
+            alert("Please select a file.");
+        }
+
+        });
         
        
 

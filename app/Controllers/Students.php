@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use \App\Models\StudentsModel;
 use \App\Models\ClassesModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Students extends BaseController
 {
@@ -130,6 +132,89 @@ class Students extends BaseController
             $student_data = $this->studentsmodel->where('StudentId',$this->request->getVar('id'))->set('Status',$this->request->getVar('status'))->update();
             echo json_encode(['message' => 'Status Changed Successfully']);
         }
+    }
+
+    public function import()
+    {
+
+        $data = array();
+
+        ## Validation
+        $validation = \Config\Services::validation();
+        $input = $validation->setRules([
+            'upload_filename' => 'uploaded[upload_filename]|max_size[upload_filename,2048]|ext_in[upload_filename,csv,xlsx,xls],'
+            //'project_id' => 'required'
+        ]);
+        if ($validation->withRequest($this->request)->run() == FALSE) {
+            $data['success'] = 0;
+            $data['error'] = $validation->getError('upload_filename'); // Error response
+        } else {
+            if ($file = $this->request->getFile('upload_filename')) {
+                if ($file->isValid() && !$file->hasMoved()) {
+                    // Get file name and extension
+                    $name = $file->getClientName();
+                    $ext = $file->getClientExtension();
+                    // Get random file name
+                    $newName = explode(".", $name)[0] . "_" . $file->getRandomName();
+                    // Store file in public/uploads/ folder
+                    $file->move('../public/uploads', $newName);
+                    // File path to display preview
+                    $filepath = base_url() . "/uploads/" . $newName;
+                    // Response
+                    $data['success'] = 1;
+                    // $data['message'] = 'Uploaded Successfully!';
+                    $data['filepath'] = $filepath;
+                    $data['filename'] = $newName;
+                    $data['extension'] = $ext;
+                    if ('csv' == $ext) {
+                        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+                    } elseif ('xls' == $ext) {
+                        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
+                    } else {
+                        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+                    }
+                    $spreadsheet = $reader->load("../public/uploads/" . $newName);
+                    $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+                    $project_id = $this->request->getVar('project_id');
+
+                    $flag = true;
+                    $i = 0;
+                    foreach ($sheetData as $row) {
+                        if ($flag) {
+                            $flag = false;
+                            continue;
+                        }
+                        $insertdata[$i]['StudentName'] = $row[0];
+                        $insertdata[$i]['RollId'] = $row[1];
+                        $insertdata[$i]['RegNo'] = $row[2];
+                        $insertdata[$i]['StudentEmail'] = $row[3];
+                        $insertdata[$i]['Gender'] = $row[4];
+                        $insertdata[$i]['DOB'] = $row[5];
+                        $insertdata[$i]['ClassId'] = $row[6];
+                        $insertdata[$i]['RegDate'] = $row[7];
+                        $i++;
+                    }
+                    if ($this->studentsmodel->insertBatch($insertdata)) {
+                        $data['message'] =  'Added Succesfully.';
+                    } else {
+                        $data['message'] =  'Sorry, Saving Data Failed';
+                    }
+                    $data['filedata'] = $insertdata;
+                } else {
+                    // Response
+                    $data['success'] = 2;
+                    $data['message'] = 'File not uploaded.';
+                }
+            } else {
+                // Response
+                $data['success'] = 2;
+                $data['message'] = 'File not uploaded.';
+            }
+        }
+        return $this->response->setJSON($data);
+
+        
     }
     
 }   

@@ -33,7 +33,17 @@
                 Create Student
             </button>
             <label class="btn btn-outline-primary" for="btn-check-outlined"></label>
+            <table align="left" cellpadding="5">
+                        <tr>
+                            <td>File <font color=blue>(Upload .csv or .xlsx file)</font> :</td>
+                            <td><input type="file" size="40px" name="upload_filename" id="upload_filename" /></td>
+                            <td colspan="5" align="center">
+                                <input type="submit" id="btn_submit_file_upload" value="Import File" />
+                            </td>
+                        </tr>
+                    </table>
         </p>
+        
         <div class="collapse" id="collapseExample">
         
             <div class="row">
