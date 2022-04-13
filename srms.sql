@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2022 at 06:48 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Apr 10, 2022 at 11:26 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -157,6 +157,48 @@ INSERT INTO `tblstudents` (`StudentId`, `StudentName`, `RollId`, `RegNo`, `Stude
 (8, 'Sabina Maharjan', '6542', 123456789123, 'test@test.commmmmm', 'Female', '2022-02-06', 2, '2022-02-03 17:08:00', NULL, 1),
 (9, 'Sabina Maharjan', '3872', 123456789123, 'test@test', 'Female', '2022-02-09', 1, '2022-02-03 17:09:21', NULL, 1),
 (10, 'Lale Nath', '6465', 123456789123, 'test@adsf.com', 'Male', '2021-09-15', 7, '2022-02-03 17:14:57', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblstudentsubject`
+--
+
+CREATE TABLE `tblstudentsubject` (
+  `StudentId` int(11) NOT NULL,
+  `RollId` varchar(100) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `SubjectId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tblstudentsubject`
+--
+
+INSERT INTO `tblstudentsubject` (`StudentId`, `RollId`, `ClassId`, `SubjectId`) VALUES
+(1, '', 1, 2),
+(1, '', 1, 1),
+(1, '', 1, 5),
+(1, '', 1, 4),
+(2, '', 4, 2),
+(2, '', 4, 1),
+(2, '', 4, 5),
+(2, '', 4, 4),
+(4, '', 7, 2),
+(4, '', 7, 1),
+(4, '', 7, 5),
+(4, '', 7, 7),
+(5, '', 8, 2),
+(5, '', 8, 1),
+(5, '', 8, 5),
+(5, '', 8, 4),
+(6, '', 9, 1),
+(6, '', 9, 2),
+(6, '', 9, 8),
+(6, '', 9, 8),
+(7, '', 5, 1),
+(7, '', 5, 2),
+(7, '', 5, 6);
 
 -- --------------------------------------------------------
 
