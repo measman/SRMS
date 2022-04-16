@@ -92,6 +92,7 @@
                                             foreach ($subjects as $cnt) {
                                                 print "<option value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</option>";
                                             }
+                                            unset($cnt);
                                         }
                                         ?>
                                         </select>
@@ -124,7 +125,7 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h5>View Subjects Combinations Info</h5>
+                            <h5>View Students chosen Subjects</h5>
                         </div>
                     </div>
 
@@ -156,20 +157,34 @@
                                 <?php
                             if (isset($content) && isset($students)) :
                                 $i = 1;
-//                                foreach ($students as $stu) :
-                                    foreach ($content as $cnt) :
+//                                    echo "<pre>";
+//                                    print_r($content);
+//                                    echo "</pre>";
+                                    foreach ($content as $key => $value){
+                                        $content_grouped[$value['StudentId']][$key] = $value;
+                                    }
+//                                    echo "<pre>";
+//                                    print_r($content_grouped);
+//                                    echo "</pre>";
+                                foreach ($content_grouped as $key => $value):
+                                    echo "<pre>";
+                                    // var_dump($value);
+                                    // echo gettype($value);
+                                    // echo gettype($value[0]);
+                                    highlight_string(print_r($value, TRUE));
+                                    // var_dump($value[0]);
+                                    echo "</pre>";
                             ?>
-<!--                                --><?php //print_r($content)?>
                                 <tr>
                                     <td><?php echo htmlentities($i);?></td>
-                                    <td><?php echo htmlentities($cnt['StudentName'])?></td>
-                                    <td><?php echo htmlentities($cnt['ClassName']);?>&nbsp; Section-<?php echo htmlentities($cnt['Section']);?></td>
-                                    <td><?php echo htmlentities($cnt['SubjectName']);?></td>
+                                    <td><?php echo htmlentities($students[$key]['StudentName']) ?></td>
+<!--                                    <td>--><?php //echo htmlentities($cnt['ClassName']);?><!--&nbsp; Section---><?php //echo htmlentities($cnt['Section']);?><!--</td>-->
+<!--                                    <td>--><?php //echo htmlentities($cnt['SubjectName']);?><!--</td>-->
 <!--                                    <td><input type="checkbox" --><?//=($cnt['status']==1)?'checked':''?><!-- class="status-sbjcmb" data-id="--><?//=$cnt['id']?><!--" title="Change Status" />-->
 <!--                                                                </td>-->
                                     <td>
-                                        <button class="btn btn-info subjectcombination-edit"
-                                            data-id="<?php echo htmlentities($cnt['id']);?>"><i class="fa fa-edit"
+<!--                                        <button class="btn btn-info subjectcombination-edit"-->
+<!--                                            data-id="--><?php //echo htmlentities($cnt['id']);?><!--"><i class="fa fa-edit"-->
                                                 title="Edit Record"></i> </button>
 
                                     </td>
