@@ -1,4 +1,8 @@
-<?php $session = \Config\Services::session(); ?>
+<?php
+
+use App\Controllers\Students;
+
+ $session = \Config\Services::session(); ?>
 <?= $this->extend('templates/admin_template') ?>
 <?= $this->section('content') ?>
 
@@ -156,15 +160,28 @@
                                 <?php
                             if (isset($content) && isset($students)) :
                                 $i = 1;
-//                                foreach ($students as $stu) :
-                                    foreach ($content as $cnt) :
+                                $currentstudent = 0;
+                                $currentsubjects = array();
+                                // unset($currentstudent); 
+                                foreach ($content as $cnt) :
                             ?>
 <!--                                --><?php //print_r($content)?>
+                                <?php 
+                                    // echo "<pre>";
+                                    // print_r($cnt);
+                                    // echo "</pre>";
+                                ?>
+                                <?php 
+                                ?>
+                                <?php 
+                                    if($cnt['StudentId'] !=$currentstudent) {
+                                        $currentsubjects = array($cnt['SubjectName']);
+                                ?>
                                 <tr>
                                     <td><?php echo htmlentities($i);?></td>
                                     <td><?php echo htmlentities($cnt['StudentName'])?></td>
                                     <td><?php echo htmlentities($cnt['ClassName']);?>&nbsp; Section-<?php echo htmlentities($cnt['Section']);?></td>
-                                    <td><?php echo htmlentities($cnt['SubjectName']);?></td>
+                                    <td class="SubjectName"><?php echo htmlentities($cnt['SubjectName']);?></td>
 <!--                                    <td><input type="checkbox" --><?//=($cnt['status']==1)?'checked':''?><!-- class="status-sbjcmb" data-id="--><?//=$cnt['id']?><!--" title="Change Status" />-->
 <!--                                                                </td>-->
                                     <td>
@@ -174,6 +191,26 @@
 
                                     </td>
                                 </tr>
+                                <?php
+                                    $currentstudent = $cnt['StudentId'];
+                                }
+                                else if($cnt['StudentId'] ==$currentstudent) {
+                                    array_push($currentsubjects,$cnt['SubjectName']);
+                                    ?>
+                                    <script>
+                                        console.log("<?php echo htmlentities($cnt['SubjectName']);?>");
+                                        var subjectColumn = document.getElementsByClassName("SubjectName");
+                                        // console.log(subjectColumn.length);
+                                        var last = subjectColumn[subjectColumn.length- 1];
+                                        last.append("<?php echo htmlentities($cnt['SubjectName']);?>");
+                                        console.log(last);
+                                    </script>
+                                    <?php
+                                    // print_r($currentsubjects);
+
+                                    
+                                }
+                                ?>
                                 <?php
                                     $i++;
                                 endforeach;
