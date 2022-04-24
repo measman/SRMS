@@ -202,7 +202,10 @@ use App\Controllers\Students;
                                         var subjectColumn = document.getElementsByClassName("SubjectName");
                                         // console.log(subjectColumn.length);
                                         var last = subjectColumn[subjectColumn.length- 1];
-                                        last.append("<?php echo htmlentities($cnt['SubjectName']);?>");
+                                        var t = document.createElement('div');
+                                        last.append(t);
+                                        t.append("<?php echo(htmlentities($cnt['SubjectName']));?>");
+                                        
                                         console.log(last);
                                     </script>
                                     <?php
