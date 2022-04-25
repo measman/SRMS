@@ -80,9 +80,27 @@ use App\Controllers\Students;
                                                 print "<option value='" . $cnt['id'] . "'>" . $cnt['ClassName'] . " Section-".$cnt['Section']."</option>";
                                             }
                                         }
-                                        ?>
-                                        </select>
-                                        <span id="class_error" class="text-danger"></span>
+                                    ?>
+                                    </select>
+                                    <span id="class_error" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Student</label>
+                                    <div class="col-sm-10">
+                                    <select name="class" class="form-control" id="default" required="required">
+                                            <option value="">Select Student</option>
+                                            <?php
+                                        if (isset($students)) {
+                                            foreach ($students as $cnt) {
+                                                print "<option value='" . $cnt['StudentId'] . "'>" . $cnt['StudentName'] ."</option>";
+                                            }
+                                        }
+                                    ?>
+                                    </select>
+                                    <span id="class_error" class="text-danger"></span>
                                     </div>
                                 </div>
 
@@ -90,11 +108,12 @@ use App\Controllers\Students;
                                     <label for="default" class="col-sm-2 control-label">Subject</label>
                                     <div class="col-sm-10">
                                     <select name="subject" class="form-control" id="default" required="required">
-                                            <option value="">Select Class</option>
+                                            <option value="">Select Subjects</option>
                                             <?php
                                         if (isset($subjects)) {
                                             foreach ($subjects as $cnt) {
-                                                print "<option value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</option>";
+                                                // print "<option value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</option>";
+                                                print "<input type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input></br>";
                                             }
                                         }
                                         ?>
