@@ -67,7 +67,7 @@ use App\Controllers\Students;
 
                         <div class="panel-body">
 
-                            <form class="form-horizontal" method="post" id="subjectcombination_form">
+                            <form class="form-horizontal" method="post" id="studentsubjectcombination_form">
 
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Class</label>
@@ -90,7 +90,7 @@ use App\Controllers\Students;
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Student</label>
                                     <div class="col-sm-10">
-                                    <select name="class" class="form-control" id="default" required="required">
+                                    <select name="Student" class="form-control" id="default" required="required">
                                             <option value="">Select Student</option>
                                             <?php
                                         if (isset($students)) {
@@ -107,13 +107,15 @@ use App\Controllers\Students;
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Subject</label>
                                     <div class="col-sm-10">
-                                    <select name="subject" class="form-control" id="default" required="required">
-                                            <option value="">Select Subjects</option>
+                                    <!-- <select name="subject" class="form-control" id="default" required="required"> -->
+                                            <!-- <option value=""> -->
+                                                Select Subjects
+                                            <!-- </option> -->
                                             <?php
                                         if (isset($subjects)) {
                                             foreach ($subjects as $cnt) {
                                                 // print "<option value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</option>";
-                                                print "<input type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input></br>";
+                                                print "</br><input type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>";
                                             }
                                         }
                                         ?>
@@ -147,13 +149,13 @@ use App\Controllers\Students;
                 <div class="panel">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <h5>View Subjects Combinations Info</h5>
+                            <h5>View Student Subjects Combinations Info</h5>
                         </div>
                     </div>
 
                     <div class="panel-body p-20">
 
-                        <table id="subjectcombinationTable" class="display table table-striped table-bordered"
+                        <table id="studentsubjectcombinationTable" class="display table table-striped table-bordered"
                             cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -204,7 +206,7 @@ use App\Controllers\Students;
 <!--                                    <td><input type="checkbox" --><?//=($cnt['status']==1)?'checked':''?><!-- class="status-sbjcmb" data-id="--><?//=$cnt['id']?><!--" title="Change Status" />-->
 <!--                                                                </td>-->
                                     <td>
-                                        <button class="btn btn-info subjectcombination-edit"
+                                        <button class="btn btn-info studentsubjectcombination-edit"
                                             data-id="<?php echo htmlentities($cnt['id']);?>"><i class="fa fa-edit"
                                                 title="Edit Record"></i> </button>
 
