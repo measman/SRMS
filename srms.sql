@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2022 at 11:26 AM
+-- Generation Time: Apr 25, 2022 at 09:18 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -168,37 +168,38 @@ CREATE TABLE `tblstudentsubject` (
   `StudentId` int(11) NOT NULL,
   `RollId` varchar(100) NOT NULL,
   `ClassId` int(11) NOT NULL,
-  `SubjectId` int(11) NOT NULL
+  `SubjectId` int(11) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tblstudentsubject`
 --
 
-INSERT INTO `tblstudentsubject` (`StudentId`, `RollId`, `ClassId`, `SubjectId`) VALUES
-(1, '', 1, 2),
-(1, '', 1, 1),
-(1, '', 1, 5),
-(1, '', 1, 4),
-(2, '', 4, 2),
-(2, '', 4, 1),
-(2, '', 4, 5),
-(2, '', 4, 4),
-(4, '', 7, 2),
-(4, '', 7, 1),
-(4, '', 7, 5),
-(4, '', 7, 7),
-(5, '', 8, 2),
-(5, '', 8, 1),
-(5, '', 8, 5),
-(5, '', 8, 4),
-(6, '', 9, 1),
-(6, '', 9, 2),
-(6, '', 9, 8),
-(6, '', 9, 8),
-(7, '', 5, 1),
-(7, '', 5, 2),
-(7, '', 5, 6);
+INSERT INTO `tblstudentsubject` (`StudentId`, `RollId`, `ClassId`, `SubjectId`, `id`) VALUES
+(1, '', 1, 2, 1),
+(1, '', 1, 1, 2),
+(1, '', 1, 5, 3),
+(1, '', 1, 4, 4),
+(2, '', 4, 2, 5),
+(2, '', 4, 1, 6),
+(2, '', 4, 5, 7),
+(2, '', 4, 4, 8),
+(4, '', 7, 2, 9),
+(4, '', 7, 1, 10),
+(4, '', 7, 5, 11),
+(4, '', 7, 7, 12),
+(5, '', 8, 2, 13),
+(5, '', 8, 1, 14),
+(5, '', 8, 5, 15),
+(5, '', 8, 4, 16),
+(6, '', 9, 1, 17),
+(6, '', 9, 2, 18),
+(6, '', 9, 8, 19),
+(6, '', 9, 8, 20),
+(7, '', 5, 1, 21),
+(7, '', 5, 2, 22),
+(7, '', 5, 6, 23);
 
 -- --------------------------------------------------------
 
@@ -440,6 +441,12 @@ ALTER TABLE `tblstudents`
   ADD PRIMARY KEY (`StudentId`);
 
 --
+-- Indexes for table `tblstudentsubject`
+--
+ALTER TABLE `tblstudentsubject`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tblsubjectcombination`
 --
 ALTER TABLE `tblsubjectcombination`
@@ -484,6 +491,12 @@ ALTER TABLE `tblresult`
 --
 ALTER TABLE `tblstudents`
   MODIFY `StudentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tblstudentsubject`
+--
+ALTER TABLE `tblstudentsubject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tblsubjectcombination`
