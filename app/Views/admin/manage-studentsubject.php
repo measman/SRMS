@@ -90,7 +90,7 @@ use App\Controllers\Students;
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Student</label>
                                     <div class="col-sm-10">
-                                    <select name="Student" class="form-control" id="default" required="required">
+                                    <select name="student" class="form-control" id="default" required="required">
                                             <option value="">Select Student</option>
                                             <?php
                                         if (isset($students)) {
@@ -115,11 +115,11 @@ use App\Controllers\Students;
                                         if (isset($subjects)) {
                                             foreach ($subjects as $cnt) {
                                                 // print "<option value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</option>";
-                                                print "</br><input type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>";
+                                                print "</br><input name='subjects[]' type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>";
                                             }
                                         }
                                         ?>
-                                        </select>
+                                        <!-- </select> -->
                                         <span id="subject_error" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -163,7 +163,7 @@ use App\Controllers\Students;
                                     <th>Student</th>
                                     <th>Class and Section</th>
                                     <th>Subject </th>
-                                    <th>Status</th>
+                                    
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -173,7 +173,7 @@ use App\Controllers\Students;
                                     <th>Student</th>
                                     <th>Class and Section</th>
                                     <th>Subjects </th>
-                                    <th>Status</th>
+                                    
                                     <th>Action</th>
                                 </tr>
                             </tfoot>

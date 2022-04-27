@@ -19,7 +19,7 @@ class StudentSubject extends BaseController
         $this->subjectmodel = new SubjectModel();
         $this->classesmodel = new ClassesModel();
         $this->studentsmodel = new StudentsModel();
-        $this->studentsubjectmodel = new studentsubjectmodel();
+        $this->studentsubjectmodel = new StudentSubjectModel();
     }
     
     public function manage()
@@ -36,6 +36,7 @@ class StudentSubject extends BaseController
     {
         $class_error = '';
         $subject_error = '';
+        $student_error = '';
         
         $error = 'no';
         $success = 'no';
@@ -43,28 +44,33 @@ class StudentSubject extends BaseController
         if ($this->request->getVar('action')) {
             $rules = [
                 'class' => 'required',
-                'subject' => 'required'
+                'student' => 'required'
             ];
             if ($this->validate($rules)) {
                 $success = 'yes';
 
                 if ($this->request->getVar('action')) {
                     $class = $this->request->getVar('class', FILTER_SANITIZE_STRING);
-                    $subject = $this->request->getVar('subject', FILTER_SANITIZE_STRING);
+                    $student = $this->request->getVar('student', FILTER_SANITIZE_STRING);
+                    $subjects = $this->request->getVar('subjects');
+                    foreach($subjects as $sub){
 
-                    $insert_data = array(
-                        'ClassId' => $class,
-                        'SubjectId' => $subject
-                    );
-                    if ($this->request->getVar('action') == 'Edit') {
-                        $id = $this->request->getVar('hidden_id');
-                        $insert_data['id'] = $id;
-                    }
+                    
+                        $insert_data = array(
+                            'ClassId' => $class,
+                            'SubjectId' => $sub,
+                            'StudentId' => $student
+                        );
+                        // if ($this->request->getVar('action') == 'Edit') {
+                        //     $id = $this->request->getVar('hidden_id');
+                        //     $insert_data['id'] = $id;
+                        // }
 
-                    if ($this->subjectcombinationmodel->save($insert_data)) {
-                        $message = 'New Student Added Succesfully.';
-                    } else {
-                        $message = 'Sorry, New Student Adding Failed.';
+                        if ($this->studentsubjectmodel->save($insert_data)) {
+                            $message = 'New Student Added Succesfully.';
+                        } else {
+                            $message = 'Sorry, New Student Adding Failed.';
+                        }
                     }
                 }
             } else {
