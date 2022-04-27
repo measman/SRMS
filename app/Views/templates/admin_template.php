@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/css/icheck/skins/line/blue.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/css/icheck/skins/line/red.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/css/icheck/skins/line/green.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/css/select2/select2.min.css" media="screen">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/css/main.css" media="screen">
     <script src="<?= base_url(); ?>/js/modernizr/modernizr.min.js"></script>
 </head>
@@ -212,12 +214,13 @@
     <script src="<?= base_url(); ?>/js/icheck/icheck.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-
+    <script src="<?= base_url(); ?>/js/select2/select2.min.js"></script>
     <!-- ========== THEME JS ========== -->
     <script src="<?= base_url(); ?>/js/main.js"></script>
     <script src="<?= base_url(); ?>/js/production-chart.js"></script>
     <script src="<?= base_url(); ?>/js/traffic-chart.js"></script>
     <script src="<?= base_url(); ?>/js/task-list.js"></script>
+    
     <script>
     $(function() {
 
@@ -226,7 +229,9 @@
         $("#subjectTable").DataTable();
         $("#subjectcombinationTable").DataTable();
         $("#resultTable").DataTable();
+        var ssct = $("#studentsubjectcombinationTable").DataTable();
         
+        $("#slcsubjectlist").select2();
         
         $("input.status-student").change(function() {
             var std_id = $(this).data('id');
@@ -646,19 +651,18 @@
                     $('#submit_button').attr('disabled', 'disabled');
                 },
                 success: function(data) {
-                    console.log(data);
-                    // $('#submit_button').text('Add');
-                    // $('#submit_button').attr('disabled', false);
-                    // if (data.error == 'yes') {
-                    //     $('#classid_error').text(data
-                    //         .classid_error);
-                    //     $('#studentid_error').text(data
-                    //         .studentid_error);
-                    // } else {
-                    //     toastr["success"](data.message);
-                    //     $('#resultTable').load(location.href +
-                    //         " #resultTable")
-                    // }
+                    // console.log(data);
+                    $('#submit_button').text('Add');
+                    $('#submit_button').attr('disabled', false);
+                    if (data.error == 'yes') {
+                        $('#classid_error').text(data
+                            .classid_error);
+                        $('#studentid_error').text(data
+                            .studentid_error);
+                    } else {
+                        toastr["success"](data.message);
+                        ssct.ajax.reload();
+                    }
                 }
             });
         });
