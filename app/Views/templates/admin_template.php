@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="<?= base_url(); ?>/css/icheck/skins/line/red.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/css/icheck/skins/line/green.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/css/select2/select2.min.css" media="screen">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>/css/main.css" media="screen">
     <script src="<?= base_url(); ?>/js/modernizr/modernizr.min.js"></script>
 </head>

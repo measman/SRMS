@@ -105,11 +105,11 @@ use App\Controllers\Students;
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="default" class="col-sm-2 control-label">Subject</label>
+                                    <label for="subjects" class="col-sm-2 control-label">Subjects</label>
                                     <div class="col-sm-10">
                                         
 
-                                            <select class="form-control " multiple="multiple" data-placeholder="Select Subjects"
+                                            <select class="form-control select2" multiple="multiple" data-placeholder="Select Subjects"
                                                 data-selection-css-class="select2-purple" name="subjects[]" id="slcsubjectlist">
                                                 
                                                 <?php
@@ -195,25 +195,17 @@ use App\Controllers\Students;
                                 // unset($currentstudent); 
                                 foreach ($content as $cnt) :
                             ?>
-<!--                                --><?php //print_r($content)?>
+                            
                                 <?php 
-                                    // echo "<pre>";
-                                    // print_r($cnt);
-                                    // echo "</pre>";
-                                ?>
-                                <?php 
-                                ?>
-                                <?php 
-                                    if($cnt['StudentId'] !=$currentstudent) {
-                                        $currentsubjects = array($cnt['SubjectName']);
+                                    //if($cnt['StudentId'] !=$currentstudent) {
+                                        //$currentsubjects = array($cnt['SubjectName']);
                                 ?>
                                 <tr>
                                     <td><?php echo htmlentities($i);?></td>
                                     <td><?php echo htmlentities($cnt['StudentName'])?></td>
                                     <td><?php echo htmlentities($cnt['ClassName']);?>&nbsp; Section-<?php echo htmlentities($cnt['Section']);?></td>
                                     <td class="SubjectName"><?php echo htmlentities($cnt['SubjectName']);?></td>
-<!--                                    <td><input type="checkbox" --><?//=($cnt['status']==1)?'checked':''?><!-- class="status-sbjcmb" data-id="--><?//=$cnt['id']?><!--" title="Change Status" />-->
-<!--                                                                </td>-->
+
                                     <td>
                                         <button class="btn btn-info studentsubjectcombination-edit"
                                             data-id="<?php echo htmlentities($cnt['id']);?>"><i class="fa fa-edit"
@@ -222,9 +214,9 @@ use App\Controllers\Students;
                                     </td>
                                 </tr>
                                 <?php
-                                    $currentstudent = $cnt['StudentId'];
-                                }
-                                else if($cnt['StudentId'] ==$currentstudent) {
+                                    //$currentstudent = $cnt['StudentId'];
+                               // }
+                                /*else if($cnt['StudentId'] ==$currentstudent) {
                                     array_push($currentsubjects,$cnt['SubjectName']);
                                     ?>
                                     <script>
@@ -237,12 +229,12 @@ use App\Controllers\Students;
                                         t.append("<?php echo(htmlentities($cnt['SubjectName']));?>");
                                         
                                         console.log(last);
-                                    </script>
-                                    <?php
+                                    </script>*/
+                                    //<?php
                                     // print_r($currentsubjects);
 
                                     
-                                }
+                                //}
                                 ?>
                                 <?php
                                     $i++;
