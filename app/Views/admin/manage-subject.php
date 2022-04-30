@@ -170,7 +170,7 @@
                                     <td><?php echo htmlentities($cnt['total_cr_hr']);?></td>
                                     <td><?php echo htmlentities($cnt['Creationdate']);?>
                                     </td>
-                                    <td><?php echo htmlentities($cnt['UpdationDate']);?></td>
+                                    <td><?php echo $cnt['UpdationDate'];?></td>
                                     
                                     <td>
                                         <button class="btn btn-info subject-edit"

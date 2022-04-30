@@ -73,7 +73,7 @@
                                             <?php
                                         if (isset($classes)) {
                                             foreach ($classes as $cnt) {
-                                                print "<option value='" . $cnt['id'] . "'>" . $cnt['ClassName'] . " Section-".$cnt['Section']."</option>";
+                                                print "<option value='" . $cnt['id'] . "'>" . $cnt['ClassName'] . " (".$cnt['Section'].")</option>";
                                             }
                                         }
                                         ?>

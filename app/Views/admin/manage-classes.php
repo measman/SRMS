@@ -83,7 +83,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group has-success">
-                                    <label for="success" class="control-label">Section</label>
+                                    <label for="success" class="control-label">Section/Faculties</label>
                                     <div class="">
                                         <input type="text" name="section" class="form-control" 
                                             id="success">
@@ -149,7 +149,7 @@
                                     <th>#</th>
                                     <th>Class Name</th>
                                     <th>Class Name Numeric</th>
-                                    <th>Section</th>
+                                    <th>Section/Faculties</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -159,7 +159,7 @@
                                     <th>#</th>
                                     <th>Class Name</th>
                                     <th>Class Name Numeric</th>
-                                    <th>Section</th>
+                                    <th>Section/Faculties</th>
                                     <th>Creation Date</th>
                                     <th>Action</th>
                                 </tr>

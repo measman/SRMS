@@ -206,7 +206,7 @@
                                     <td><?php echo htmlentities($cnt['RollId']);?></td>
                                     <td><?php echo htmlentities($cnt['ClassName']);?>(<?php echo htmlentities($cnt['Section']);?>)
                                     </td>
-                                    <td><?php echo htmlentities($cnt['RegDate']);?></td>
+                                    <td><?php echo $cnt['RegDate'];?></td>
                                     <td><input type="checkbox" <?=($cnt['Status']==1)?'checked':''?> class="status-student" data-id="<?=$cnt['StudentId']?>" title="Change Status" />
                                                                 </td>
                                     <td>

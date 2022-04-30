@@ -76,22 +76,22 @@
             foreach ($results as $result) :
         ?>
         <tr>
-            <td align="center" style="border-right-style:none;" ><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="left" style="border-right-style:none" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (TH)</td>
+            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;" ><?php echo htmlentities($result['SubjectCode']); ?></td>
+            <td align="left" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (TH)</td>
             <?php $actualTHCreditHour = actualCreditHour($result['fm_th'],$result['total_cr_hr']);?>
-            <td align="center" style="border-right-style:none"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
-            <td align="center" style="border-right-style:none"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
-            <td align="center" style="border-right-style:none"><?php echo getGrade($result['marks'],$result['fm_th']); ?></td>
-            <td align="center" rowspan="2" style="border-right-style:none"><?php echo getGrade($result['marks']+$result['in_marks'],100); ?></td>
-            <td align="center" colspan="2" style="border-right-style:none"></td>
+            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
+            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
+            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['marks'],$result['fm_th']); ?></td>
+            <td align="center" rowspan="2" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['marks']+$result['in_marks'],100); ?></td>
+            <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>
         <tr>
-            <td align="center" style="border-right-style:none"><?php echo htmlentities($result['SubjectCode']); ?></td>
-            <td align="left" style="border-right-style:none" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities($result['SubjectCode']); ?></td>
+            <td align="left" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
             <?php $actualINCreditHour = actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
-            <td align="center" style="border-right-style:none"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
-            <td align="center" style="border-right-style:none"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
-            <td align="center" style="border-right-style:none"><?php echo getGrade($result['in_marks'],100-$result['fm_th']); ?></td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['in_marks'],100-$result['fm_th']); ?></td>
             <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>
         <?php

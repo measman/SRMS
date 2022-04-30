@@ -50,11 +50,11 @@ class Students extends BaseController
                 $success = 'yes';
 
                 if ($this->request->getVar('action')) {
-                    $fullanme = $this->request->getVar('fullanme', FILTER_SANITIZE_STRING);
+                    $fullanme = $this->request->getVar('fullanme');
                     $rollid = $this->request->getVar('rollid');
-                    $gender = $this->request->getVar('gender', FILTER_SANITIZE_STRING);
-                    $emailid = $this->request->getVar('emailid', FILTER_SANITIZE_STRING);
-                    $class = $this->request->getVar('class', FILTER_SANITIZE_STRING);
+                    $gender = $this->request->getVar('gender');
+                    $emailid = $this->request->getVar('emailid');
+                    $class = $this->request->getVar('class');
                     $dob = $this->request->getVar('dob');
                     
 

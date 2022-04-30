@@ -40,9 +40,9 @@ class Classes extends BaseController
                 $success = 'yes';
 
                 if ($this->request->getVar('action')) {
-                    $classname = $this->request->getVar('classname', FILTER_SANITIZE_STRING);
+                    $classname = $this->request->getVar('classname');
                 $classnamenumeric = $this->request->getVar('classnamenumeric');
-                $section = $this->request->getVar('section', FILTER_SANITIZE_STRING);
+                $section = $this->request->getVar('section');
                     
 
                     $insert_data = array(

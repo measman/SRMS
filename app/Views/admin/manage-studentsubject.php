@@ -197,8 +197,8 @@ use App\Controllers\Students;
                             ?>
                             
                                 <?php 
-                                    //if($cnt['StudentId'] !=$currentstudent) {
-                                        //$currentsubjects = array($cnt['SubjectName']);
+                                    if($cnt['StudentId'] !=$currentstudent) {
+                                        $currentsubjects = array($cnt['SubjectName']);
                                 ?>
                                 <tr>
                                     <td><?php echo htmlentities($i);?></td>
@@ -214,13 +214,13 @@ use App\Controllers\Students;
                                     </td>
                                 </tr>
                                 <?php
-                                    //$currentstudent = $cnt['StudentId'];
-                               // }
-                                /*else if($cnt['StudentId'] ==$currentstudent) {
+                                    $currentstudent = $cnt['StudentId'];
+                               }
+                                else if($cnt['StudentId'] ==$currentstudent) {
                                     array_push($currentsubjects,$cnt['SubjectName']);
                                     ?>
                                     <script>
-                                        console.log("<?php echo htmlentities($cnt['SubjectName']);?>");
+                                        // console.log("<?php echo htmlentities($cnt['SubjectName']);?>");
                                         var subjectColumn = document.getElementsByClassName("SubjectName");
                                         // console.log(subjectColumn.length);
                                         var last = subjectColumn[subjectColumn.length- 1];
@@ -229,12 +229,12 @@ use App\Controllers\Students;
                                         t.append("<?php echo(htmlentities($cnt['SubjectName']));?>");
                                         
                                         console.log(last);
-                                    </script>*/
-                                    //<?php
+                                    </script>
+                                    <?php
                                     // print_r($currentsubjects);
 
                                     
-                                //}
+                                }
                                 ?>
                                 <?php
                                     $i++;
