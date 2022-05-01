@@ -162,10 +162,11 @@
                                     $i = 1;
                                     foreach ($content as $cnt) :
                                 ?>
+                                <!-- <pre><?php print_r($content)?></pre> -->
                                         <tr>
                                             <td><?php echo htmlentities($i); ?></td>
                                             <td><?php echo htmlentities($cnt['ClassName']); ?>&nbsp; Section-<?php echo htmlentities($cnt['Section']); ?></td>
-                                            <td><?php echo htmlentities($cnt['SubjectName']); ?></td>
+                                            <td><?php echo '['.htmlentities($cnt['scode']).'] '. htmlentities($cnt['SubjectName']); ?></td>
                                             <td><input type="checkbox" <?= ($cnt['status'] == 1) ? 'checked' : '' ?> class="status-sbjcmb" data-id="<?= $cnt['id'] ?>" title="Change Status" />
                                             </td>
                                             <td>
