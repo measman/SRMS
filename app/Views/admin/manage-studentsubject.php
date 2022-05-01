@@ -106,30 +106,19 @@ use App\Controllers\Students;
 
                                 <div class="form-group">
                                     <label for="subjects" class="col-sm-2 control-label">Subjects</label>
-                                    <div class="col-sm-10">
-                                        
-
-                                            <select class="form-control select2" multiple="multiple" data-placeholder="Select Subjects"
-                                                data-selection-css-class="select2-purple" name="subjects[]" id="slcsubjectlist">
-                                                
-                                                <?php
-                                                    if (isset($subjects)) {
-                                                        foreach ($subjects as $cnt) {
-                                                            print "<option value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</option>";
-                                                            // print "</br><input name='subjects[]' type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>";
-                                                        }
+                                    <div class="container">
+                                        <div id="SubjectsChoice" class="row">
+                                            <?php
+                                                if (isset($subjects)) {
+                                                    foreach ($subjects as $cnt) {
+                                                        print '<div  class="col-sm-4">'." <input name='subjects[]' type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>"."</div>";
                                                     }
-                                                ?>
-
-                                            </select>
-                                            
-                                    <!-- <select name="subject" class="form-control" id="default" required="required"> -->
-                                            <!-- <option value=""> -->
-                                                <!-- Select Subjects -->
-                                            <!-- </option> -->
-                                            
-                                        <!-- </select> -->
-                                        <span id="subject_error" class="text-danger"></span>
+                                                }
+                                            ?>
+                                            </div>
+                                            <span id="subject_error" class="text-danger"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
