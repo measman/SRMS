@@ -30,8 +30,7 @@
                             SRMS | Admin
                         </a>
                         <span class="small-nav-handle hidden-sm hidden-xs"><i class="fa fa-outdent"></i></span>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                            data-target="#navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <i class="fa fa-ellipsis-v"></i>
                         </button>
@@ -43,10 +42,8 @@
 
                     <div class="collapse navbar-collapse" id="navbar-collapse-1">
                         <ul class="nav navbar-nav" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                            <li class="hidden-sm hidden-xs"><a href="#" class="user-info-handle"><i
-                                        class="fa fa-user"></i></a></li>
-                            <li class="hidden-sm hidden-xs"><a href="#" class="full-screen-handle"><i
-                                        class="fa fa-arrows-alt"></i></a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#" class="user-info-handle"><i class="fa fa-user"></i></a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#" class="full-screen-handle"><i class="fa fa-arrows-alt"></i></a></li>
 
                             <li class="hidden-xs hidden-xs">
                                 <!-- <a href="#">My Tasks</a> -->
@@ -58,8 +55,7 @@
                         <ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
 
 
-                            <li><a href="<?php base_url() ?>/home/logout" class="color-danger text-center"><i
-                                        class="fa fa-sign-out"></i>
+                            <li><a href="<?php base_url() ?>/home/logout" class="color-danger text-center"><i class="fa fa-sign-out"></i>
                                     Logout</a></li>
 
 
@@ -80,8 +76,7 @@
                 <div class="left-sidebar bg-black-300 box-shadow ">
                     <div class="sidebar-content">
                         <div class="user-info closed">
-                            <img src="default.png" alt="Admin"
-                                class="img-circle profile-img">
+                            <img src="default.png" alt="Admin" class="img-circle profile-img">
                             <h6 class="title">Admin</h6>
                             <small class="info">Administrator</small>
                         </div>
@@ -102,8 +97,7 @@
                                     <span class="">Appearance</span>
                                 </li>
                                 <li class="has-children">
-                                    <a href="#"><i class="fa fa-file-text"></i> <span>Student Classes</span> <i
-                                            class="fa fa-angle-right arrow"></i></a>
+                                    <a href="#"><i class="fa fa-file-text"></i> <span>Student Classes</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
 
                                         <li><a href="<?= base_url(); ?>/manage-classes"><i class="fa fa fa-server"></i>
@@ -113,23 +107,20 @@
                                     </ul>
                                 </li>
                                 <li class="has-children">
-                                    <a href="#"><i class="fa fa-file-text"></i> <span>Subjects</span> <i
-                                            class="fa fa-angle-right arrow"></i></a>
+                                    <a href="#"><i class="fa fa-file-text"></i> <span>Subjects</span> <i class="fa fa-angle-right arrow"></i></a>
                                     <ul class="child-nav">
 
                                         <li><a href="<?= base_url(); ?>/manage-subjects"><i class="fa fa fa-server"></i>
                                                 <span>Manage
                                                     Subjects</span></a></li>
 
-                                        <a href="<?= base_url(); ?>/manage-subjectcombination"><i
-                                                class="fa fa-newspaper-o"></i>
+                                        <a href="<?= base_url(); ?>/manage-subjectcombination"><i class="fa fa-newspaper-o"></i>
                                             <span>Manage Subject Combination </span></a>
                                 </li>
                             </ul>
                             </li>
                             <li class="has-children">
-                                <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i
-                                        class="fa fa-angle-right arrow"></i></a>
+                                <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
 
                                     <li><a href="<?= base_url(); ?>/manage-students"><i class="fa fa fa-server"></i>
@@ -142,14 +133,13 @@
                                 </ul>
                             </li>
                             <li class="has-children">
-                                <a href="#"><i class="fa fa-info-circle"></i> <span>Result</span> <i
-                                        class="fa fa-angle-right arrow"></i></a>
+                                <a href="#"><i class="fa fa-info-circle"></i> <span>Result</span> <i class="fa fa-angle-right arrow"></i></a>
                                 <ul class="child-nav">
 
                                     <li><a href="<?= base_url(); ?>/manage-results"><i class="fa fa fa-server"></i>
                                             <span>Manage
                                                 Result</span></a></li>
-                                                <li><a href="<?= base_url(); ?>/print-results"><i class="fa fa fa-server"></i>
+                                    <li><a href="<?= base_url(); ?>/print-results"><i class="fa fa fa-server"></i>
                                             <span>Print
                                                 Result</span></a></li>
 
@@ -207,8 +197,7 @@
     <script src="<?= base_url(); ?>/js/amcharts/amcharts.js"></script>
     <script src="<?= base_url(); ?>/js/amcharts/serial.js"></script>
     <script src="<?= base_url(); ?>/js/amcharts/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="<?= base_url(); ?>/js/amcharts/plugins/export/export.css" type="text/css"
-        media="all" />
+    <link rel="stylesheet" href="<?= base_url(); ?>/js/amcharts/plugins/export/export.css" type="text/css" media="all" />
     <script src="<?= base_url(); ?>/js/amcharts/themes/light.js"></script>
     <script src="<?= base_url(); ?>/js/toastr/toastr.min.js"></script>
     <script src="<?= base_url(); ?>/js/icheck/icheck.min.js"></script>
@@ -220,541 +209,546 @@
     <script src="<?= base_url(); ?>/js/production-chart.js"></script>
     <script src="<?= base_url(); ?>/js/traffic-chart.js"></script>
     <script src="<?= base_url(); ?>/js/task-list.js"></script>
-    
+
     <script>
-    $(function() {
+        $(function() {
 
-        $("#studentTable").DataTable();
-        $("#classTable").DataTable();
-        $("#subjectTable").DataTable();
-        $("#subjectcombinationTable").DataTable();
-        $("#resultTable").DataTable();
-        var ssct = $("#studentsubjectcombinationTable").DataTable();
-        
-        $("#slcsubjectlist").select2();
-        
-        $("input.status-student").change(function() {
-            var std_id = $(this).data('id');
-            var stus = ($(this).is(':checked'))?1:0;
-            // getStudentSubjectList(classid);
-            $.ajax({
-                url: "<?php echo base_url('/Students/set_students_status'); ?>",
-                method: "POST",
-                data: {id:std_id,status:stus},
-                dataType: "JSON",                
-                success: function(data) {                    
-                        toastr["success"](data.message);                    
-                }
-            });           
-            
-        });
-        $("input.status-sbjcmb").change(function() {
-            var sbjcmb_id = $(this).data('id');
-            var stus = ($(this).is(':checked'))?1:0;
-            // getStudentSubjectList(classid);
-            $.ajax({
-                url: "<?php echo base_url('/SubjectCombination/set_subjectcombination_status'); ?>",
-                method: "POST",
-                data: {id:sbjcmb_id,status:stus},
-                dataType: "JSON",                
-                success: function(data) {                    
-                        toastr["success"](data.message);                    
-                }
-            });           
-            
-        });
-               
-            
-        // Counter for dashboard stats
-        $('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
+            $("#studentTable").DataTable();
+            $("#classTable").DataTable();
+            $("#subjectTable").DataTable();
+            $("#subjectcombinationTable").DataTable();
+            $("#resultTable").DataTable();
+            var ssct = $("#studentsubjectcombinationTable").DataTable();
 
-        // Welcome notification
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-        // toastr["success"]("Welcome to student Result Management System!");
+            $("#slcsubjectlist").select2();
 
-
-        $('#classes_form').on('submit', function(event) {
-            event.preventDefault();
-            $.ajax({
-                url: "<?php echo base_url('/Classes/action'); ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('#submit_button').text('Wait...');
-                    $('#submit_button').attr('disabled', 'disabled');
-                },
-                success: function(data) {
-                    $('#submit_button').text('Add');
-                    $('#submit_button').attr('disabled', false);
-                    if (data.error == 'yes') {
-                        $('#classname_error').text(data
-                            .classname_error);
-                        $('#classnamenumeric_error').text(data
-                            .classnamenumeric_error);
-                        $('#section_error').text(data
-                            .section_error);
-                    } else {
+            $("input.status-student").change(function() {
+                var std_id = $(this).data('id');
+                var stus = ($(this).is(':checked')) ? 1 : 0;
+                // getStudentSubjectList(classid);
+                $.ajax({
+                    url: "<?php echo base_url('/Students/set_students_status'); ?>",
+                    method: "POST",
+                    data: {
+                        id: std_id,
+                        status: stus
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
                         toastr["success"](data.message);
-                        $('#classTable').load(location.href + " #classTable");
                     }
-                }
+                });
+
             });
-        });
-        $('#students_form').on('submit', function(event) {
-            event.preventDefault();
-            $.ajax({
-                url: "<?php echo base_url('/Students/action'); ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('#submit_button').text('Wait...');
-                    $('#submit_button').attr('disabled', 'disabled');
-                },
-                success: function(data) {
-                    $('#submit_button').text('Add');
-                    $('#submit_button').attr('disabled', false);
-                    if (data.error == 'yes') {
-                        $('#fullanme_error').text(data
-                            .fullanme_error);
-                        $('#rollid_error').text(data
-                            .rollid_error);
-                        $('#gender_error').text(data
-                            .gender_error);
-                        $('#rollid_error').text(data
-                            .rollid_error);
-                        $('#class_error').text(data
-                            .class_error);
-                        $('#dob_error').text(data
-                            .dob_error);
-                    } else {
+            $("input.status-sbjcmb").change(function() {
+                var sbjcmb_id = $(this).data('id');
+                var stus = ($(this).is(':checked')) ? 1 : 0;
+                // getStudentSubjectList(classid);
+                $.ajax({
+                    url: "<?php echo base_url('/SubjectCombination/set_subjectcombination_status'); ?>",
+                    method: "POST",
+                    data: {
+                        id: sbjcmb_id,
+                        status: stus
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
                         toastr["success"](data.message);
-                        $('#studentTable').load(location.href + " #studentTable");
                     }
-                }
+                });
+
             });
-        });
-        $('#subject_form').on('submit', function(event) {
-            event.preventDefault();
-            $.ajax({
-                url: "<?php echo base_url('/Subject/action'); ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('#submit_button').text('Wait...');
-                    $('#submit_button').attr('disabled', 'disabled');
-                },
-                success: function(data) {
-                    $('#submit_button').text('Add');
-                    $('#submit_button').attr('disabled', false);
-                    if (data.error == 'yes') {
-                        $('#subjectname_error').text(data
-                            .subjectname_error);
-                        $('#subjectcode_error').text(data
-                            .subjectcode_error);
-                        $('#fmth_error').text(data
-                            .fmth_error);
-                        $('#tch_error').text(data
-                            .tch_error);
-                    } else {
-                        toastr["success"](data.message);
-                        $('#subjectTable').load(location.href + " #subjectTable");
+
+
+            // Counter for dashboard stats
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+
+            // Welcome notification
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            // toastr["success"]("Welcome to student Result Management System!");
+
+
+            $('#classes_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Classes/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#classname_error').text(data
+                                .classname_error);
+                            $('#classnamenumeric_error').text(data
+                                .classnamenumeric_error);
+                            $('#section_error').text(data
+                                .section_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#classTable').load(location.href + " #classTable");
+                        }
                     }
-                }
+                });
             });
-        });
-        $('#subjectcombination_form').on('submit', function(event) {
-            event.preventDefault();
-            $.ajax({
-                url: "<?php echo base_url('/SubjectCombination/action'); ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('#submit_button').text('Wait...');
-                    $('#submit_button').attr('disabled', 'disabled');
-                },
-                success: function(data) {
-                    $('#submit_button').text('Add');
-                    $('#submit_button').attr('disabled', false);
-                    if (data.error == 'yes') {
-                        $('#class_error').text(data
-                            .class_error);
-                        $('#subject_error').text(data
-                            .subject_error);
-                    } else {
-                        toastr["success"](data.message);
-                        $('#subjectcombinationTable').load(location.href +
-                            " #subjectcombinationTable");
+            $('#students_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Students/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#fullanme_error').text(data
+                                .fullanme_error);
+                            $('#rollid_error').text(data
+                                .rollid_error);
+                            $('#gender_error').text(data
+                                .gender_error);
+                            $('#rollid_error').text(data
+                                .rollid_error);
+                            $('#class_error').text(data
+                                .class_error);
+                            $('#dob_error').text(data
+                                .dob_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#studentTable').load(location.href + " #studentTable");
+                        }
                     }
-                }
+                });
             });
-        });
-        $(document).on('click', '.class-edit', function() {
-            var class_id = $(this).data('id');
-            $('#collapseExample').collapse('show');
-            $.ajax({
-                url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
-                method: "POST",
-                data: {
-                    id: class_id
-                },
-                dataType: "JSON",
-                success: function(data) {
-
-                    $('[name="classname"]').val(data.ClassName);
-                    $('[name="classnamenumeric"]').val(data.ClassNameNumeric);
-                    $('[name="section"]').val(data.Section);
-                    $('#classname_error').text('');
-                    $('#classnamenumeric_error').text('');
-                    $('#section_error').text('');
-                    $('#action').val('Edit');
-                    $('#submit_button').text('Edit');
-                    $('#hidden_id').val(class_id);
-                }
-            });
-        });
-        $(document).on('click', '.student-edit', function() {
-            var student_id = $(this).data('id');
-            $('#collapseExample').collapse('show');
-            $.ajax({
-                url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
-                method: "POST",
-                data: {
-                    id: student_id
-                },
-                dataType: "JSON",
-                success: function(data) {
-
-                    $('[name="fullanme"]').val(data.StudentName);
-                    $('[name="rollid"]').val(data.RollId);
-                    $('[name="emailid"]').val(data.StudentEmail);
-                    $("input[name=gender][value=" + data.Gender + "]").prop('checked',
-                        true);
-                    $('[name="class"]').val(data.ClassId);
-                    $('[name="dob"]').val(data.DOB);
-                    $('#fullanme_error').text('');
-                    $('#rollid_error').text('');
-                    $('#emailid_error').text('');
-                    $('#gender_error').text('');
-                    $('#class_error').text('');
-                    $('#dob_error').text('');
-                    $('#action').val('Edit');
-                    $('#submit_button').text('Edit');
-                    $('#hidden_id').val(student_id);
-                }
-            });
-        });
-        $(document).on('click', '.subject-edit', function() {
-            var sub_id = $(this).data('id');
-            $('#collapseExample').collapse('show');
-            $.ajax({
-                url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
-                method: "POST",
-                data: {
-                    id: sub_id
-                },
-                dataType: "JSON",
-                success: function(data) {
-
-                    $('[name="subjectname"]').val(data.SubjectName);
-                    $('[name="subjectcode"]').val(data.SubjectCode);
-                    $('[name="fmth"]').val(data.fm_th);
-                    $('[name="tch"]').val(data.total_cr_hr);
-                    $('#subjectname_error').text('');
-                    $('#subjectcode_error').text('');
-                    $('#fmth_error').text('');
-                    $('#tch_error').text('');
-                    $('#action').val('Edit');
-                    $('#submit_button').text('Edit');
-                    $('#hidden_id').val(sub_id);
-                }
-            });
-        });
-        $(document).on('click', '.subjectcombination-edit', function() {
-            var sub_id = $(this).data('id');
-            $('#collapseExample').collapse('show');
-            $.ajax({
-                url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
-                method: "POST",
-                data: {
-                    id: sub_id
-                },
-                dataType: "JSON",
-                success: function(data) {
-
-                    $('[name="class"]').val(data.ClassId);
-                    $('[name="subject"]').val(data.SubjectId);
-                    $('#class_error').text('');
-                    $('#subject_error').text('');
-                    $('#action').val('Edit');
-                    $('#submit_button').text('Edit');
-                    $('#hidden_id').val(sub_id);
-                }
-            });
-        });
-
-        function getStudentSubjectList(classid,dt = []){
-            var ddt = dt;
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('/Students/get_students_by_class'); ?>",
-                data: {
-                    id: classid
-                },
-                success: function(data) {
-                    var jsn = JSON.parse(data);
-                    // $("#studentid").html(data);
-                      
-                    if (jsn.length != 0) {
-                        $("#studentid").html('');
-                        $("#studentid").append('<option>Select Student</option>');
-                        
-                        $.each(jsn, function(key, data) {
-                            // console.log(data.StudentId);
-                            if(ddt.length > 0 && ddt[0].StudentId==data.StudentId){
-                                $("#studentid").append('<option value="' + data
-                                .StudentId + '" selected>' + data.StudentName +
-                                '</option>');
-                            }else{                            
-                            $("#studentid").append('<option value="' + data
-                                .StudentId + '">' + data.StudentName +
-                                '</option>');
-                            }
-                            // console.log(data);
-                        });
-
-                    }else{
-                        $("#studentid").html('');
-                        $("#subject").html('');
+            $('#subject_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Subject/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#subjectname_error').text(data
+                                .subjectname_error);
+                            $('#subjectcode_error').text(data
+                                .subjectcode_error);
+                            $('#fmth_error').text(data
+                                .fmth_error);
+                            $('#tch_error').text(data
+                                .tch_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#subjectTable').load(location.href + " #subjectTable");
+                        }
                     }
-                }
+                });
             });
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('/SubjectCombination/get_subjectcombination_by_class'); ?>",
-                data: {
-                    id: classid
-                },
-                success: function(data) {
-                    // $("#subject").html(data);
-                    var jsn = JSON.parse(data);
-                    // $("#studentid").html(data);
-                    //    console.log(jsn);
-                    if (jsn.length > 0) {
-                        $("#subject").html('');
-                        console.log(jsn.length);
+            $('#subjectcombination_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/SubjectCombination/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#class_error').text(data
+                                .class_error);
+                            $('#subject_error').text(data
+                                .subject_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#subjectcombinationTable').load(location.href +
+                                " #subjectcombinationTable");
+                        }
+                    }
+                });
+            });
+            $(document).on('click', '.class-edit', function() {
+                var class_id = $(this).data('id');
+                $('#exampleModal').modal('show')
+                $.ajax({
+                    url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: class_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="classname"]').val(data.ClassName);
+                        $('[name="classnamenumeric"]').val(data.ClassNameNumeric);
+                        $('[name="section"]').val(data.Section);
+                        $('#classname_error').text('');
+                        $('#classnamenumeric_error').text('');
+                        $('#section_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(class_id);
+                    }
+                });
+            });
+            $(document).on('click', '.student-edit', function() {
+                var student_id = $(this).data('id');
+                $('#exampleModal').modal('show')
+                $.ajax({
+                    url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: student_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="fullanme"]').val(data.StudentName);
+                        $('[name="rollid"]').val(data.RollId);
+                        $('[name="emailid"]').val(data.StudentEmail);
+                        $("input[name=gender][value=" + data.Gender + "]").prop('checked',
+                            true);
+                        $('[name="class"]').val(data.ClassId);
+                        $('[name="dob"]').val(data.DOB);
+                        $('#fullanme_error').text('');
+                        $('#rollid_error').text('');
+                        $('#emailid_error').text('');
+                        $('#gender_error').text('');
+                        $('#class_error').text('');
+                        $('#dob_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(student_id);
+                    }
+                });
+            });
+            $(document).on('click', '.subject-edit', function() {
+                var sub_id = $(this).data('id');
+                $('#exampleModal').modal('show')
+                $.ajax({
+                    url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: sub_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="subjectname"]').val(data.SubjectName);
+                        $('[name="subjectcode"]').val(data.SubjectCode);
+                        $('[name="fmth"]').val(data.fm_th);
+                        $('[name="tch"]').val(data.total_cr_hr);
+                        $('#subjectname_error').text('');
+                        $('#subjectcode_error').text('');
+                        $('#fmth_error').text('');
+                        $('#tch_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(sub_id);
+                    }
+                });
+            });
+            $(document).on('click', '.subjectcombination-edit', function() {
+                var sub_id = $(this).data('id');
+                $('#exampleModal').modal('show')
+                $.ajax({
+                    url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: sub_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+
+                        $('[name="class"]').val(data.ClassId);
+                        $('[name="subject"]').val(data.SubjectId);
+                        $('#class_error').text('');
+                        $('#subject_error').text('');
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').val(sub_id);
+                    }
+                });
+            });
+
+            function getStudentSubjectList(classid, dt = []) {
+                var ddt = dt;
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('/Students/get_students_by_class'); ?>",
+                    data: {
+                        id: classid
+                    },
+                    success: function(data) {
+                        var jsn = JSON.parse(data);
+                        // $("#studentid").html(data);
+
+                        if (jsn.length != 0) {
+                            $("#studentid").html('');
+                            $("#studentid").append('<option>Select Student</option>');
+
+                            $.each(jsn, function(key, data) {
+                                // console.log(data.StudentId);
+                                if (ddt.length > 0 && ddt[0].StudentId == data.StudentId) {
+                                    $("#studentid").append('<option value="' + data
+                                        .StudentId + '" selected>' + data.StudentName +
+                                        '</option>');
+                                } else {
+                                    $("#studentid").append('<option value="' + data
+                                        .StudentId + '">' + data.StudentName +
+                                        '</option>');
+                                }
+                                // console.log(data);
+                            });
+
+                        } else {
+                            $("#studentid").html('');
+                            $("#subject").html('');
+                        }
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('/SubjectCombination/get_subjectcombination_by_class'); ?>",
+                    data: {
+                        id: classid
+                    },
+                    success: function(data) {
+                        // $("#subject").html(data);
+                        var jsn = JSON.parse(data);
+                        // $("#studentid").html(data);
+                        //    console.log(jsn);
+                        if (jsn.length > 0) {
+                            $("#subject").html('');
+                            console.log(jsn.length);
                             console.log(ddt.length);
-                        $.each(jsn, function(key, data) {
-                            
-                            if(jsn.length > 0 && ddt.length > 0  ){
-                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (TH)<input type="text"  name="marks[]" value="'+ddt[key].marks+'" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
-                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (IN)<input type="text"  name="inmarks[]" value="'+ddt[key].in_marks+'" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
-                            console.log(key+'=>'+data.SubjectName);
-                            }
-                            else{
-                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (TH)<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
-                                $("#subject").append('<div class="col-md-6">'+data.SubjectName+' (IN)<input type="text"  name="inmarks[]" value="" class="form-control" required="" placeholder="Enter internal marks " autocomplete="off"></div>');
-                            
-                            }
-                            // console.log(data);
+                            $.each(jsn, function(key, data) {
+
+                                if (jsn.length > 0 && ddt.length > 0) {
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (TH)<input type="text"  name="marks[]" value="' + ddt[key].marks + '" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (IN)<input type="text"  name="inmarks[]" value="' + ddt[key].in_marks + '" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                    console.log(key + '=>' + data.SubjectName);
+                                } else {
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (TH)<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (IN)<input type="text"  name="inmarks[]" value="" class="form-control" required="" placeholder="Enter internal marks " autocomplete="off"></div>');
+
+                                }
+                                // console.log(data);
+                            });
+
+                        }
+
+                    }
+                });
+            }
+
+            $("#slcresultClass").change(function() {
+                var classid = $(this).val();
+                getStudentSubjectList(classid);
+            });
+            $("#studentid").change(function() {
+                var studentid = $(this).val();
+                var classid = $("#slcresultClass").val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url('/Result/checkStudentsResult'); ?>",
+                    data: {
+                        classid: classid,
+                        studentid: studentid
+                    },
+                    success: function(data) {
+                        var jsn = JSON.parse(data);
+                        console.log(jsn.status);
+                        if (jsn.status == 'data') {
+                            $("#reslt").html('<span style="color:red"> Result Already Declare .</span>');
+                            $('#submit_button').prop('disabled', true);
+                        } else {
+                            $("#reslt").html('');
+                            $('#submit_button').prop('disabled', false);
+                        }
+
+                    }
+                });
+            });
+            $('#result_form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: "<?php echo base_url('/Result/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#classid_error').text(data
+                                .classid_error);
+                            $('#studentid_error').text(data
+                                .studentid_error);
+                        } else {
+                            toastr["success"](data.message);
+                            $('#resultTable').load(location.href +
+                                " #resultTable")
+                        }
+                    }
+                });
+            });
+            $('#studentsubjectcombination_form').on('submit', function(event) {
+                event.preventDefault();
+                // console.log($(this).serialize());
+                $.ajax({
+                    url: "<?php echo base_url('/StudentSubject/action'); ?>",
+                    method: "POST",
+                    data: $(this).serialize(),
+                    dataType: "JSON",
+                    beforeSend: function() {
+                        $('#submit_button').text('Wait...');
+                        $('#submit_button').attr('disabled', 'disabled');
+                    },
+                    success: function(data) {
+                        // console.log(data);
+                        $('#submit_button').text('Add');
+                        $('#submit_button').attr('disabled', false);
+                        if (data.error == 'yes') {
+                            $('#classid_error').text(data
+                                .classid_error);
+                            $('#studentid_error').text(data
+                                .studentid_error);
+                        } else {
+                            toastr["success"](data.message);
+                            ssct.ajax.reload();
+                        }
+                    }
+                });
+            });
+            $(document).on('click', '.result-edit', function() {
+                var res_id = $(this).data('id');
+                $('#exampleModal').modal('show')
+                $.ajax({
+                    url: "<?php echo base_url('/Result/fetch_single_data'); ?>",
+                    method: "POST",
+                    data: {
+                        id: res_id
+                    },
+                    dataType: "JSON",
+                    success: function(data) {
+                        console.log(data);
+                        var classid = data[0].ClassId;
+                        var stdid = data[0].StudentId;
+                        $('[name="classid"]').val(classid);
+                        getStudentSubjectList(classid, data);
+                        $('#action').val('Edit');
+                        $('#submit_button').text('Edit');
+                        $('#hidden_id').html('');
+                        $.each(data, function(k, d) {
+                            $('#hidden_id').append('<input type="hidden" name="id[]" value="' + d.id + '"/>');
                         });
 
                     }
-                   
-                }
+                });
             });
-        }
 
-        $("#slcresultClass").change(function() {
-            var classid = $(this).val();
-            getStudentSubjectList(classid);
-        });
-        $("#studentid").change(function() {
-            var studentid = $(this).val();
-            var classid = $("#slcresultClass").val();
-            $.ajax({
-                type: "POST",
-                url: "<?php echo base_url('/Result/checkStudentsResult'); ?>",
-                data: {
-                    classid: classid,
-                    studentid: studentid
-                },
-                success: function(data) {
-                    var jsn = JSON.parse(data);
-                       console.log(jsn.status);
-                    if (jsn.status == 'data') {
-                        $("#reslt").html('<span style="color:red"> Result Already Declare .</span>');
-                        $('#submit_button').prop('disabled',true);                                               
-                    }else{
-                        $("#reslt").html('');
-                        $('#submit_button').prop('disabled',false);  
-                    }
-                   
-                }
-            });
-        });
-        $('#result_form').on('submit', function(event) {
-            event.preventDefault();
-            $.ajax({
-                url: "<?php echo base_url('/Result/action'); ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('#submit_button').text('Wait...');
-                    $('#submit_button').attr('disabled', 'disabled');
-                },
-                success: function(data) {
-                    $('#submit_button').text('Add');
-                    $('#submit_button').attr('disabled', false);
-                    if (data.error == 'yes') {
-                        $('#classid_error').text(data
-                            .classid_error);
-                        $('#studentid_error').text(data
-                            .studentid_error);
-                    } else {
-                        toastr["success"](data.message);
-                        $('#resultTable').load(location.href +
-                            " #resultTable")
-                    }
-                }
-            });
-        });
-        $('#studentsubjectcombination_form').on('submit', function(event) {
-            event.preventDefault();
-            // console.log($(this).serialize());
-            $.ajax({
-                url: "<?php echo base_url('/StudentSubject/action'); ?>",
-                method: "POST",
-                data: $(this).serialize(),
-                dataType: "JSON",
-                beforeSend: function() {
-                    $('#submit_button').text('Wait...');
-                    $('#submit_button').attr('disabled', 'disabled');
-                },
-                success: function(data) {
-                    // console.log(data);
-                    $('#submit_button').text('Add');
-                    $('#submit_button').attr('disabled', false);
-                    if (data.error == 'yes') {
-                        $('#classid_error').text(data
-                            .classid_error);
-                        $('#studentid_error').text(data
-                            .studentid_error);
-                    } else {
-                        toastr["success"](data.message);
-                        ssct.ajax.reload();
-                    }
-                }
-            });
-        });
-        $(document).on('click', '.result-edit', function() {
-            var res_id = $(this).data('id');
-            $('#collapseExample').collapse('show');
-            $.ajax({
-                url: "<?php echo base_url('/Result/fetch_single_data'); ?>",
-                method: "POST",
-                data: {
-                    id: res_id
-                },
-                dataType: "JSON",
-                success: function(data) {
-                    console.log(data);
-                    var classid = data[0].ClassId;
-                    var stdid = data[0].StudentId;
-                    $('[name="classid"]').val(classid);
-                    getStudentSubjectList(classid,data);
-                    $('#action').val('Edit');
-                    $('#submit_button').text('Edit');
-                    $('#hidden_id').html('');
-                    $.each(data,function(k,d){
-                        $('#hidden_id').append('<input type="hidden" name="id[]" value="'+d.id+'"/>');
+            $('#btn_submit_file_upload').click(function() {
+
+
+                // Get the selected file
+                var files = $('#upload_filename')[0].files;
+
+                if (files.length > 0) {
+                    var fd = new FormData();
+                    console.log(files[0]);
+                    // Append data 
+                    fd.append('upload_filename', files[0]);
+
+                    // AJAX request 
+                    $.ajax({
+                        url: "<?= site_url('Students/import') ?>",
+                        method: 'post',
+                        data: fd,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            console.log(response);
+                            // if (response.success == 1) { // Uploaded successfully
+                            //     Toast.fire({
+                            //         icon: 'success',
+                            //         title: response.message
+                            //     });
+                            // console.log(response);
+                            //filedistTable.ajax.reload();
+                            // $('#filepreview').attr('src', response.filepath);
+                            // $('#filepreview').show();
+                            // $('#afterUpload').val(response.filename);
+
+                            // } else if (response.success == 2) { // File not uploaded
+                            //     Toast.fire({
+                            //         icon: 'error',
+                            //         title: response.message
+                            //     });
+                            // } else {
+                            // Display Error
+                            // $('#err_file').text(response.error);
+                            // $('#err_file').removeClass('d-none');
+                            // $('#err_file').addClass('d-block');
+                            // }
+                        },
+                        error: function(response) {
+                            console.log("error : " + JSON.stringify(response));
+                        }
                     });
-                    
+                } else {
+                    alert("Please select a file.");
                 }
+
             });
-        });
-
-        $('#btn_submit_file_upload').click(function() {
 
 
-        // Get the selected file
-        var files = $('#upload_filename')[0].files;
-
-        if (files.length > 0) {
-            var fd = new FormData();
-            console.log(files[0]);
-            // Append data 
-            fd.append('upload_filename', files[0]);
-
-            // AJAX request 
-            $.ajax({
-                url: "<?= site_url('Students/import') ?>",
-                method: 'post',
-                data: fd,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-                success: function(response) {
-                    console.log(response);
-                    // if (response.success == 1) { // Uploaded successfully
-                    //     Toast.fire({
-                    //         icon: 'success',
-                    //         title: response.message
-                    //     });
-                        // console.log(response);
-                        //filedistTable.ajax.reload();
-                        // $('#filepreview').attr('src', response.filepath);
-                        // $('#filepreview').show();
-                        // $('#afterUpload').val(response.filename);
-
-                    // } else if (response.success == 2) { // File not uploaded
-                    //     Toast.fire({
-                    //         icon: 'error',
-                    //         title: response.message
-                    //     });
-                    // } else {
-                        // Display Error
-                        // $('#err_file').text(response.error);
-                        // $('#err_file').removeClass('d-none');
-                        // $('#err_file').addClass('d-block');
-                    // }
-                },
-                error: function(response) {
-                    console.log("error : " + JSON.stringify(response));
-                }
-            });
-        } else {
-            alert("Please select a file.");
-        }
 
         });
-        
-       
-
-    });
     </script>
 </body>
 

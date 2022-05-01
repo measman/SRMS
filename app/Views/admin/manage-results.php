@@ -29,11 +29,105 @@
 <section class="section">
     <div class="container-fluid">
         <p>
-            <button class="btn btn-primary" id="btn-check-outlined" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" autocomplete="off">
-                Declare Result
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Declare Result
             </button>
-            <label class="btn btn-outline-primary" for="btn-check-outlined"></label>
         </p>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <h5>Declare Result</h5>
+                            </div>
+                        </div>
+                        <?php if($session->getTempdata('success')): ?>
+                        <div class="col-md-12">
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Success!</h4>
+                                <?php echo $session->getTempdata('success'); ?>
+                            </div>
+                        </div>
+                        <?php elseif($session->getTempdata('error')):?>
+                        <div class="col-md-12">
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Failed!</h4>
+                                <?php echo $session->getTempdata('error'); ?>
+                            </div>
+                        </div>
+                        <?php endif;?>
+
+                        <div class="panel-body">
+
+                            <form class="form-horizontal" method="post" id="result_form">
+
+                                <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Class</label>
+                                    <div class="col-sm-10">
+                                        <select id="slcresultClass" name="classid" class="form-control" required="required">
+                                            <option value="">Select Class</option>
+                                            <?php
+                                        if (isset($classes)) {
+                                            foreach ($classes as $cnt) {
+                                                print "<option value='" . $cnt['id'] . "'>" . $cnt['ClassName'] . " (".$cnt['Section'].")</option>";
+                                            }
+                                        }
+                                        ?>
+                                        </select>
+                                        <span id="class_error" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Student</label>
+                                    <div class="col-sm-10">
+                                        <select name="studentid" class="form-control stid" id="studentid"
+                                            required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div id="reslt">
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="form-group">
+                                    <label for="default" class="col-sm-2 control-label">Subjects</label>
+                                    <div class="col-sm-10">
+                                        <div class="row" id="subject">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <div id="hidden_id"></div>
+                                        <input type="hidden" name="action" id="action" value="Add" />
+                                        <button id="submit_button" type="submit" name="submit"
+                                            class="btn btn-primary">Add</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-md-8 col-md-offset-2 -->
+            </div>
+            <!-- /.row -->
+                </div>
+            </div>
+        </div>
         <div class="collapse" id="collapseExample">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
