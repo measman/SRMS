@@ -413,6 +413,7 @@
         });
         $(document).on('click', '.class-edit', function() {
             var class_id = $(this).data('id');
+            $('#collapseExample').collapse('show');
             $.ajax({
                 url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
                 method: "POST",
@@ -436,6 +437,7 @@
         });
         $(document).on('click', '.student-edit', function() {
             var student_id = $(this).data('id');
+            $('#collapseExample').collapse('show');
             $.ajax({
                 url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
                 method: "POST",
@@ -466,6 +468,7 @@
         });
         $(document).on('click', '.subject-edit', function() {
             var sub_id = $(this).data('id');
+            $('#collapseExample').collapse('show');
             $.ajax({
                 url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
                 method: "POST",
@@ -491,6 +494,7 @@
         });
         $(document).on('click', '.subjectcombination-edit', function() {
             var sub_id = $(this).data('id');
+            $('#collapseExample').collapse('show');
             $.ajax({
                 url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
                 method: "POST",
@@ -668,6 +672,7 @@
         });
         $(document).on('click', '.result-edit', function() {
             var res_id = $(this).data('id');
+            $('#collapseExample').collapse('show');
             $.ajax({
                 url: "<?php echo base_url('/Result/fetch_single_data'); ?>",
                 method: "POST",
