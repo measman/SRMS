@@ -135,9 +135,9 @@
                                     <li><a href="<?= base_url(); ?>/manage-students"><i class="fa fa fa-server"></i>
                                             <span>Manage
                                                 Students</span></a></li>
-                                    <li><a href="<?= base_url(); ?>/manage-studentsubject"><i class="fa fa fa-server"></i>
+                                    <!-- <li><a href="<?= base_url(); ?>/manage-studentsubject"><i class="fa fa fa-server"></i>
                                             <span>Manage
-                                                Students Subject</span></a></li>
+                                                Students Subject</span></a></li> -->
 
                                 </ul>
                             </li>
