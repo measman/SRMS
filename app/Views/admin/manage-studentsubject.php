@@ -111,13 +111,11 @@ use App\Controllers\Students;
                                             <?php
                                                 if (isset($subjects)) {
                                                     foreach ($subjects as $cnt) {
-                                                        print '<div  class="col-sm-4">'." <input name='subjects[]' type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>"."</div>";
+                                                        print '<div class="col-sm-2">'."<input name='subjects[]' type='checkbox' value='" . $cnt['id'] . "'>" . $cnt['SubjectName'] . "</input>"."</div>";
                                                     }
                                                 }
                                             ?>
-                                            </div>
                                             <span id="subject_error" class="text-danger"></span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
