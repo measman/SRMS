@@ -88,8 +88,8 @@
                                         <div class="form-group">
                                             <label for="default" class="col-sm-2 control-label">Subject</label>
                                             <div class="col-sm-10">
-                                                <select name="subject" class="form-control" id="default" required="required">
-                                                    <option value="">Select Class</option>
+                                                <select name="subject" class="form-control select2" id="subjectlist" required="required" style="width: 100%;">
+                                                    <option value="">Select Subject</option>
                                                     <?php
                                                     if (isset($subjects)) {
                                                         foreach ($subjects as $cnt) {

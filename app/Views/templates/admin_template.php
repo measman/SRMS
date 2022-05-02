@@ -217,10 +217,15 @@
             $("#classTable").DataTable();
             $("#subjectTable").DataTable();
             $("#subjectcombinationTable").DataTable();
+            
             $("#resultTable").DataTable();
             var ssct = $("#studentsubjectcombinationTable").DataTable();
 
             $("#slcsubjectlist").select2();
+            $("#subjectlist").select2({
+                tags: true,
+                dropdownParent: $("#exampleModal")
+            });
 
             $("input.status-student").change(function() {
                 var std_id = $(this).data('id');
