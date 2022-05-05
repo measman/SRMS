@@ -54,7 +54,11 @@
                             <div class="panel">
                                 <div class="panel-heading">
                                     <div class="panel-title">
-                                        <h5>Create Student</h5>
+                                        <h5>Create Student
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </h5>
                                     </div>
                                 </div>
                                 <?php if ($session->getTempdata('success')) : ?>
