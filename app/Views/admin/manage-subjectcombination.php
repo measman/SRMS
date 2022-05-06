@@ -30,12 +30,12 @@
     <div class="container-fluid">
         <p>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subjectCombinationModal">
                 Create Subject Combination
             </button>
         </p>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="subjectCombinationModal" tabindex="-1" role="dialog" aria-labelledby="subjectCombinationModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="row">

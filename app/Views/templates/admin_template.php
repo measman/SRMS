@@ -558,23 +558,18 @@
                         id: classid
                     },
                     success: function(data) {
-                        // $("#subject").html(data);
                         var jsn = JSON.parse(data);
-                        // $("#studentid").html(data);
-                        //    console.log(jsn);
                         if (jsn.length > 0) {
                             $("#subject").html('');
-                            console.log(jsn.length);
-                            console.log(ddt.length);
                             $.each(jsn, function(key, data) {
 
                                 if (jsn.length > 0 && ddt.length > 0) {
-                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (TH)<input type="text"  name="marks[]" value="' + ddt[key].marks + '" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
-                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (IN)<input type="text"  name="inmarks[]" value="' + ddt[key].in_marks + '" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
-                                    console.log(key + '=>' + data.SubjectName);
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (TH)<input type="number" min="10" max="'+data.fm_th+'"  name="marks[]" value="' + ddt[key].marks + '" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (IN)<input type="number" min="10" max="'+(100-data.fm_th)+'"  name="inmarks[]" value="' + ddt[key].in_marks + '" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                    
                                 } else {
-                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (TH)<input type="text"  name="marks[]" value="" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
-                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (IN)<input type="text"  name="inmarks[]" value="" class="form-control" required="" placeholder="Enter internal marks " autocomplete="off"></div>');
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (TH)<input type="number" min="10" max="'+data.fm_th+'" name="marks[]" value="" class="form-control" required="" placeholder="Enter theory marks " autocomplete="off"></div>');
+                                    $("#subject").append('<div class="col-md-6">' + data.SubjectName + ' (IN)<input type="number" min="10" max="'+(100-data.fm_th)+'" name="inmarks[]" value="" class="form-control" required="" placeholder="Enter internal marks " autocomplete="off"></div>');
 
                                 }
                                 // console.log(data);
@@ -602,7 +597,7 @@
                     },
                     success: function(data) {
                         var jsn = JSON.parse(data);
-                        console.log(jsn.status);
+                        // console.log(jsn.status);
                         if (jsn.status == 'data') {
                             $("#reslt").html('<span style="color:red"> Result Already Declare .</span>');
                             $('#submit_button').prop('disabled', true);
@@ -717,29 +712,29 @@
                         processData: false,
                         dataType: 'json',
                         success: function(response) {
-                            console.log(response);
-                            // if (response.success == 1) { // Uploaded successfully
-                            //     Toast.fire({
-                            //         icon: 'success',
-                            //         title: response.message
-                            //     });
                             // console.log(response);
-                            //filedistTable.ajax.reload();
+                            if (response.success == 1) { // Uploaded successfully
+                                Toast.fire({
+                                    icon: 'success',
+                                    title: response.message
+                                });
+                            // console.log(response);
+                            // filedistTable.ajax.reload();
                             // $('#filepreview').attr('src', response.filepath);
                             // $('#filepreview').show();
                             // $('#afterUpload').val(response.filename);
 
-                            // } else if (response.success == 2) { // File not uploaded
-                            //     Toast.fire({
-                            //         icon: 'error',
-                            //         title: response.message
-                            //     });
-                            // } else {
+                            } else if (response.success == 2) { // File not uploaded
+                                Toast.fire({
+                                    icon: 'error',
+                                    title: response.message
+                                });
+                            } else {
                             // Display Error
                             // $('#err_file').text(response.error);
                             // $('#err_file').removeClass('d-none');
                             // $('#err_file').addClass('d-block');
-                            // }
+                            }
                         },
                         error: function(response) {
                             console.log("error : " + JSON.stringify(response));

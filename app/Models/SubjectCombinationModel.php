@@ -28,7 +28,7 @@ class SubjectCombinationModel extends Model
 
     public function getSubjectCombinationsbyClass($classid){
         $builder = $this->db->table('tblsubjectcombination tsc'); 
-        $builder->select('ts.id,ts.SubjectName');
+        $builder->select('ts.id,ts.SubjectName,ts.fm_th');
         $builder->join('tblsubjects ts', 'ts.id=tsc.SubjectId');
         $builder->where('tsc.ClassId',$classid);
         $result = $builder->get();
