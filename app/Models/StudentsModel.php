@@ -11,13 +11,14 @@ class StudentsModel extends Model
 
     protected $primaryKey = 'StudentId';
  
-    protected $allowedFields = ['StudentName', 'RollId', 'StudentEmail', 'Gender', 'DOB', 'ClassId', 'RegDate','Status'];
+    protected $allowedFields = ['StudentName', 'RollId', 'StudentEmail', 'Gender', 'DOB', 'ClassId', 'RegDate','Status', 'ClassId'];
 
     //SELECT tblstudents.StudentName,tblstudents.RollId,tblstudents.RegDate,tblstudents.StudentId,tblstudents.Status,tblclasses.ClassName,tblclasses.Section from tblstudents join tblclasses on tblclasses.id=tblstudents.ClassId
     public function getAllStudents(){
         $builder = $this->db->table('tblstudents ts');
-        $builder->select('ts.StudentName,ts.RollId,ts.RegDate,ts.StudentId,ts.Status,tc.ClassName,tc.Section');
+        $builder->select('ts.StudentName,ts.RollId,ts.RegDate,ts.StudentId,ts.Status,tc.ClassName,tc.Section,tsc.ClassId');
         $builder->join('tblclasses tc', 'tc.id=ts.ClassId');
+        $builder->join('tblsubjectcombination tsc', 'tc.id=tsc.ClassId');
         $result = $builder->get();
         if (count($result->getResultArray()) > 0) {
             return $result->getResultArray();
