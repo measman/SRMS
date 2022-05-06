@@ -72,15 +72,17 @@
         // Code for result
         if (isset($results) && sizeof($results)>0) :
             $i = 1;
-            $totlcount = 0;
+            $totlcrhrofgrade = 0;
+            $totallTHCreditHour =0;
+            $totalINCreditHour =0;
             foreach ($results as $result) :
         ?>
         <tr>
             <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;" ><?php echo htmlentities($result['SubjectCode']); ?></td>
             <td align="left" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (TH)</td>
-            <?php $actualTHCreditHour = actualCreditHour($result['fm_th'],$result['total_cr_hr']);?>
-            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format($actualTHCreditHour, 2, '.', '')); ?></td>
-            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(round(getGPA($result['marks'],$actualTHCreditHour,$result['fm_th']),2)); ?></td>
+            <?php $totallTHCreditHour += getGPA($result['marks'],$result['fm_th']) * actualCreditHour($result['fm_th'],$result['total_cr_hr']);?>
+            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format(actualCreditHour($result['fm_th'],$result['total_cr_hr']), 2, '.', '')); ?></td>
+            <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(getGPA($result['marks'],$result['fm_th'])); ?></td>
             <td align="center" style="border-right-style:none; font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['marks'],$result['fm_th']); ?></td>
             <td align="center" rowspan="2" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['marks']+$result['in_marks'],100); ?></td>
             <td align="center" colspan="2" style="border-right-style:none;"></td>
@@ -88,14 +90,14 @@
         <tr>
             <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities($result['SubjectCode']); ?></td>
             <td align="left" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
-            <?php $actualINCreditHour = actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
-            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format($actualINCreditHour, 2, '.', '')); ?></td>
-            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(round(getGPA($result['in_marks'],$actualINCreditHour,100-$result['fm_th']),2)); ?></td>
+            <?php $totalINCreditHour += getGPA($result['marks'],100-$result['fm_th']) * actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format(actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']), 2, '.', '')); ?></td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(getGPA($result['marks'],100-$result['fm_th'])); ?></td>
             <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['in_marks'],100-$result['fm_th']); ?></td>
             <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>
         <?php
-                $totlcount += ($result['marks'] * $result['total_cr_hr']);
+                $totlcrhrofgrade += $result['total_cr_hr'];
                 $i++;
                 endforeach;
             endif;
@@ -104,8 +106,8 @@
                                                             
                 <td align="right" colspan="9"><b>GRADE POINT AVERAGE (GPA)</b></td>
                 <td>                                                                  
-                    <?php $outof = ($i - 1) * 100; ?> 
-                    <?php echo htmlentities(round($totlcount/$outof,2)); ?>
+                    <?php $outof =($totallTHCreditHour+$totalINCreditHour)/$totlcrhrofgrade ; ?> 
+                    <?php echo htmlentities(round($outof,2)); ?>
                 </td>
                 <td colspan="2"></td>
             </tr>
