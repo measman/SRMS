@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use \App\Models\StudentsModel;
 use \App\Models\ClassesModel;
+use \App\Models\SubjectModel;
+use \App\Models\SubjectCombinationModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
@@ -11,18 +13,23 @@ class Students extends BaseController
 {
     public $studentsmodel;
     public $classesmodel;
+    public $subjectsmodel;
     public $session;
     public function __construct()
     {        
         $this->session = session();
         $this->studentsmodel = new StudentsModel();
         $this->classesmodel = new ClassesModel();
+        $this->subjectsmodel = new SubjectModel();
+        $this->subjectcombinationmodel = new SubjectCombinationModel();
     }
     
     public function manage()
     {        
         $data['content'] = $this->studentsmodel->getAllStudents();
         $data['classes'] = $this->classesmodel->findAll();
+        $data['subjects'] = $this->subjectsmodel->findAll();
+        $data['subjectcombinations'] = $this->subjectcombinationmodel->findAll();
         return view('admin/manage-students', $data);
     }
 

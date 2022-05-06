@@ -186,6 +186,7 @@
                                     <th>Student Name</th>
                                     <th>Roll Id</th>
                                     <th>Class</th>
+                                    <th>Subjects</th>
                                     <th>Reg Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -197,6 +198,7 @@
                                     <th>Student Name</th>
                                     <th>Roll Id</th>
                                     <th>Class</th>
+                                    <th>Subjects</th>
                                     <th>Reg Date</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -214,6 +216,18 @@
                                             <td><?php echo htmlentities($cnt['RollId']); ?></td>
                                             <td><?php echo htmlentities($cnt['ClassName']); ?>(<?php echo htmlentities($cnt['Section']); ?>)
                                             </td>
+                                            <td>
+                                                <?php if(isset($cnt['ClassName'])){
+                                                    foreach($subjectcombinations as $subcom){
+                                                        if($subcom['ClassId']==$cnt['ClassId']){
+                                                            // print_r();
+                                                            echo $subjects[$subcom['SubjectId']]['SubjectName']."<br>";
+                                                            // echo $subcom['SubjectId']."<br>";
+                                                        }
+                                                    }
+                                                } 
+                                                ?>
+                                            </td>
                                             <td><?php echo $cnt['RegDate']; ?></td>
                                             <td><input type="checkbox" <?= ($cnt['Status'] == 1) ? 'checked' : '' ?> class="status-student" data-id="<?= $cnt['StudentId'] ?>" title="Change Status" />
                                             </td>
@@ -227,10 +241,11 @@
                                     endforeach;
                                 endif;
                                 ?>
-
-
                             </tbody>
                         </table>
+                        <pre>
+                            
+                        </pre>
 
 
                         <!-- /.col-md-12 -->
