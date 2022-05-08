@@ -316,6 +316,7 @@
                         } else {
                             toastr["success"](data.message);
                             $('#classTable').load(location.href + " #classTable");
+                            $('#classModal').modal('hide');
                         }
                     }
                 });
@@ -350,6 +351,7 @@
                         } else {
                             toastr["success"](data.message);
                             $('#studentTable').load(location.href + " #studentTable");
+                            $('#studentsModal').modal('hide');
                         }
                     }
                 });
@@ -380,6 +382,7 @@
                         } else {
                             toastr["success"](data.message);
                             $('#subjectTable').load(location.href + " #subjectTable");
+                            $('#subjectModal').modal('hide');
                         }
                     }
                 });
@@ -407,13 +410,14 @@
                             toastr["success"](data.message);
                             $('#subjectcombinationTable').load(location.href +
                                 " #subjectcombinationTable");
+                            $('#subjectcombinationModal').modal('hide');
                         }
                     }
                 });
             });
             $(document).on('click', '.class-edit', function() {
                 var class_id = $(this).data('id');
-                $('#exampleModal').modal('show')
+                $('#classModal').modal('show');
                 $.ajax({
                     url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
                     method: "POST",
@@ -437,7 +441,7 @@
             });
             $(document).on('click', '.student-edit', function() {
                 var student_id = $(this).data('id');
-                $('#exampleModal').modal('show')
+                $('#studentModal').modal('show')
                 $.ajax({
                     url: "<?php echo base_url('/Students/fetch_single_data'); ?>",
                     method: "POST",
@@ -468,7 +472,7 @@
             });
             $(document).on('click', '.subject-edit', function() {
                 var sub_id = $(this).data('id');
-                $('#exampleModal').modal('show')
+                $('#subjectModal').modal('show')
                 $.ajax({
                     url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
                     method: "POST",
@@ -494,7 +498,7 @@
             });
             $(document).on('click', '.subjectcombination-edit', function() {
                 var sub_id = $(this).data('id');
-                $('#exampleModal').modal('show')
+                $('#subjectCombinationModal').modal('show')
                 $.ajax({
                     url: "<?php echo base_url('/SubjectCombination/fetch_single_data'); ?>",
                     method: "POST",
@@ -505,7 +509,7 @@
                     success: function(data) {
 
                         $('[name="class"]').val(data.ClassId);
-                        $('[name="subject"]').val(data.SubjectId);
+                        $('[name="subject"]').val(data.SubjectId).trigger('change');;
                         $('#class_error').text('');
                         $('#subject_error').text('');
                         $('#action').val('Edit');
@@ -631,7 +635,8 @@
                         } else {
                             toastr["success"](data.message);
                             $('#resultTable').load(location.href +
-                                " #resultTable")
+                                " #resultTable");
+                            $('resultModel').modal('hide');
                         }
                     }
                 });
@@ -666,7 +671,7 @@
             });
             $(document).on('click', '.result-edit', function() {
                 var res_id = $(this).data('id');
-                $('#exampleModal').modal('show')
+                $('#resultModal').modal('show');
                 $.ajax({
                     url: "<?php echo base_url('/Result/fetch_single_data'); ?>",
                     method: "POST",

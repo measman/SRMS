@@ -46,104 +46,85 @@
         </p>
 
         <!-- Modal -->
-        <div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel" aria-hidden="true">
+        <div class="modal fade" id="studentModal" tabindex="-1" role="dialog" aria-labelledby="studentModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel">
-                                <div class="panel-heading">
-                                    <div class="panel-title">
-                                        <h5>Create Student
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </h5>
-                                    </div>
+                <form class="form-horizontal" method="post" id="students_form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Create Student</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Full Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="fullanme" class="form-control" id="fullanme"
+                                        required="required" autocomplete="off">
+                                    <span id="fullanme_error" class="text-danger"></span>
                                 </div>
-                                
+                            </div>
 
-                                <div class="panel-body">
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Symbol No</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="rollid" class="form-control" id="rollid" maxlength="5"
+                                        required="required" autocomplete="off">
+                                    <span id="rollid_error" class="text-danger"></span>
+                                </div>
+                            </div>
 
-                                    <form class="form-horizontal" method="post" id="students_form">
-
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Full Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="fullanme" class="form-control" id="fullanme" required="required" autocomplete="off">
-                                                <span id="fullanme_error" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Symbol No</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="rollid" class="form-control" id="rollid" maxlength="5" required="required" autocomplete="off">
-                                                <span id="rollid_error" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Email id</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" name="emailid" class="form-control" id="email" autocomplete="off">
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Gender</label>
-                                            <div class="col-sm-10">
-                                                <input type="radio" name="gender" value="Male" required="required" checked="">Male
-                                                <input type="radio" name="gender" value="Female" required="required">Female
-                                                <input type="radio" name="gender" value="Other" required="required">Other
-                                                <span id="gender_error" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Class</label>
-                                            <div class="col-sm-10">
-                                                <select name="class" class="form-control" id="default" required="required">
-                                                    <option value="">Select Class</option>
-                                                    <?php
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Email id</label>
+                                <div class="col-sm-10">
+                                    <input type="email" name="emailid" class="form-control" id="email"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Gender</label>
+                                <div class="col-sm-10">
+                                    <input type="radio" name="gender" value="Male" required="required" checked="">Male
+                                    <input type="radio" name="gender" value="Female" required="required">Female
+                                    <input type="radio" name="gender" value="Other" required="required">Other
+                                    <span id="gender_error" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Class</label>
+                                <div class="col-sm-10">
+                                    <select name="class" class="form-control" id="default" required="required">
+                                        <option value="">Select Class</option>
+                                        <?php
                                                     if (isset($classes)) {
                                                         foreach ($classes as $cnt) {
                                                             print "<option value='" . $cnt['id'] . "'>" . $cnt['ClassName'] . " Section-" . $cnt['Section'] . "</option>";
                                                         }
                                                     }
                                                     ?>
-                                                </select>
-                                                <span id="class_error" class="text-danger"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="date" class="col-sm-2 control-label">DOB</label>
-                                            <div class="col-sm-10">
-                                                <input type="date" name="dob" class="form-control" id="date">
-                                                <span id="dob_error" class="text-danger"></span>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <input type="hidden" name="hidden_id" id="hidden_id" />
-                                                <input type="hidden" name="action" id="action" value="Add" />
-                                                <button id="submit_button" type="submit" name="submit" class="btn btn-primary">Add</button>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-
+                                    </select>
+                                    <span id="class_error" class="text-danger"></span>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="date" class="col-sm-2 control-label">DOB</label>
+                                <div class="col-sm-10">
+                                    <input type="date" name="dob" class="form-control" id="date">
+                                    <span id="dob_error" class="text-danger"></span>
+                                </div>
+                            </div>
+                            
                         </div>
-                        <!-- /.col-md-8 col-md-offset-2 -->
+                        <div class="modal-footer">
+                            <input type="hidden" name="hidden_id" id="hidden_id" />
+                            <input type="hidden" name="action" id="action" value="Add" />
+                            <button id="submit_button" type="submit" name="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
+                        <!-- /.row -->
                     </div>
-                    <!-- /.row -->
-                </div>
+                </form>
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
@@ -162,7 +143,8 @@
 
                     <div class="panel-body p-20">
 
-                        <table id="studentTable" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+                        <table id="studentTable" class="display table table-striped table-bordered" cellspacing="0"
+                            width="100%">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -193,14 +175,14 @@
                                     $i = 1;
                                     foreach ($content as $cnt) :
                                 ?>
-                                        <tr>
-                                            <td><?php echo htmlentities($i); ?></td>
-                                            <td><?php echo htmlentities($cnt['StudentName']); ?></td>
-                                            <td><?php echo htmlentities($cnt['RollId']); ?></td>
-                                            <td><?php echo htmlentities($cnt['ClassName']); ?>(<?php echo htmlentities($cnt['Section']); ?>)
-                                            </td>
-                                            <td>
-                                                <?php if(isset($cnt['ClassName'])){
+                                <tr>
+                                    <td><?php echo htmlentities($i); ?></td>
+                                    <td><?php echo htmlentities($cnt['StudentName']); ?></td>
+                                    <td><?php echo htmlentities($cnt['RollId']); ?></td>
+                                    <td><?php echo htmlentities($cnt['ClassName']); ?>(<?php echo htmlentities($cnt['Section']); ?>)
+                                    </td>
+                                    <td>
+                                        <?php if(isset($cnt['ClassName'])){
                                                     foreach($subjectcombinations as $subcom){
                                                         if($subcom['ClassId']==$cnt['ClassId']){
                                                             // print_r();
@@ -210,15 +192,19 @@
                                                     }
                                                 } 
                                                 ?>
-                                            </td>
-                                            <td><?php echo $cnt['RegDate']; ?></td>
-                                            <td><input type="checkbox" <?= ($cnt['Status'] == 1) ? 'checked' : '' ?> class="status-student" data-id="<?= $cnt['StudentId'] ?>" title="Change Status" />
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-info student-edit" data-id="<?php echo htmlentities($cnt['StudentId']); ?>"><i class="fa fa-edit" title="Edit Record"></i> </button>
+                                    </td>
+                                    <td><?php echo $cnt['RegDate']; ?></td>
+                                    <td><input type="checkbox" <?= ($cnt['Status'] == 1) ? 'checked' : '' ?>
+                                            class="status-student" data-id="<?= $cnt['StudentId'] ?>"
+                                            title="Change Status" />
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-info student-edit"
+                                            data-id="<?php echo htmlentities($cnt['StudentId']); ?>"><i
+                                                class="fa fa-edit" title="Edit Record"></i> </button>
 
-                                            </td>
-                                        </tr>
+                                    </td>
+                                </tr>
                                 <?php
                                         $i++;
                                     endforeach;
@@ -227,7 +213,7 @@
                             </tbody>
                         </table>
                         <pre>
-                            
+
                         </pre>
 
 

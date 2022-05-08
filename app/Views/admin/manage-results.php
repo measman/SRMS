@@ -31,85 +31,85 @@
         <p>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#resultModal">
-            Declare Result
+                Declare Result
             </button>
         </p>
         <!-- Modal -->
-        <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+        <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
-            <form class="form-horizontal" method="post" id="result_form">
+                <form class="form-horizontal" method="post" id="result_form">
                     <div class="modal-content">
-                    
-                                <div class="modal-header">
-                                    <div class="panel-title">
-                                        <h5>Declare Result
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </h5>
-                                    </div>
-                                </div>
-                                
-                                <div class="modal-body">
 
-                                   
+                        <div class="modal-header">
+                            <div class="panel-title">
+                                <h5>Declare Result
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </h5>
+                            </div>
+                        </div>
 
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Class</label>
-                                            <div class="col-sm-10">
-                                                <select id="slcresultClass" name="classid" class="form-control" required="required">
-                                                    <option value="">Select Class</option>
-                                                    <?php
+                        <div class="modal-body">
+
+
+
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Class</label>
+                                <div class="col-sm-10">
+                                    <select id="slcresultClass" name="classid" class="form-control" required="required">
+                                        <option value="">Select Class</option>
+                                        <?php
                                                 if (isset($classes)) {
                                                     foreach ($classes as $cnt) {
                                                         print "<option value='" . $cnt['id'] . "'>" . $cnt['ClassName'] . " (".$cnt['Section'].")</option>";
                                                     }
                                                 }
                                                 ?>
-                                                </select>
-                                                <span id="class_error" class="text-danger"></span>
-                                            </div>
-                                        </div>
+                                    </select>
+                                    <span id="class_error" class="text-danger"></span>
+                                </div>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Student</label>
-                                            <div class="col-sm-10">
-                                                <select name="studentid" class="form-control stid" id="studentid"
-                                                    required="required">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    <div class="form-group">
-                                        <div class="col-sm-10">
-                                            <div id="reslt">
-                                            </div>
-                                        </div>
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Student</label>
+                                <div class="col-sm-10">
+                                    <select name="studentid" class="form-control stid" id="studentid"
+                                        required="required">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div id="reslt">
                                     </div>
+                                </div>
+                            </div>
 
-                                        <div class="form-group">
-                                            <label for="default" class="col-sm-2 control-label">Subjects</label>
-                                            <div class="col-sm-10">
-                                                <div class="row" id="subject">
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="form-group">
+                                <label for="default" class="col-sm-2 control-label">Subjects</label>
+                                <div class="col-sm-10">
+                                    <div class="row" id="subject">
+                                    </div>
+                                </div>
+                            </div>
 
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                
-                                            </div>
-                                        </div>
-                                       
-                                   
-
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
 
                                 </div>
-                                <div class="modal-footer">                                            
-                                                <input type="hidden" name="hidden_id" id="hidden_id" />
-                                                <input type="hidden" name="action" id="action" value="Add" />
-                                                <button id="submit_button" type="submit" name="submit"
-                                                    class="btn btn-primary">Add</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                           
+                            </div>
+
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="hidden_id" id="hidden_id" />
+                            <input type="hidden" name="action" id="action" value="Add" />
+                            <button id="submit_button" type="submit" name="submit" class="btn btn-primary">Add</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
                     </div>
                 </form>
             </div>
@@ -148,7 +148,8 @@
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Class</label>
                                     <div class="col-sm-10">
-                                        <select id="slcresultClass" name="classid" class="form-control" required="required">
+                                        <select id="slcresultClass" name="classid" class="form-control"
+                                            required="required">
                                             <option value="">Select Class</option>
                                             <?php
                                         if (isset($classes)) {
@@ -170,12 +171,12 @@
                                         </select>
                                     </div>
                                 </div>
-                            <div class="form-group">
-                                <div class="col-sm-10">
-                                    <div id="reslt">
+                                <div class="form-group">
+                                    <div class="col-sm-10">
+                                        <div id="reslt">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
                                 <div class="form-group">
                                     <label for="default" class="col-sm-2 control-label">Subjects</label>
