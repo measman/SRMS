@@ -77,7 +77,7 @@
                             <input type="hidden" name="hidden_id" id="hidden_id" />
                             <input type="hidden" name="action" id="action" value="Add" />
                             <button id="submit_button" type="submit" name="submit"
-                                class="btn btn-success btn-labeled">Submit<span class="btn-label btn-label-right"><i
+                                class="btn btn-success btn-labeled"><span class="submit_text">Submit</span><span class="btn-label btn-label-right"><i
                                         class="fa fa-check"></i></span></button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>

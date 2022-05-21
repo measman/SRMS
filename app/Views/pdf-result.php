@@ -88,11 +88,11 @@
             <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>
         <tr>
-            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities($result['SubjectCode']); ?></td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(sprintf("%04s", $result['SubjectCode']+1)); ?></td>
             <td align="left" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;" colspan="5"><?php echo htmlentities($result['SubjectName']); ?> (IN)</td>
             <?php $totalINCreditHour += getGPA($result['marks'],100-$result['fm_th']) * actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']);?>
             <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(number_format(actualCreditHour(100-$result['fm_th'],$result['total_cr_hr']), 2, '.', '')); ?></td>
-            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(getGPA($result['marks'],100-$result['fm_th'])); ?></td>
+            <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo htmlentities(getGPA($result['in_marks'],100-$result['fm_th'])); ?></td>
             <td align="center" style="border-right-style:none;font-family: 'Courier New', Courier, monospace; font-size:13px;"><?php echo getGrade($result['in_marks'],100-$result['fm_th']); ?></td>
             <td align="center" colspan="2" style="border-right-style:none;"></td>
         </tr>

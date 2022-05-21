@@ -304,7 +304,7 @@
                         $('#submit_button').attr('disabled', 'disabled');
                     },
                     success: function(data) {
-                        $('#submit_button').text('Add');
+                        $('#submit_text').text('Submit');
                         $('#submit_button').attr('disabled', false);
                         if (data.error == 'yes') {
                             $('#classname_error').text(data
@@ -434,7 +434,7 @@
                         $('#classnamenumeric_error').text('');
                         $('#section_error').text('');
                         $('#action').val('Edit');
-                        $('#submit_button').text('Edit');
+                        $('.submit_text').text('Edit');
                         $('#hidden_id').val(class_id);
                     }
                 });
