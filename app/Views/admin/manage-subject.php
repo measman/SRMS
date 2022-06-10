@@ -30,7 +30,7 @@
     <div class="container-fluid">
         <p>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subjectModal">
+            <button id="new_subject" type="button" class="btn btn-primary" data-toggle="modal" >
                 Create Subjects
             </button>
         </p>

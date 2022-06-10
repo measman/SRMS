@@ -222,10 +222,7 @@
             var ssct = $("#studentsubjectcombinationTable").DataTable();
 
             $("#slcsubjectlist").select2();
-            $("#subjectlist").select2({
-                tags: true,
-                dropdownParent: $("#exampleModal")
-            });
+            $("#subjectlist").select2();
 
             $("input.status-student").change(function() {
                 var std_id = $(this).data('id');
@@ -290,7 +287,28 @@
                 "hideMethod": "fadeOut"
             }
             // toastr["success"]("Welcome to student Result Management System!");
+            $('#new_class').click(function() {
+                $('#classes_form')[0].reset();
+                $('.modal-title').text('+ Add Class');
+                $('#action').val('Add');
+                $('#classname_error').text('');
+                $('#classnamenumeric_error').text('');
+                $('#section_error').text('');
+                $('.submit_text').text('Submit');
+                $('#classModal').modal('show');
+            });
 
+            $('#new_subject').click(function() {
+                $('#subject_form')[0].reset();
+                $('.modal-title').text('+ Add Class');
+                $('#action').val('Add');
+                $('#subjectname_error').text('');
+                $('#subjectcode_error').text('');
+                $('#fmth_error').text('');
+                $('#tch_error').text('');                        
+                $('#submit_button').text('Add');
+                $('#subjectModal').modal('show');
+            });
 
             $('#classes_form').on('submit', function(event) {
                 event.preventDefault();
@@ -417,7 +435,7 @@
             });
             $(document).on('click', '.class-edit', function() {
                 var class_id = $(this).data('id');
-                $('#classModal').modal('show');
+                
                 $.ajax({
                     url: "<?php echo base_url('/Classes/fetch_single_data'); ?>",
                     method: "POST",
@@ -436,6 +454,7 @@
                         $('#action').val('Edit');
                         $('.submit_text').text('Edit');
                         $('#hidden_id').val(class_id);
+                        $('#classModal').modal('show');
                     }
                 });
             });
@@ -472,7 +491,7 @@
             });
             $(document).on('click', '.subject-edit', function() {
                 var sub_id = $(this).data('id');
-                $('#subjectModal').modal('show')
+                
                 $.ajax({
                     url: "<?php echo base_url('/Subject/fetch_single_data'); ?>",
                     method: "POST",
@@ -493,6 +512,7 @@
                         $('#action').val('Edit');
                         $('#submit_button').text('Edit');
                         $('#hidden_id').val(sub_id);
+                        $('#subjectModal').modal('show');
                     }
                 });
             });

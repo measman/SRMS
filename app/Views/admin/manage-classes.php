@@ -30,7 +30,7 @@
     <div class="container-fluid">
         <p>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#classModal">
+            <button id="new_class" type="button" class="btn btn-primary" data-toggle="modal">
                 Create Student Class
             </button>
         </p>
