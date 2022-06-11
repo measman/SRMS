@@ -142,6 +142,8 @@
                                     <li><a href="<?= base_url(); ?>/print-results"><i class="fa fa fa-server"></i>
                                             <span>Print
                                                 Result</span></a></li>
+                                                <li><a href="<?= base_url(); ?>/manage-gradeelvres"><i class="fa fa fa-server"></i>
+                                            <span>Grade 11 Result</span></a></li>
 
                                 </ul>
                             </li>
@@ -217,7 +219,7 @@
             $("#classTable").DataTable();
             $("#subjectTable").DataTable();
             $("#subjectcombinationTable").DataTable();
-            
+            $("#gradeElevenResultTable").DataTable();
             $("#resultTable").DataTable();
             var ssct = $("#studentsubjectcombinationTable").DataTable();
 
@@ -739,21 +741,13 @@
                         success: function(response) {
                             // console.log(response);
                             if (response.success == 1) { // Uploaded successfully
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: response.message
-                                });
-                            // console.log(response);
-                            // filedistTable.ajax.reload();
-                            // $('#filepreview').attr('src', response.filepath);
-                            // $('#filepreview').show();
-                            // $('#afterUpload').val(response.filename);
+                                
+                                toastr["success"](response.message);
+                            
 
                             } else if (response.success == 2) { // File not uploaded
-                                Toast.fire({
-                                    icon: 'error',
-                                    title: response.message
-                                });
+                                
+                                toastr["error"](response.message);
                             } else {
                             // Display Error
                             // $('#err_file').text(response.error);
@@ -770,6 +764,53 @@
                 }
 
             });
+
+            $('#btn_submit_grdelv_upload').click(function() {
+
+
+                // Get the selected file
+                var files = $('#grdelv')[0].files;
+
+                if (files.length > 0) {
+                    var fd = new FormData();
+                    console.log(files[0]);
+                    // Append data 
+                    fd.append('grdelv', files[0]);
+
+                    // AJAX request 
+                    $.ajax({
+                        url: "<?= site_url('GradeElevenResult/import') ?>",
+                        method: 'post',
+                        data: fd,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            // console.log(response);
+                            if (response.success == 1) { // Uploaded successfully
+                                toastr["success"](response.message);
+                            
+
+                            } else if (response.success == 2) { // File not uploaded
+                                
+                                toastr["error"](response.message);
+                            
+                            } else {
+                            // Display Error
+                            // $('#err_file').text(response.error);
+                            // $('#err_file').removeClass('d-none');
+                            // $('#err_file').addClass('d-block');
+                            }
+                        },
+                        error: function(response) {
+                            console.log("error : " + JSON.stringify(response));
+                        }
+                    });
+                } else {
+                    alert("Please select a file.");
+                }
+
+                });
 
 
 
